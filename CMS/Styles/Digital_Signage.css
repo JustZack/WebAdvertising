@@ -1,0 +1,30 @@
+body{
+    background-color: black;
+    color: white;
+}
+/* Make sure the cursor will not show over the image */
+.content-container{
+    cursor: none;
+}
+.content-container .Ad_Content
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: none;
+}
+
+/* CSS for a simple error message */
+.error-message{
+    margin: 10px;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    background-color: #ffe9e9;
+    border: 1px solid #e7a9a9;
+    color: #d04544;}
+.error-message li{
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;}
