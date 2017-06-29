@@ -8,9 +8,8 @@
     $AdContentInfoHeader = "Name,Start Date,End Date,Duration,Specific Time,Condition for showing";
     if(!file_exists(getcwd() . "\\Content\\"))
     {
-        printf(getcwd() . "Content\\");
-        mkdir(getcwd() . "Content\\");
-        mkdir(getcwd() . "Content\\Ads\\");
+        mkdir(getcwd() . "\\Content\\");
+        mkdir(getcwd() . "\\Content\\Ads\\");
         $AdContentInfoFile = fopen(getcwd() . "/Content/Ads/AdContent-info.csv", "w");
         fwrite($AdContentInfoFile, $AdContentInfoHeader);
         fclose($AdContentInfoFile);

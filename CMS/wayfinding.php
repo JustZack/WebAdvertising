@@ -1,7 +1,8 @@
 <html>
     <head>
         <?php include_once "generichead.php" ?>
-        <link href="Styles/Wayfinding.css" rel="stylesheet">
+        <script src="Scripts/jquery.wayfinding.js" rel="javascript"></script>
+        <link   href="Styles/Wayfinding.css"       rel="stylesheet">
     </head>
     <body>
         <div id="wayfinding_container">

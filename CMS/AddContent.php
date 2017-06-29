@@ -7,6 +7,7 @@
     {   
         /* If the file could not be uploaded then there is no reason to write its data to our CSV */
         include_once "Write_Image_Data.php";
+        include_once "images.php";
         header("location: edit");
     }
     else {
