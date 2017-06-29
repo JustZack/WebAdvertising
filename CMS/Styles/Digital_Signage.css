@@ -12,6 +12,13 @@ body{
     height: 100%;
     object-fit: contain;
     display: none;
+
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 /* CSS for a simple error message */

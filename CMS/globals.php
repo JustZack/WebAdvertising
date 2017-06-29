@@ -2,19 +2,29 @@
     /*
         Attributes the images should have in the tag:
         (req)src (obivously)
-        (opt)data-daily-start-time : The time(s?) which this ad MUST play 
+        (opt)data-specific-time : The time(s?) which this ad MUST play 
         (opt)data-duration : A custom duration other than the globally specified one.
     */
-    $AdContentInfoHeader = "Name, Start Date, End Date, Condition for showing";
-    if(!file_exists(getcwd() . "/Content"))
+    $AdContentInfoHeader = "Name,Start Date,End Date,Duration,Specific Time,Condition for showing";
+    if(!file_exists(getcwd() . "\\Content\\"))
     {
-        mkdir(getcwd() . "//Content//");
-        mkdir(getcwd() . "//Content//Ads//");
-        $AdContentInfoFile = fopen(getcwd() . "//Content//Ads//AdContent-info.csv", "w");
+        printf(getcwd() . "Content\\");
+        mkdir(getcwd() . "Content\\");
+        mkdir(getcwd() . "Content\\Ads\\");
+        $AdContentInfoFile = fopen(getcwd() . "/Content/Ads/AdContent-info.csv", "w");
         fwrite($AdContentInfoFile, $AdContentInfoHeader);
         fclose($AdContentInfoFile);
     }
     $Path_To_AdInfo = getcwd() . "/Content/Ads/AdContent-info.csv";
+
+    /* 
+        Function used to make code more readable in Write_Image_Data.php
+        Removes the spaces from the string sent to it.
+    */
+    function removeSpaces($str){
+        return str_replace(' ', '', $str);
+    }
+
     //Ensures all of our date and time calculations are relative to Denver time.
     date_default_timezone_set("America/Denver");
     /* 
@@ -57,7 +67,6 @@
         //We should never get here. Returns false indicating an invalid date anyways.
         return false;
     }
-
     function startDate($DateTimeArray){
         if($DateTimeArray['year']  <= date("Y") &&
            $DateTimeArray['month'] <= date("m") &&
@@ -65,7 +74,6 @@
            {return true;} 
         else{return false;}        
     }
-
     function endDate($DateTimeArray){
         if($DateTimeArray['year']  >= date("Y"))
         {
@@ -85,6 +93,17 @@
             }
         }
         else{return false;}
+    }
+
+    function isTimeValid($Time){
+        $CurrentDate = date('H:i');
+        $CurrentTime = strtotime($CurrentDate);
+        $SpecificTime = strtotime($Time);
+        $diff = round($SpecificTime - $CurrentTime / 60,2);
+        if($diff <= 15 && $diff > 0)
+            return true; //Only true if the specific time is within the next 15 minutes
+        else
+            return false;
     }
     include_once "Conditions.php";
     //Checks if any condition is true according to the array which contains the possible conditions.

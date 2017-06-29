@@ -15,7 +15,7 @@
                 $Ad_Directory = $Ad_Directory . $Current_Year . "/" . $Current_Month . "/";
                 $Ad_File = $Ad_Directory . basename($_FILES["AdImage"]["name"]);
                 $FullImagePath = $Ad_File;
-                if (move_uploaded_file($_FILES['AdImage']['tmp_name'], $Ad_File)) {
+                if (move_uploaded_file($_FILES['AdImage']['tmp_name'], $FullImagePath)) {
                     $imageFileType = pathinfo($Ad_File, PATHINFO_EXTENSION);
                     $check = getimagesize($Ad_File);
                     if ($check !== false) {

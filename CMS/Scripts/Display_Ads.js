@@ -1,6 +1,5 @@
 $(document).ready(function()
 {
-    var Ad_Duration_Seconds; //How long does each ad run?
     var Ad_Count;           //How many ads are there?
     var Ad_Position;        //Which image are we on?   
     
@@ -10,16 +9,12 @@ $(document).ready(function()
     function initialStartup(){
         //These should be received via meta-data on the page or from a file
         Player_Update_Interval_Minutes = 15;
-        Ad_Duration_Seconds = 15;
 
         Ad_Count = $('.Ad_Content').length;
         if(Ad_Count > 0){
             Ad_Position = Ad_Count;
-            advanceAds(); //Initially start by steping the first ad
-        }
-         //This interval will advance ads
-        //This will be removed, in favor of just waiting with the delay specified in the ads tag
-        setInterval(advanceAds, Ad_Duration_Seconds * 100);    
+            advanceAds();
+        } 
         //This interval will refresh the content 
         setInterval(refreshContent, Player_Update_Interval_Minutes * 60 * 1000);                
     }
@@ -29,6 +24,10 @@ $(document).ready(function()
         $('#Ad_' + Ad_Position).css('display','none');  
         progressAdNumber(); //Progress the ad number
         $('#Ad_' + Ad_Position).css('display','block'); //Display the current ad.
+        setTimeout(function() {
+            //Just wait for the amount of time that the ad is supposed to play
+            advanceAds(); //then advance to the next ad.
+        }, $('#Ad_' + Ad_Position).data('duration') * 1000);
     }
     //Progress the ad number forward to the next valid number
     function progressAdNumber(){
@@ -43,4 +42,10 @@ $(document).ready(function()
         location.reload();
     }
     initialStartup();
+
+
+    /* Redirects to the wayfinding screen on tap. */
+    $(document).click(function(){
+        window.location.href = "wayfinding";
+    });
 });
