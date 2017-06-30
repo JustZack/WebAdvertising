@@ -35,3 +35,17 @@ body{
     display: inline-block;
     vertical-align: middle;
     line-height: normal;}
+.IFrameWrapper{
+    position: relative;
+}
+.IFrameBlocker{
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 2;
+}
+iframe{
+    z-index: 1;
+}

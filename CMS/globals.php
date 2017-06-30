@@ -112,4 +112,22 @@
         
         return false;
     }
+
+    function isImage($ImagePath)
+    {
+        $ImagePath = strtolower($ImagePath);
+        $ImageFileEndings = 
+        array
+        (
+            0 => 'jpg',
+            1 => 'gif',
+            2 => 'jpeg',
+            3 => 'bmp',
+            4 => 'png'
+        );
+        for($i = 0;$i < count($ImageFileEndings);$i++)
+            if(strrpos($ImagePath, '.' . $ImageFileEndings[$i]) !== false)
+                return true;
+        return false;
+    }
 ?>

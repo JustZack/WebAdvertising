@@ -11,6 +11,7 @@
     
     for($pos = 1;$pos < count($FileContents);$pos++){
         $CurrentAdString;
+        $EndCurrentAdString = "";
         /* Get the data associated with the current ad in the file */
         $CurrentAdInfo = explode(",", $FileContents[$pos]);
         $FileContents[$pos] .= "\n";
@@ -19,15 +20,23 @@
             if(isDateValid($CurrentAdInfo[2], "end")){
                 if($CurrentAdInfo[4] == "" || isTimeValid($CurrentAdInfo[4])){
                     if($CurrentAdInfo[5] == "" || isConditionTrue($CurrentAdInfo[5])){
-                        $CurrentAdString = "\t\t\t<img id=\"Ad_" . $Ad_Count++ .
-                        "\"class=\"Ad_Content\"src=\"" . $CurrentAdInfo[0] .
-                        "\"data-duration=\"" . $CurrentAdInfo[3] . "\"";
-                        if($CurrentAdInfo[4] == ""){
-                            $CurrentAdString .= ">\n";
-                        } else {
-                            $CurrentAdString .= " data-time=\"" . $CurrentAdInfo[4] . "\">\n";
+                        if(isImage($CurrentAdInfo[0])){
+                            $CurrentAdString = "\t\t\t<img id=\"Ad_" . $Ad_Count++ .
+                            "\"class=\"Ad_Content\"src=\"" . $CurrentAdInfo[0] .
+                            "\"data-duration=\"" . $CurrentAdInfo[3] . "\"";
+                        } else{
+                            $CurrentAdString = "\t\t\t<div class=\"IFrameWrapper\">\n\t\t\t\t<div class=\"IFrameBlocker\"></div>\n\t\t\t\t<iframe id=\"Ad_" . $Ad_Count++ .
+                            "\"class=\"Ad_Content\"src=\"" . $CurrentAdInfo[0] .
+                            "\"data-duration=\"" . $CurrentAdInfo[3] . "\"";
+                            $EndCurrentAdString = "</iframe>\n\t\t\t</div>";
                         }
-                        printf($CurrentAdString);
+                        if($CurrentAdInfo[4] == ""){
+                            $CurrentAdString .= ">";
+                        } else {
+                            $CurrentAdString .= " data-time=\"" . $CurrentAdInfo[4] . "\">";
+                        }
+                        $EndCurrentAdString .= "\n";
+                        printf($CurrentAdString . $EndCurrentAdString);
                     }
                 }
             }

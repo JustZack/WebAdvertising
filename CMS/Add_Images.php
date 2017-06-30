@@ -7,8 +7,6 @@
         mkdir($Ad_Directory . $Current_Year);
         mkdir($Ad_Directory . $Current_Year . "/" . $Current_Month);
     }
-    $FullImagePath;
-    $UploadOk;
     if (!empty($_FILES) && isset($_FILES['AdImage'])) {
         switch ($_FILES['AdImage']["error"]) {
             case UPLOAD_ERR_OK:

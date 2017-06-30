@@ -20,8 +20,8 @@ $(document).ready(function()
     }
     //Advances the ad content
     function advanceAds(){
-        //Hide the previous ad.
-        $('#Ad_' + Ad_Position).css('display','none');  
+        //Hide the previous ad. 
+        $('#Ad_' + Ad_Position).css('display','none'); 
         progressAdNumber(); //Progress the ad number
         $('#Ad_' + Ad_Position).css('display','block'); //Display the current ad.
         setTimeout(function() {
@@ -31,21 +31,60 @@ $(document).ready(function()
     }
     //Progress the ad number forward to the next valid number
     function progressAdNumber(){
+        iframeReset(); 
         if(Ad_Position == Ad_Count){
             Ad_Position = 1;}
         else{
             Ad_Position++;}
+        iframeAdvancement();
     }
 
     //Is called everytime our update interval for the player is up.
     function refreshContent(){
         location.reload();
     }
+
+    //Ensures all iframe content has stopped playing
+    function iframeReset(){
+        if($('#Ad_' + Ad_Position).is("iframe") == true)
+        {
+            //Youtube: Stop playing of video
+            if($('#Ad_' + Ad_Position).attr('src').indexOf('youtube') >= 0)
+            {
+                var src = $('#Ad_' + Ad_Position).attr('src');
+                if(src.indexOf('?') >= 0)
+                {
+                    var firstQMark = src.indexOf('?');
+                    var newSrc = src.substring(0, firstQMark);
+                    $('#Ad_' + Ad_Position).attr('src', newSrc);
+                }
+            }
+        }
+    }
+    //Ensures all iframe content has started playing
+    function iframeAdvancement(){
+        if($('#Ad_' + Ad_Position).is("iframe") == true)
+        {
+            //Youtube: Start playback of video
+            if($('#Ad_' + Ad_Position).attr('src').indexOf('youtube') >= 0)
+            {
+                var toAdd = "";
+                var src = $('#Ad_' + Ad_Position).attr('src');          
+                if(src.indexOf("?") >= 0){
+                    toAdd += "&autoplay=1";
+                } else {
+                    toAdd += "?autoplay=1";
+                }
+                $('#Ad_' + Ad_Position).attr('src', src + toAdd);
+            }
+        }
+    }
+
     initialStartup();
 
 
     /* Redirects to the wayfinding screen on tap. */
-    $(document).click(function(){
+    $(".content-container").click(function(){
         window.location.href = "wayfinding";
     });
 });
