@@ -98,7 +98,7 @@
         $CurrentDate = date('H:i');
         $CurrentTime = strtotime($CurrentDate);
         $SpecificTime = strtotime($Time);
-        $diff = round($SpecificTime - $CurrentTime / 60,2);
+        $diff = round(($SpecificTime - $CurrentTime) / 60,2);
         if($diff <= 15 && $diff > 0)
             return true; //Only true if the specific time is within the next 15 minutes
         else

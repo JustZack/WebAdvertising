@@ -1,0 +1,30 @@
+Displaying accross multiple machines with different ads:
+    Multiple AdContent-info files depending on machine.
+        PHP needs hostname, and then decides which file to use.
+        {
+            Request to load page
+            PHP retreives hostname of requester
+            PHP determines which file to read from
+            (file exists)
+                Serve page
+            (!file exists)
+                Display error describing 
+                there is no data associated with the hostname
+                Give directions/link for registering hostname
+        }
+
+Useablilty:
+    Display all of the images which can be displayed
+        Have button on each one; 'Use this image'.
+    Have a page which displays the 'status' of each machine.
+        Shows all info associated with each ad the player serves
+        Shows if wayfinding is enabled for this machine.
+        Idea: This status page would be where ads are added / removed
+            Very user friendly!
+    Display a drop down of every registered machine
+        Determines which machine the ads will be displayed on.
+        Consider having groups
+            Ex: South facing 1 & 2
+                RamTech
+                1st Floor Hallway
+    

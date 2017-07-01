@@ -1,3 +1,4 @@
+        
         <div class="content-container">
 <?php
     include_once "globals.php";  
@@ -11,7 +12,7 @@
     
     for($pos = 1;$pos < count($FileContents);$pos++){
         $CurrentAdString;
-        $EndCurrentAdString = "";
+        $EndCurrentAdString;
         /* Get the data associated with the current ad in the file */
         $CurrentAdInfo = explode(",", $FileContents[$pos]);
         $FileContents[$pos] .= "\n";
@@ -24,18 +25,17 @@
                             $CurrentAdString = "\t\t\t<img id=\"Ad_" . $Ad_Count++ .
                             "\"class=\"Ad_Content\"src=\"" . $CurrentAdInfo[0] .
                             "\"data-duration=\"" . $CurrentAdInfo[3] . "\"";
+                            $EndCurrentAdString = ">\n";                            
                         } else{
-                            $CurrentAdString = "\t\t\t<div class=\"IFrameWrapper\">\n\t\t\t\t<div class=\"IFrameBlocker\"></div>\n\t\t\t\t<iframe id=\"Ad_" . $Ad_Count++ .
+                            $CurrentAdString = "\n\t\t\t\t<iframe id=\"Ad_" . $Ad_Count++ .
                             "\"class=\"Ad_Content\"src=\"" . $CurrentAdInfo[0] .
                             "\"data-duration=\"" . $CurrentAdInfo[3] . "\"";
-                            $EndCurrentAdString = "</iframe>\n\t\t\t</div>";
+                            $EndCurrentAdString = "></iframe>\n";
                         }
-                        if($CurrentAdInfo[4] == ""){
-                            $CurrentAdString .= ">";
-                        } else {
-                            $CurrentAdString .= " data-time=\"" . $CurrentAdInfo[4] . "\">";
+                        if($CurrentAdInfo[4] == ""){} 
+                        else {
+                            $CurrentAdString .= " data-specific-time=\"" . $CurrentAdInfo[4] . "\"";
                         }
-                        $EndCurrentAdString .= "\n";
                         printf($CurrentAdString . $EndCurrentAdString);
                     }
                 }
