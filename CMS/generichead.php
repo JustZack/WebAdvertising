@@ -2,3 +2,4 @@
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
         <link href="Styles/Css_Reset.css"  rel="stylesheet">
+        <link href="Styles/Notify.css"     rel="stylesheet">

@@ -22,20 +22,6 @@ body{
     -ms-user-select: none;
 }
 
-/* CSS for a simple error message */
-.error-message{
-    margin: 10px;
-    height: 75px;
-    line-height: 75px;
-    text-align: center;
-    background-color: #ffe9e9;
-    border: 1px solid #e7a9a9;
-    color: #d04544;}
-.error-message li{
-    font-size: 16px;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;}
 #Uninteractable_Wrapper{
     position: relative;
 }

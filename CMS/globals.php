@@ -17,6 +17,40 @@
     $Path_To_AdInfo = getcwd() . "/Content/Ads/AdContent-info.csv";
 
     /* 
+        Creates the player data file.
+        This file contains relavent information about each registered player.
+        Its hostname
+            Allows us to determine what content to serve
+        Wether or not it should use Wayfinding
+            Simple on off functionality for wayfinding
+        All of its groups
+            Lets us know what groups the player uses for content
+                Allows for a player to use all advertising stuff, 
+                but also a group which consists of a live news feed
+    */
+    $PlayersInformationHeader = "Hostname, Use-Wayfinding, Ad-Content-Groups";
+    //TODO: make the check for these files more throughough
+    if(!file_exists(getcwd() . "\\Players\\"))
+    {
+
+        mkdir(getcwd() . "\\Players\\");
+        mkdir(getcwd() . "\\Players\\Groups");
+        mkdir(getcwd() . "\\Players\\Groups\\Default");
+        $DefualtGroupAdInfoFile = fopen(getcwd() . "/Players/Players-info.csv", "w");
+        fwrite($DefualtGroupAdInfoFile, $PlayersInformationHeader);  
+        fclose($DefualtGroupAdInfoFile);     
+    } else if(!file_exists(getcwd() . "\\Players\\Players-info.csv"))
+    {
+        $DefualtGroupAdInfoFile = fopen(getcwd() . "/Players/Players-info.csv", "w");        
+        fwrite($DefualtGroupAdInfoFile, $PlayersInformationHeader);  
+        fclose($DefualtGroupAdInfoFile);     
+    }
+    $Path_To_Players = getcwd() . "/Players" . "/";
+    $Path_To_Players_Info = getcwd() . "/Players/Players-info.csv";
+    $Path_To_Groups = getcwd() . "/Players/Groups/";
+    
+    /* From here down is functions that I think are globally usefull */
+    /* 
         Function used to make code more readable in Write_Image_Data.php
         Removes the spaces from the string sent to it.
     */
