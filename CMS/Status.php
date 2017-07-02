@@ -59,7 +59,7 @@
         </div>
         <div id="ContentInformation">
         <?php
-            
+            loadByFolder($Content_Path);
         ?>
         </div>
     </body>

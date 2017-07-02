@@ -55,15 +55,53 @@
     font-size: 18px;    
 }
 
+.groupName{
+    padding: 5px 0px;
+}
+.groupName:hover{
+    background-color: #7DA0E7;
+    border-radius: 5px;
+}
+
 .groupWrapper{
     background-color: rgb(173,216,230);
     padding: 5px;
     border-radius: 5px;
     display: none;
+    margin-top: 5px;
 }
 
 #ContentInformation{
     width: 100%;
     background-color: rgb(87,108,115);
     border: 2px solid rgb(68,103,125);
+}
+
+.Dir{
+    border-left: 1px solid black;
+    padding: 5px;
+    margin: 0px 5px;
+}
+
+.DirName{
+    padding: 5px;
+    background-color: #326ada;
+    border-radius: 5px;
+    color: white;
+}
+.DirName:hover{
+    background-color: #7DA0E7;
+    border-radius: 5px;
+}
+
+.files{
+    margin: 5px 0px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(173,216,230);
+}
+
+.Ad_Content{
+    max-height: 75px;
+    min-height: 75px;
 }
