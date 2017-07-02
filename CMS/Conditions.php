@@ -26,6 +26,7 @@
 
         }
     }
+    
     /* Temperature conditional methods */
     function tempCondition($Condition){
         $CurrentTemp = getTEMP();

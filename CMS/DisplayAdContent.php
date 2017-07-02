@@ -7,14 +7,8 @@
     <body>
         <div id="Uninteractable_Wrapper">
             <div id="Uninteractable_cover"></div>
-<?php   include_once "images.php" ?>
+<?php   include_once "LoadContent.php" ?>
+        
         </div>
-    <!-- 
-        Consider adding the wayfinding here 
-        Just hide the div until the screen is tapped / clicked, 
-        then hide the image display div. 
-
-        Good reason to use seperate file is for mobile wayfinding.
-    -->
     </body>
 </html>
