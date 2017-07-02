@@ -7,6 +7,17 @@
     */
     $Ad_Count = 0;
     /*
+        Function used to load all content that is associated with an array of groups.
+        Takes a string
+    */
+    function loadByGroups($GroupNameStringList)
+    {
+        $Groups = explode(" ", $GroupNameStringList);
+        for($i = 0;$i < count($Groups);$i++){
+            loadByGroup($Groups[$i]);
+        }
+    }
+    /*
         Function used to load all content that is associated with a group.
     */
     function loadByGroup($GroupNameString){

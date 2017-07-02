@@ -52,7 +52,14 @@
 
 .groupData{
     text-align: center;
-    font-size: 18px;
+    font-size: 18px;    
+}
+
+.groupWrapper{
+    background-color: rgb(173,216,230);
+    padding: 5px;
+    border-radius: 5px;
+    display: none;
 }
 
 #ContentInformation{

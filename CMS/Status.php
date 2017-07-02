@@ -2,6 +2,7 @@
     <head>
     <?php include_once "generichead.php" ?>
         <link href="Styles/Status.css" rel="stylesheet">
+        <script src="Scripts/Status.js" rel="javascript"></script>
     </head>
     <body>
     <?php
@@ -49,15 +50,17 @@
                 printf("\n\t\t\t<div class='groupData'>\n");
                 printf("\t\t\t\t<div class='groupName'>" . $Group . "</div>\n");
                 //Print out everything this group refrences
+                printf("\t\t\t\t<div class='groupWrapper'>\n");
                 loadByGroup($Group);
+                printf("\t\t\t\t</div>\n");                
                 printf("\t\t\t</div>\n");
             }
         ?>
         </div>
         <div id="ContentInformation">
-            <?php
-                
-            ?>
+        <?php
+            
+        ?>
         </div>
     </body>
 
