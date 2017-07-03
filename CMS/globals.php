@@ -68,6 +68,7 @@
                 } else {
                     //This is a directory
                     mkdir($PathsArray[$i]);
+                    chmod($PathsArray[$i], 0777);
                 }
                 
             }

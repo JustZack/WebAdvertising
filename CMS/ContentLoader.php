@@ -74,11 +74,8 @@
         //This will hold all of the directorys and files!
         printf("\t<div class='Dir'>\n");
         printf("\t\t\t\t<p class='DirName'>" . getName($FolderPath) . "</p>\n");        
-        $SubFolders = array_filter(glob($FolderPath . DIRECTORY_SEPARATOR . "*"), 'is_dir');
-        $Files = array_filter(glob($FolderPath . DIRECTORY_SEPARATOR . "*"), 'is_file');
-        for($i = 0;$i < count($SubFolders);$i++){
-            loadByFolder($SubFolders[$i]);
-        }
+        $SubFolders = array_values(array_filter(glob($FolderPath . DIRECTORY_SEPARATOR . "*"), 'is_dir'));
+        $Files = array_values(array_filter(glob($FolderPath . DIRECTORY_SEPARATOR . "*"), 'is_file'));
         if(count($Files) > 0){
             printf("\t\t\t\t<div class='files'>\n");
             for($j = 0;$j < count($Files);$j++){              
@@ -86,6 +83,9 @@
             }
             printf("</div>");
         }                       
+        for($i = 0;$i < count($SubFolders);$i++){
+            loadByFolder($SubFolders[$i]);
+        }
         printf("</div>");
         
     }
@@ -107,7 +107,7 @@
     */
     function AbsoluteToRelative($Path){
         $locationOfCMS = strrpos($Path, "CMS");
-        $newPath = substr($Path, $locationOfCMS + 2);
+        $newPath = substr($Path, $locationOfCMS + 4);
         return $newPath;
     }
     /*
