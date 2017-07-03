@@ -23,10 +23,12 @@
             <p>All Groups: </p>
             <div id="Groups">
             <?php
-                $Groups = array_filter(glob($Groups_Path . "*"), 'is_dir');
+                $Groups = array_values(array_filter(glob($Groups_Path . "*"), 'is_dir'));
                 for($i = 0;$i < count($Groups);$i++){
-                    $Group = substr($Groups[$i], strrpos($Groups[$i], "\\") + 1);
-                    printf("<div>" . $Group . "</div>");
+                    if(isset($Groups[$i])){
+                        $Group = substr($Groups[$i], strrpos($Groups[$i], DIRECTORY_SEPARATOR) + 1);
+                        printf("<div>" . $Group . "</div>");
+                    }
                 }
             ?>
             </div>

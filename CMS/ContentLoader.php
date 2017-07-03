@@ -23,7 +23,7 @@
     */
     function loadByGroup($GroupNameString){
         global $Groups_Path;
-        $CurrentGroupInfoPath = $Groups_Path . $GroupNameString . "\\AdContent-info.csv";
+        $CurrentGroupInfoPath = $Groups_Path . $GroupNameString . DIRECTORY_SEPARATOR . "AdContent-info.csv";
         $GroupInfoFileData = file($CurrentGroupInfoPath, FILE_IGNORE_NEW_LINES);
         for($i = 1;$i < count($GroupInfoFileData);$i++){
             //Load the content
@@ -74,8 +74,8 @@
         //This will hold all of the directorys and files!
         printf("\t<div class='Dir'>\n");
         printf("\t\t\t\t<p class='DirName'>" . getName($FolderPath) . "</p>\n");        
-        $SubFolders = array_filter(glob($FolderPath . "\*"), 'is_dir');
-        $Files = array_filter(glob($FolderPath . "\*"), 'is_file');
+        $SubFolders = array_filter(glob($FolderPath . DIRECTORY_SEPARATOR . "*"), 'is_dir');
+        $Files = array_filter(glob($FolderPath . DIRECTORY_SEPARATOR . "*"), 'is_file');
         for($i = 0;$i < count($SubFolders);$i++){
             loadByFolder($SubFolders[$i]);
         }
@@ -106,15 +106,17 @@
         Returns a path which is relative to the server instead of absolute.
     */
     function AbsoluteToRelative($Path){
-        return str_replace("C:\\xampp\\htdocs", "", $Path);
+        $locationOfCMS = strrpos($Path, "CMS");
+        $newPath = substr($Path, $locationOfCMS + 2);
+        return $newPath;
     }
     /*
         Returns the actual name of the folder or file.
     */
     function getName($FileOrFolder){
-        $IndexOfLastSlash = strrpos($FileOrFolder, "\\");
+        $IndexOfLastSlash = strrpos($FileOrFolder, DIRECTORY_SEPARATOR);
         if($IndexOfLastSlash == strlen($FileOrFolder) - 1){
-            $IndexOfLastSlash = strrpos($FileOrFolder, "\\", -2);         
+            $IndexOfLastSlash = strrpos($FileOrFolder, DIRECTORY_SEPARATOR, -2);         
             return substr($FileOrFolder, $IndexOfLastSlash);
         }
         return substr($FileOrFolder, $IndexOfLastSlash);

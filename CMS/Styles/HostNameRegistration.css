@@ -27,7 +27,8 @@ input{
     display: inline-block;
 }
 input[type="checkbox"]{
-    margin-left: -93px;
+    margin-left: -0px;
+    /* used to be -93px */
 }
 input[type="submit"]{
     width: 100%;

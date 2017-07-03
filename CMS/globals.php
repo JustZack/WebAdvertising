@@ -13,7 +13,7 @@
         Store the information associated with the current host
     */
     $Host_Info;
-    $HostName_SERVER = $_SERVER['REMOTE_HOST'];
+    $HostName_SERVER = array_key_exists( 'REMOTE_HOST', $_SERVER) ? $_SERVER['REMOTE_HOST'] : gethostbyaddr($_SERVER["REMOTE_ADDR"]);
     /*
         These are the headers used in the the creation of files
     */
@@ -23,13 +23,13 @@
     /*
         Variables which contain the paths for some important folders / files
     */
-    $Content_Path = getcwd() . "\\Content\\";
-    $Ad_Content_Path = $Content_Path . "Ads\\";
+    $Content_Path = getcwd() . DIRECTORY_SEPARATOR . "Content" . DIRECTORY_SEPARATOR;
+    $Ad_Content_Path = $Content_Path . "Ads" . DIRECTORY_SEPARATOR;
 
-    $Player_Path = getcwd() . "\\Players\\";
+    $Player_Path = getcwd() . DIRECTORY_SEPARATOR . "Players" . DIRECTORY_SEPARATOR;
     $Player_Info_Path = $Player_Path . "Players-info.csv";    
-    $Groups_Path =  $Player_Path . "Groups\\";   
-    $Default_Group_Path = $Groups_Path . "Default\\";    
+    $Groups_Path =  $Player_Path . "Groups" . DIRECTORY_SEPARATOR;   
+    $Default_Group_Path = $Groups_Path . "Default" .  DIRECTORY_SEPARATOR;    
     $Default_Group_Info_Path = $Default_Group_Path . "AdContent-info.csv";    
     /* Paths array so checking for file existance is simple. */
     $PathsArray = array(
@@ -53,7 +53,7 @@
             if(!file_exists($PathsArray[$i]))
             {
                 $index_of_last_dot = strrpos($PathsArray[$i], ".");
-                $index_of_last_slash = strrpos($PathsArray[$i], "\\");
+                $index_of_last_slash = strrpos($PathsArray[$i], DIRECTORY_SEPARATOR);
                 if($index_of_last_dot > $index_of_last_slash){
                     //This is a file!
                     if($i == 3){ //Players info file!
@@ -77,9 +77,9 @@
         Function for checking if we know of the hostname requesting useage of the site
     */
     function isHostRegistered($HostName){
-        if(file_exists(getcwd() . "/Players/Players-info.csv"))
+        if(file_exists(getcwd() . DIRECTORY_SEPARATOR . "Players" .DIRECTORY_SEPARATOR . "Players-info.csv"))
         {
-            $FileContents = file(getcwd() . "/Players/Players-info.csv" , FILE_IGNORE_NEW_LINES);
+            $FileContents = file(getcwd() . DIRECTORY_SEPARATOR . "Players" . DIRECTORY_SEPARATOR . "Players-info.csv" , FILE_IGNORE_NEW_LINES);
             for($i = 0;$i < count($FileContents);$i++){
                 $line = explode(",", $FileContents[$i]);
                 if($line[0] == $HostName){
@@ -226,54 +226,4 @@
                 return true;
         return false;
     }
-    /*
-    if(!file_exists(getcwd() . "\\Content\\"))
-    {
-        mkdir(getcwd() . "\\Content\\");
-        mkdir(getcwd() . "\\Content\\Ads\\");
-        $AdContentInfoFile = fopen(getcwd() . "/Content/Ads/AdContent-info.csv", "w");
-        fwrite($AdContentInfoFile, $AdContentInfoHeader);
-        fclose($AdContentInfoFile);
-    }
-    $Path_To_AdInfo = getcwd() . "/Content/Ads/AdContent-info.csv";
-*/
-    /* 
-        Creates the player data file.
-        This file contains relavent information about each registered player.
-        Its hostname
-            Allows us to determine what content to serve
-        Wether or not it should use Wayfinding
-            Simple on off functionality for wayfinding
-        All of its groups
-            Lets us know what groups the player uses for content
-                Allows for a player to use all advertising stuff, 
-                but also a group which consists of a live news feed
-    */
-    /*
-    //TODO: make the check for these files more throughough
-    if(!file_exists(getcwd() . "\\Players\\"))
-    {
-
-        mkdir(getcwd() . "\\Players\\");
-        mkdir(getcwd() . "\\Players\\Groups");
-        mkdir(getcwd() . "\\Players\\Groups\\Default");
-
-        $DefaultGroupInfoFile = fopen(getcwd() . "/Players/Groups/Default/AdContent-info.csv", "w");
-        fwrite($DefaultGroupInfoFile, $AdContentInfoHeader);
-        fwrite($DefaultGroupInfoFile, "www.youtube.com,06/1/2017,06/1/2025,15,,");        
-        fclose();
-
-        $PlayersInfoFile = fopen(getcwd() . "/Players/Players-info.csv", "w");
-        fwrite($PlayersInfoFile, $PlayersInformationHeader);  
-        fclose($PlayersInfoFile);     
-    } else if(!file_exists(getcwd() . "\\Players\\Players-info.csv"))
-    {
-        $DefualtGroupAdInfoFile = fopen(getcwd() . "/Players/Players-info.csv", "w");        
-        fwrite($DefualtGroupAdInfoFile, $PlayersInformationHeader);  
-        fclose($DefualtGroupAdInfoFile);     
-    }
-    $Path_To_Players = getcwd() . "/Players" . "/";
-    $Path_To_Players_Info = getcwd() . "/Players/Players-info.csv";
-    $Path_To_Groups = getcwd() . "/Players/Groups/";
-*/
 ?>

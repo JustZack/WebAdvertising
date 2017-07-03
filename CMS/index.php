@@ -5,8 +5,8 @@
     <body>   
         <?php
             include_once "globals.php";
-            $HostName = $_SERVER['REMOTE_HOST'];
-            if(isHostRegistered($_SERVER['REMOTE_HOST'])){
+            $HostName = array_key_exists( 'REMOTE_HOST', $_SERVER) ? $_SERVER['REMOTE_HOST'] : gethostbyaddr($_SERVER["REMOTE_ADDR"]);
+            if(isHostRegistered($HostName)){
                 header("location: DisplayAdContent.php?hostname=" . $HostName);
             } else {
                   /*

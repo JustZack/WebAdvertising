@@ -43,7 +43,20 @@
     background-color: #7796A5;
     border-radius: 5px;
 }
-
+.viewhost{
+    margin: 5px;
+    padding: 5px;
+    background-color: #326ada; 
+    border-radius: 5px;
+}
+.viewhost a{
+    color: white;
+    text-decoration: none;
+}
+.viewhost a:hover{
+    color: rgb(173,216,230);
+    text-decoration: none;
+}
 #GroupInformation{
     width: 100%;
     background-color: rgb(130,162,173);
@@ -69,6 +82,10 @@
     border-radius: 5px;
     display: none;
     margin-top: 5px;
+}
+
+.Ad_Content{
+    min-height: 75px;
 }
 
 #ContentInformation{
@@ -99,9 +116,4 @@
     padding: 5px;
     border-radius: 5px;
     background-color: rgb(173,216,230);
-}
-
-.Ad_Content{
-    max-height: 75px;
-    min-height: 75px;
 }

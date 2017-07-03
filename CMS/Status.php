@@ -38,15 +38,16 @@
                 }
                 printf("\t\t\t\t</div>\n");
                 printf("\t\t\t\t<div class='hostWayfinding'>" . $CurrentPlayer[1] . "</div>\n");
+                printf("\t\t\t\t<div class='viewhost'><a href = 'DisplayAdContent.php?hostname=" . $CurrentPlayer[0] . "'>View Player</a></div>");
                 printf("\t\t\t</div>\n");
             }
         ?>
         </div>
         <div id="GroupInformation">
         <?php
-            $Groups = array_filter(glob($Groups_Path . "*"), 'is_dir');
+            $Groups = array_values(array_filter(glob($Groups_Path . "*"), 'is_dir'));
             for($i = 0;$i < count($Groups);$i++){
-                $Group = substr($Groups[$i], strrpos($Groups[$i], "\\") + 1);
+                $Group = substr($Groups[$i], strrpos($Groups[$i], DIRECTORY_SEPARATOR) + 1);
                 printf("\n\t\t\t<div class='groupData'>\n");
                 printf("\t\t\t\t<div class='groupName'>" . $Group . "</div>\n");
                 //Print out everything this group refrences
