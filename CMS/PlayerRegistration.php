@@ -1,8 +1,8 @@
 <html>
     <head>
     <?php include_once "generichead.php" ?>
-        <link href="Styles/HostNameRegistration.css" rel="stylesheet">
-        <script src="Scripts/HostNameValidate.js"></script>
+        <link href="Styles/PlayerRegistration.css" rel="stylesheet">
+        <script src="Scripts/PlayerRegistration.js"></script>
     </head>
     <body>
         <div id="Errors">

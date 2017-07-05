@@ -22,12 +22,9 @@ $(document).ready(function()
     function advanceAds(){
         //Hide the previous ad. 
         $('#Ad_' + Ad_Position).css('display','none'); 
-        progressAdNumber(); //Progress the ad number
+        progressAdNumber(); //Progress the ad number             
         $('#Ad_' + Ad_Position).css('display','block'); //Display the current ad.
-        setTimeout(function() {
-            //Just wait for the amount of time that the ad is supposed to play
-            advanceAds(); //then advance to the next ad.
-        }, $('#Ad_' + Ad_Position).data('duration') * 1000);
+        setTimeout(advanceAds, $('#Ad_' + Ad_Position).data('duration') * 1000);
     }
     //Progress the ad number forward to the next valid number
     function progressAdNumber(){
@@ -84,7 +81,7 @@ $(document).ready(function()
 
 
     /* Redirects to the wayfinding screen on tap. */
-    $(".content-container").click(function(){
+    $(document).click(function(){
         window.location.href = "wayfinding";
     });
 });

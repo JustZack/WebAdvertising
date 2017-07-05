@@ -63,6 +63,7 @@
                     } else if($i == 6){ //Default group info file!
                         $DefaultsFile = fopen($PathsArray[$i], "w");
                         fwrite($DefaultsFile, $AdContentInfoHeader);
+                        fwrite($DefaultsFile, "\r\nhttps://www.youtube.com/embed/aWmkuH1k7uA,07/1/2017,07/1/2025,219,,");
                         fclose($DefaultsFile);
                     }
                 } else {
@@ -149,42 +150,32 @@
         return false;
     }
     function startDate($DateTimeArray){
-        if($DateTimeArray['year']  <= date("Y") &&
-           $DateTimeArray['month'] <= date("m")){
-                //Same month, previous day
-                if($DateTimeArray['month'] == date("m") && 
-                  $DateArray['day'] <= date('d')){ 
-                      return true;
-                }//Same month future day 
-                else if($DateTimeArray['month'] == date("m") &&
-                          $DateTimeArray['day'] > date('d')){
-                    return false;
-                } //Previous month, day doesnt matter
-                else if($DateTimeArray['month'] < date("m")){
-                      return true;
-                }
-           }
-        else{return false;}        
+        if($DateTimeArray['year'] < date("Y")){
+            return true;
+        }
+        else if($DateTimeArray['year'] == date("Y") && $DateTimeArray['month'] < date("m")){
+            return true;
+        }
+        else if($DateTimeArray['year'] == date("Y") && $DateTimeArray['month'] == date("m") && $DateTimeArray['day'] <= date('d')){
+            return true;
+        }
+        else{
+            return false;
+        }        
     }
     function endDate($DateTimeArray){
-        if($DateTimeArray['year']  >= date("Y"))
-        {
-            if($DateTimeArray['month'] > date("m")){
-                return true;
-            }
-            else if($DateTimeArray['month'] == date("m")){
-                if($DateTimeArray['day']   >  date("d")){
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }
-            else{
-                return false;
-            }
+        if($DateTimeArray['year']  > date("Y")){
+            return true;
         }
-        else{return false;}
+        else if($DateTimeArray['year']  == date("Y") && $DateTimeArray['month'] > date("m")){
+            return true;
+        }
+        else if($DateTimeArray['year']  == date("Y") && $DateTimeArray['month'] == date("m") && $DateTimeArray['day']  <= date("d")){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     function isTimeValid($Time){

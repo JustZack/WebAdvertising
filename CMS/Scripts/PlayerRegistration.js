@@ -3,7 +3,6 @@ $(document).ready(function(){
     $("input[name='hostname']").keyup(function(){
         validate("input[name='hostname']");
     });
-
     function validate(CurrentElement)
     {
         var currentHostName = $(CurrentElement).val().trim();
@@ -28,6 +27,16 @@ $(document).ready(function(){
             $("input[type='submit']").prop('disabled', false)
         }
     }
+
+    $("#Groups div").click(function(){
+        if($("input[name='groups']").val().indexOf($(this).text()) == -1){
+            if($("input[name='groups']").text().length == 0){
+                $("input[name='groups']").val($(this).text() + " ");
+            } else {
+                $("input[name='groups']").val(($("input[name='groups']").text() + " " + $(this).text() + " "));                
+            }
+        }
+    });
 
     function error(Message)
     {

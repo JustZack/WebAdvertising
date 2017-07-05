@@ -27,8 +27,8 @@ input{
     display: inline-block;
 }
 input[type="checkbox"]{
-    margin-left: -0px;
-    /* used to be -93px */
+    position: absolute;
+    margin-left: -93px;
 }
 input[type="submit"]{
     width: 100%;
@@ -67,6 +67,10 @@ input[type="submit"]:hover{
     background-color: #326ada;
     border-radius: 5px;
     color:white;
+}
+#Groups div:hover{
+    background-color: #6A93E4;
+    cursor: pointer;
 }
 
 #RegisteredHosts, #Groups{

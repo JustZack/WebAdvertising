@@ -36,58 +36,11 @@
         exit();
     }
 
-    /*
-        This is where content is loaded
-    */
-    $Ad_Count = 1; //Keeps track of how many ads we have added.
-    $Groups_array = explode(" ", $Groups);
-    for($i = 0;$i < count($Groups_array);$i++)
-    {//Go through each group and get its associated ads
-        //Get the path to the group
-        $Path_To_Group_Info = $Groups_Path . $Groups_array[$i] . "\\AdContent-info.csv";
-        $GroupFileContents = file($Path_To_Group_Info, FILE_IGNORE_NEW_LINES);
-        $GroupFileContents[0] .= "\n";
-        for($j = 1;$j < count($GroupFileContents);$j++)
-        {//Go through each ad in the group
-            $CurrentAdInfo = explode(",", $GroupFileContents[$j]);
-            $GroupFileContents[$j] .= "\n";
-            $CurrentAdString;
-            $EndCurrentAdString;
-            /* Get the data associated with the current ad in the file */
-            //The start date is not in the future.
-            if(isDateValid($CurrentAdInfo[1], "start")){
-                if(isDateValid($CurrentAdInfo[2], "end")){
-                    if($CurrentAdInfo[4] == "" || isTimeValid($CurrentAdInfo[4])){
-                        if($CurrentAdInfo[5] == "" || isConditionTrue($CurrentAdInfo[5])){
-                            if(isImage($CurrentAdInfo[0])){
-                                $CurrentAdString = "\t\t\t<img id=\"Ad_" . $Ad_Count++ .
-                                "\"class=\"Ad_Content\"src=\"" . $CurrentAdInfo[0] .
-                                "\"data-duration=\"" . $CurrentAdInfo[3] . "\"";
-                                $EndCurrentAdString = ">\n";                            
-                            } else{
-                                $CurrentAdString = "\n\t\t\t\t<iframe id=\"Ad_" . $Ad_Count++ .
-                                "\"class=\"Ad_Content\"src=\"" . $CurrentAdInfo[0] .
-                                "\"data-duration=\"" . $CurrentAdInfo[3] . "\"";
-                                $EndCurrentAdString = "></iframe>\n";
-                            }
-                            if($CurrentAdInfo[4] !== ''){
-                                $CurrentAdString .= " data-specific-time=\"" . $CurrentAdInfo[4] . "\"";
-                            }
-                            printf($CurrentAdString . $EndCurrentAdString);
-                        }
-                    }
-                }
-                else {//The ad has already ended
-                     //Remove the ad from the schedule file
-                    unset($GroupFileContents[$j]);
-                }         
-            } 
-        }
-        //Rewrite the file so the correct images are shown.
-        file_put_contents($Path_To_Group_Info, $GroupFileContents, LOCK_EX);    
-    }
+    include_once "ContentLoader.php";
+    
+    loadByGroups($Groups);
         
-    if($Ad_Count == 1)//No ads associated with the group(s) this player is associated with
+    if($Ad_Count == 0)//No ads associated with the group(s) this player is associated with
     {
         errorMessage("No Ad content to display!");
     }

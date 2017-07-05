@@ -2,7 +2,7 @@
     <head>
         <link href="Styles/Notify.css" rel="stylesheet">
     </head>
-    <body>   
+    <body style="background-color: black;margin: 0px;">   
         <?php
             include_once "globals.php";
             $HostName = array_key_exists( 'REMOTE_HOST', $_SERVER) ? $_SERVER['REMOTE_HOST'] : gethostbyaddr($_SERVER["REMOTE_ADDR"]);

@@ -3,7 +3,9 @@
         This file is meant to be used where globals.php is present!
     */
     /*
-        Used to track the number of ads
+        Used to track the number of ads.
+        MUST start at 0!
+        Ad count is increased before it is printed into an ID for the element.
     */
     $Ad_Count = 0;
     /*
@@ -21,47 +23,80 @@
     /*
         Function used to load all content that is associated with a group.
     */
-    function loadByGroup($GroupNameString){
+    function loadByGroup($GroupNameString, $ShowData = false){
         global $Groups_Path;
         $CurrentGroupInfoPath = $Groups_Path . $GroupNameString . DIRECTORY_SEPARATOR . "AdContent-info.csv";
+        if(!file_exists($CurrentGroupInfoPath)){
+            return;
+        }
         $GroupInfoFileData = file($CurrentGroupInfoPath, FILE_IGNORE_NEW_LINES);
         for($i = 1;$i < count($GroupInfoFileData);$i++){
             //Load the content
-            loadContent($GroupInfoFileData[$i], $GroupInfoFileData);
+            loadContent($GroupInfoFileData[$i], $ShowData);
         }
+    }
+    /* 
+        This is just a method to reduce redundancy
+        It is only used in the function below.
+    */
+    function tableEntry($Field, $Value){
+        printf("\t\t\t\t\t<tr>\n");
+        printf("\t\t\t\t\t\t<td>" . $Field . "</td>\n");
+        printf("\t\t\t\t\t\t<td>" . $Value . "</td>\n");                                              
+        printf("\t\t\t\t\t</tr>\n");            
     }
     /*
         Function used to load the content stored in a content data string
         This also checks the validity of the content being passed:
             Start/End Date, Specific Time, Conditions for displaying.
     */
-    function loadContent($ContentDataString){
+    function loadContent($ContentDataString, $ShowData = false){
         global $Ad_Count;
         $ContentInfo = explode(",", $ContentDataString);
         $CurrentContentString;
-        $EndCurrentContentString;
-        if(isDateValid($ContentInfo[1], "start")){
-            if(isDateValid($ContentInfo[2], "end")){
-                if($ContentInfo[4] == "" || isTimeValid($ContentInfo[4])){
-                    if($ContentInfo[5] == "" || isConditionTrue($ContentInfo[5])){
-                        if(isImage($ContentInfo[0])){            
-                            $CurrentContentString = "\t\t\t<img id=\"Ad_" . $Ad_Count++ .
-                            "\"class=\"Ad_Content\"src=\"" . $ContentInfo[0] .
-                            "\"data-duration=\"" . $ContentInfo[3] . "\"";
-                            $EndCurrentContentString = ">\n";                            
-                        } else{                      
-                            $CurrentContentString = "\n\t\t\t\t<iframe id=\"Ad_" . $Ad_Count++ .
-                            "\"class=\"Ad_Content\"src=\"" . $ContentInfo[0] .
-                            "\"data-duration=\"" . $ContentInfo[3] . "\"";
-                            $EndCurrentContentString = "></iframe>\n";
+        if(!$ShowData)
+        {
+            $EndCurrentContentString;
+            if(isDateValid($ContentInfo[1], "start")){
+                if(isDateValid($ContentInfo[2], "end")){
+                    if($ContentInfo[4] == "" || isTimeValid($ContentInfo[4])){
+                        if($ContentInfo[5] == "" || isConditionTrue($ContentInfo[5])){
+                            if(isImage($ContentInfo[0])){            
+                                $CurrentContentString = "\t\t\t\t<img id='Ad_" . ++$Ad_Count .
+                                "'class='Ad_Content'src='" . $ContentInfo[0] .
+                                "'data-duration='" . $ContentInfo[3] . "'";
+                                $EndCurrentContentString = ">\n";                            
+                            } else{                      
+                                $CurrentContentString = "\n\t\t\t\t<iframe id='Ad_" . ++$Ad_Count .
+                                "'class='Ad_Content'src='" . $ContentInfo[0] .
+                                "'data-duration='" . $ContentInfo[3] . "'";
+                                $EndCurrentContentString = "></iframe>\n";
+                            }
+                            if($ContentInfo[4] !== ''){
+                                $CurrentContentString .= " data-specific-time='" . $ContentInfo[4] . "'";
+                            }
+                            printf($CurrentContentString . $EndCurrentContentString);
                         }
-                        if($ContentInfo[4] !== ''){
-                            $CurrentContentString .= " data-specific-time=\"" . $ContentInfo[4] . "\"";
-                        }
-                        printf($CurrentContentString . $EndCurrentContentString);
                     }
                 }
             }
+        }
+        else {
+            printf("\t\t\t<div class='AdContentWrapper'>\n");       
+            if(isImage($ContentInfo[0])){
+                printf("\t\t\t\t<img id='Ad_" . ++$Ad_Count . "'class='Ad_Content'src='" . $ContentInfo[0] . "'>\n");                        
+            } else{                      
+                printf("\n\t\t\t\t<iframe id='Ad_" . ++$Ad_Count . "'class='Ad_Content'src='" . $ContentInfo[0] . "'></iframe>\n");
+            }
+            printf("\t\t\t\t<table>\n");
+            tableEntry("Start Date", $ContentInfo[1]);
+            tableEntry("End Date", $ContentInfo[2]);
+            tableEntry("Duration", $ContentInfo[3]);
+            tableEntry("Specific Time", $ContentInfo[4]);
+            tableEntry("Condition", $ContentInfo[5]);
+            printf("\t\t\t\t</table>\n");                        
+            printf("\t\t\t</div>\n");       
+             
         }
     }
 
@@ -72,10 +107,10 @@
     */
     function loadByFolder($FolderPath){
         //This will hold all of the directorys and files!
-        printf("\t<div class='Dir'>\n");
-        printf("\t\t\t\t<p class='DirName'>" . getName($FolderPath) . "</p>\n");        
         $SubFolders = array_values(array_filter(glob($FolderPath . DIRECTORY_SEPARATOR . "*"), 'is_dir'));
         $Files = array_values(array_filter(glob($FolderPath . DIRECTORY_SEPARATOR . "*"), 'is_file'));
+        printf("\t<div class='Dir'>\n");
+        printf("\t\t\t\t<p class='DirName'>" . getName($FolderPath) . " | " . count($SubFolders) . " Folders | " . count($Files) . " Files</p>\n");        
         if(count($Files) > 0){
             printf("\t\t\t\t<div class='files'>\n");
             for($j = 0;$j < count($Files);$j++){              

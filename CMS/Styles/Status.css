@@ -55,6 +55,7 @@ a{
 }
 .viewhost:hover{
     background-color: #7DA0E7;
+    cursor: pointer;    
 }
 
 #GroupInformation{
@@ -65,7 +66,7 @@ a{
 
 .groupData{
     text-align: center;
-    font-size: 18px;    
+    font-size: 18px;  
 }
 
 .groupName{
@@ -74,6 +75,7 @@ a{
 .groupName:hover{
     background-color: #7DA0E7;
     border-radius: 5px;
+    cursor: pointer;    
 }
 
 .groupWrapper{
@@ -82,6 +84,48 @@ a{
     border-radius: 5px;
     display: none;
     margin-top: 5px;
+}
+
+.AdContentWrapper{
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    background-color: #7796A5;
+    max-width: 315px; 
+    border-radius: 5px;
+    width: 100%;
+}
+
+.AdContentWrapper img, .AdContentWrapper iframe{
+    max-width: 300px;
+}
+.AdContentWrapper table{
+    background-color: black;
+    border-radius: 5px;
+    margin: 5px auto;
+    padding: 5px;
+    color: white;
+    width: 300px;
+}
+.AdContentWrapper table tr td{
+    margin: 2px;
+    padding: 2px;
+    font-size: 14px;
+}
+
+.editGroup{
+    color: white;
+    font-size: 14px;
+     /* Deciding if I like this...*/
+    /*text-decoration: underline;*/
+    background-color: black;
+    padding: 2px 5px;
+    margin: 2px 5px;
+    border-radius: 5px;
+}
+.editGroup:hover{
+    background-color: white;
+    color: black;
 }
 
 #ContentInformation{
@@ -107,6 +151,7 @@ a{
 .DirName:hover{
     background-color: #7DA0E7;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .files{
@@ -117,6 +162,5 @@ a{
 }
 
 .Ad_Content{
-    min-height: 75px;
-    max-height: 75px;
+    max-height: 152px;
 }
