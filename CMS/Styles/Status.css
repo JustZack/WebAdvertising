@@ -32,7 +32,7 @@
 .hostGroup, .groupData{
     margin: 5px;
     padding: 5px;
-    color:white;
+    color:white!important;
     background-color: #326ada;
     border-radius: 5px;
 }
@@ -112,7 +112,17 @@ a{
     padding: 2px;
     font-size: 14px;
 }
-
+.removeContent{
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    color:white;
+}
+.removeContent:hover{
+    cursor: pointer;
+    background-color: #D10000;
+}
 .editGroup{
     color: white;
     font-size: 14px;
@@ -128,6 +138,34 @@ a{
     color: black;
 }
 
+.AddContent{
+    background-color: #3aa800;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+.AddContent:hover{
+    background-color: #359900;
+}
+
+#createNewWrapper p{
+    border: none;
+    background: none;
+    color:white;
+}
+input[name="groupName"]{
+    width: 250px;
+    padding: 5px;
+    border: none;
+    background-color: grey;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+}
+input[name="groupName"]::placeholder{
+    color: white;
+    font-size: 14px;
+}
 #ContentInformation{
     width: 100%;
     background-color: rgb(87,108,115);

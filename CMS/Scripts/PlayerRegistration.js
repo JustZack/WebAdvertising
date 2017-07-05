@@ -30,10 +30,10 @@ $(document).ready(function(){
 
     $("#Groups div").click(function(){
         if($("input[name='groups']").val().indexOf($(this).text()) == -1){
-            if($("input[name='groups']").text().length == 0){
+            if($("input[name='groups']").val().length == 0){
                 $("input[name='groups']").val($(this).text() + " ");
-            } else {
-                $("input[name='groups']").val(($("input[name='groups']").text() + " " + $(this).text() + " "));                
+            } else {            
+                $("input[name='groups']").val(($("input[name='groups']").val() + " " + $(this).text() + " "));                
             }
         }
     });

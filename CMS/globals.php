@@ -170,10 +170,10 @@
         else if($DateTimeArray['year']  == date("Y") && $DateTimeArray['month'] > date("m")){
             return true;
         }
-        else if($DateTimeArray['year']  == date("Y") && $DateTimeArray['month'] == date("m") && $DateTimeArray['day']  <= date("d")){
+        else if($DateTimeArray['year']  == date("Y") && $DateTimeArray['month'] == date("m") && $DateTimeArray['day']  >= date("d")){;            
             return true;
         }
-        else{
+        else{          
             return false;
         }
     }
@@ -217,5 +217,13 @@
             if(strrpos($ImagePath, '.' . $ImageFileEndings[$i]) !== false)
                 return true;
         return false;
+    }
+
+    /*
+        Readability method for adding data to group.
+    */
+    function addToGroup($Group, $ContentDataString){
+        $PathToGroupFile = $Groups_Path . $Group . DIRECTORY_SEPARATOR . "AdContent-info.csv";
+        file_put_contents($PathToGroupFile, $ContentDataString, FILE_APPEND | LOCK_EX);
     }
 ?>

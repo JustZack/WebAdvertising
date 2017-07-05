@@ -27,4 +27,11 @@ Useablilty:
             Ex: South facing 1 & 2
                 RamTech
                 1st Floor Hallway
+What is left to do:
+    wayfinding <- really should start taking priority
+    Uploading local content to the server
+    Ability to choose a file already on the server when uploading content.
+    Ability to Add nickname to a player
+    Ability to rename a group or player
+        This could be complicated, gonna wait till just about everything else is done!
     

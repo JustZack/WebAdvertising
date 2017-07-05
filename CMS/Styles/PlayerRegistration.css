@@ -8,11 +8,6 @@ body, html {
 body {
     display: table-cell;
 }
-#Errors{
-    width: 100%;
-    margin: 0px;
-    height: 95px;
-}
 form {
     width: 325px;
     display: table;
@@ -28,7 +23,8 @@ input{
 }
 input[type="checkbox"]{
     position: absolute;
-    margin-left: -93px;
+    width: 12px;
+    margin-left: 0px;
 }
 input[type="submit"]{
     width: 100%;

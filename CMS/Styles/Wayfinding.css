@@ -1,28 +1,100 @@
 #wayfinding_container{
-    background-color: black;
+    background-color: white;
     display: inline-block;
     width: 100%;
     height: 100%;
+    font-family: 'Raleway', sans-serif;
 }
 
-#left{
-    float: left;
-    width: 85%;    
-    height: 100%;    
+#top{
+    height: 84%;
+    display: flex;
 }
 #maps{
-    background-color: red;
-    width: 100%;
-    height: 75%;
-}
-#controls{
-    background-color: white;
-    width: 100%;
-    height: 25%;
-}
-#right{
-    float: right;
-    background-color: blue;
-    width: 15%;
+    float: left;
     height: 100%;
+    width: 75%;
+    background-color: #aefef3;
+}
+#legendWrapper{
+    height: 100%;
+    width: 25%;
+}
+#legendWrapper #LSC_Logo{
+    height: 75px;
+    padding-left: 35%;
+}
+#HeadingWrapper{
+    margin: 10px 0px;
+    margin-right: 40px;
+    padding: 10px 0px;
+    text-align: center;
+    border: 2px solid #dedede;
+    border-left: none;
+    border-right: none;
+    
+}
+#HeadingWrapper h1{
+    font-size: 56px;
+    color: #1E4D2B;
+    font-weight: bolder;
+}
+#HeadingWrapper h4{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    font-size: 25px;
+    color: #797979;
+    font-weight: lighter;
+}
+#EPSRGL_Logos{
+    height: 75px;
+    width: 100%;
+}
+#legend div{
+    display: inline-block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+    font-size: 16px;
+    margin-left: 25%;
+}
+.legend img{
+    width: 50px;
+}
+#bottom{
+    height: 16%;
+    width: 100%;
+}
+#roomSelection{
+    height: 75%;
+    width: 100%;
+}
+#filters{
+    background: #D9782D;
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    vertical-align: center;
+}
+.lower_controls{
+    height: 50%;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    vertical-align: center;
+    line-height: 175%;
+    color:white;
+}
+.lower_controls:hover{
+    background-color: white;
+    color: #D9782D;
+    cursor: pointer;
 }

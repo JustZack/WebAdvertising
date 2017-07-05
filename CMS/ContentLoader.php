@@ -32,7 +32,7 @@
         $GroupInfoFileData = file($CurrentGroupInfoPath, FILE_IGNORE_NEW_LINES);
         for($i = 1;$i < count($GroupInfoFileData);$i++){
             //Load the content
-            loadContent($GroupInfoFileData[$i], $ShowData);
+            loadContent($GroupInfoFileData[$i], $ShowData, $GroupNameString);
         }
     }
     /* 
@@ -50,7 +50,7 @@
         This also checks the validity of the content being passed:
             Start/End Date, Specific Time, Conditions for displaying.
     */
-    function loadContent($ContentDataString, $ShowData = false){
+    function loadContent($ContentDataString, $ShowData = false,  $Group = ""){
         global $Ad_Count;
         $ContentInfo = explode(",", $ContentDataString);
         $CurrentContentString;
@@ -94,7 +94,8 @@
             tableEntry("Duration", $ContentInfo[3]);
             tableEntry("Specific Time", $ContentInfo[4]);
             tableEntry("Condition", $ContentInfo[5]);
-            printf("\t\t\t\t</table>\n");                        
+            printf("\t\t\t\t</table>\n");      
+            printf("\t\t\t\t<a href='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='removeContent'>Remove</div></a>");                  
             printf("\t\t\t</div>\n");       
              
         }

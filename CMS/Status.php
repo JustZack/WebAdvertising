@@ -56,14 +56,23 @@
             for($i = 0;$i < count($Groups);$i++){
                 $Group = substr($Groups[$i], strrpos($Groups[$i], DIRECTORY_SEPARATOR) + 1);
                 printf("\n\t\t\t<div class='groupData'>\n");
-                printf("\t\t\t\t<div class='groupName'>" . $Group . " <a class='editGroup' href='EditGroup.php?group=" . $Group . "'>Edit Group</a></div>\n");
+                printf("\t\t\t\t<div class='groupName'>" . $Group . "</div>\n");
                 //Print out everything this group refrences
                 printf("\t\t\t\t<div class='groupWrapper'>\n");
                 loadByGroup($Group, true);
+                printf("\t\t\t\t<a href='AddContentTo.php?group=" . $Group . "'><div class='AddContent'>Add Content</div></a>");
                 printf("\t\t\t\t</div>\n");                
                 printf("\t\t\t</div>\n");
             }
         ?>
+            <div class='groupData' id='createNewWrapper' style='background-color: #3aa800;'>
+                <form action="CreateGroup.php">
+                    <p>
+                        <input type="text" placeholder="New Group (One Word Please)" name="groupName">
+                    </p>
+                    <input type="submit" style="display:none;">
+                </form>
+            </div>
         </div>
         <div id="ContentInformation">        
         <?php

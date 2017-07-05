@@ -8,7 +8,6 @@
         <div id="Uninteractable_Wrapper">
             <div id="Uninteractable_cover"></div>
 <?php   include_once "LoadContent.php" ?>
-        
         </div>
     </body>
 </html>

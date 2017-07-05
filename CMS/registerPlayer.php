@@ -8,6 +8,7 @@
 
     $DataToBeWritten = "\r\n" . $_POST['hostname'] . "," . $wayfinding . "," . $_POST['groups'];
     
+    echo $DataToBeWritten . " -> " . $Player_Info_Path;
     //Write the data to our player file!
     file_put_contents($Player_Info_Path, $DataToBeWritten,  FILE_APPEND | LOCK_EX);
       //Then take us to the display content page.
