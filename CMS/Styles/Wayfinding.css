@@ -1,3 +1,10 @@
+body{
+    /* Only commented out while I fix some things */
+    /*overflow: hidden;*/
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
 #wayfinding_container{
     background-color: white;
     display: inline-block;
@@ -17,16 +24,17 @@
     background-color: #aefef3;
 }
 #legendWrapper{
+    margin-right: 2%;
     height: 100%;
     width: 25%;
 }
 #legendWrapper #LSC_Logo{
+    margin-top: 10px;
     height: 75px;
     padding-left: 35%;
 }
 #HeadingWrapper{
     margin: 10px 0px;
-    margin-right: 40px;
     padding: 10px 0px;
     text-align: center;
     border: 2px solid #dedede;
@@ -35,7 +43,7 @@
     
 }
 #HeadingWrapper h1{
-    font-size: 56px;
+    font-size: 50px;
     color: #1E4D2B;
     font-weight: bolder;
 }
@@ -43,25 +51,33 @@
     margin-top: 15px;
     margin-bottom: 5px;
     letter-spacing: 1px;
-    font-size: 25px;
+    font-size: 23px;
     color: #797979;
     font-weight: lighter;
 }
 #EPSRGL_Logos{
-    height: 75px;
+    height: 5.2%;
     width: 100%;
+    border: 1px solid #dedede;
+    margin-bottom: 2%;
+}
+#legend{
+    width: 100%;
+    float: left;
+    border: 1px solid #dedede;
 }
 #legend div{
     display: inline-block;
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 15px 0px;
-    font-size: 16px;
+    padding: 1.5% 0%;
+    font-size: 17px;
+    font-weight: 600;
     margin-left: 25%;
 }
-.legend img{
-    width: 50px;
+#legend img{
+    height: 30px;
 }
 #bottom{
     height: 16%;
@@ -70,6 +86,37 @@
 #roomSelection{
     height: 75%;
     width: 100%;
+    margin-bottom: -5px;
+}
+.roomContainer{
+    height: 28%;
+}
+.room{
+    border: 1px solid #1E4D2B;
+    border-radius: 3px;
+    color: #1E4D2B;
+    font-weight: 600;
+    width: 315px;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    height: 20px;
+}
+.room:hover{
+    background-color: #1E4D2B;
+    color: white;
+    cursor: pointer;
+}
+.room div{
+    padding: 5px;
+    line-height: 10px;
+    display: inline-block;
+}
+.room .roomName{
+    float: left;
+}
+.room .roomNumber{
+    float: right;
 }
 #filters{
     background: #D9782D;
@@ -80,17 +127,18 @@
     vertical-align: center;
 }
 .lower_controls{
-    height: 50%;
+    font-weight: 600;
+    height: 35%;
     display: inline-block;
     padding: 5px;
     margin: 5px;
     background-color: transparent;
-    border: 2px solid #fff;
-    border-radius: 5px;
+    border: 1px solid #fff;
+    border-radius: 3px;
     width: 150px;
     text-align: center;
     vertical-align: center;
-    line-height: 175%;
+    line-height: 115%;
     color:white;
 }
 .lower_controls:hover{

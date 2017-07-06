@@ -20,6 +20,7 @@
                         <h4>INTERACTVIE WAY FINDING MAPS</h4>
                     </div>
                     <div id="EPSRGL_Logos">
+                        <center>To add, the new six eat/play/shop/... logos</center>
                     </div>
                     <div id="legend">
                         <div>
@@ -60,6 +61,28 @@
             </div>
             <div id="bottom">
                 <div id="roomSelection">
+                    <?php  
+                        /*
+                            This is where we would output the name and room number
+                            of each room in a .csv file.
+                            Format:
+                                Name, Number, Filter
+                                    Name: The name of the room
+                                    Number: The rooms number
+                                    Filter: Which of the six filters this room fits into.
+
+                        */
+                        $AllRooms = file("Wayfinding_Files" . DIRECTORY_SEPARATOR . "Rooms.csv", FILE_IGNORE_NEW_LINES);
+                        for($i = 1;$i < count($AllRooms);$i++){
+                            $RoomInfo = explode(",", $AllRooms[$i]);
+                            printf("<div class='roomContainer' data-filter='" . $RoomInfo[2] . "'>");
+                            printf("<div class='room'>");
+                            printf("<div class='roomName'>" . $RoomInfo[0] . "</div>");
+                            printf("<div class='roomNumber'>" . $RoomInfo[1] . "</div>");  
+                            printf("</div>");                                                                                                              
+                            printf("</div>");                            
+                        }
+                    ?>
                 </div>
                 <div id="filters">
                     <div class="lower_controls" id="eat_selection">Eat</div>
