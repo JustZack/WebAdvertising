@@ -14,14 +14,21 @@
                     <div class="svg_map" id="level_3" style="display: none;"></div>
                 </div>
                 <div id="legendWrapper">
-                    <img id="LSC_Logo" src="http://lsc.colostate.edu/wp-content/uploads/2016/06/lsc-email-logo.jpg">
+                    <center><img id="LSC_Logo" src="Logos/LSC_Logo.png"></center>
                     <div id="HeadingWrapper">
                         <h1>Digital Touch Screen</h1>
                         <h4>INTERACTVIE WAY FINDING MAPS</h4>
                     </div>
-                    <div id="EPSRGL_Logos">
-                        <center>To add, the new six eat/play/shop/... logos</center>
-                    </div>
+                    <center>
+                        <div id="EPSRGL_Logos">
+                            <img src="Logos/Eat.png" alt="eat">
+                            <img src="Logos/Play.png" alt="play">
+                            <img src="Logos/Shop.png" alt="shop">
+                            <img src="Logos/Relax.png" alt="relax">
+                            <img src="Logos/Gather.png" alt="gather">
+                            <img src="Logos/Learn.png" alt="learn">
+                        </div>
+                    </center>
                     <div id="legend">
                         <div>
                             <img src=""><p>RESTROOM</p>
@@ -73,15 +80,17 @@
                                     Filter: Which of the six filters this room fits into.
 
                         */
-                        $AllRooms = file("Wayfinding_Files" . DIRECTORY_SEPARATOR . "Rooms.csv", FILE_IGNORE_NEW_LINES);                                                    
+                        $AllRooms = file("Wayfinding_Files" . DIRECTORY_SEPARATOR . "master-wayfinding-data.csv", FILE_IGNORE_NEW_LINES);                                                    
                         for($i = 1;$i < count($AllRooms);$i++){
                             $RoomInfo = explode(",", $AllRooms[$i]);
                             if($i % 3 == 1)
                                 printf("<div class='roomColumn'>");                                
-                            printf("<div class='roomContainer' data-filter='" . $RoomInfo[2] . "'>");
+                            printf("<div class='roomContainer' data-filter='" . $RoomInfo[1] . "'>");
+                            if(strlen($RoomInfo[0]) > 30)
+                                $RoomInfo[0] = trim(substr($RoomInfo[0], 0, 30)) . "...";
                             printf("<div class='room'>");
                             printf("<div class='roomName'>" . $RoomInfo[0] . "</div>");
-                            printf("<div class='roomNumber'>" . $RoomInfo[1] . "</div>");  
+                            printf("<div class='roomNumber'>" . $RoomInfo[2] . "</div>");  
                             printf("</div>");                                                                                                              
                             printf("</div>");                            
                             if($i % 3 == 0)

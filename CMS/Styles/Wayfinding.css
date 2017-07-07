@@ -4,6 +4,9 @@ body{
     -webkit-user-select: none;
     -moz-user-select: none;
 }
+img{
+    -webkit-user-drag: none;
+}
 #wayfinding_container{
     background-color: white;
     display: inline-block;
@@ -28,15 +31,15 @@ body{
     width: 25%;
 }
 #legendWrapper #LSC_Logo{
-    margin-top: 10px;
-    height: 75px;
-    padding-left: 35%;
+    height: 300px;
+    width: 300px;
+    margin: -75px 0px;
 }
 #HeadingWrapper{
     margin: 10px 0px;
     padding: 10px 0px;
     text-align: center;
-    border: 2px solid #dedede;
+    border: 3px solid #dedede;
     border-left: none;
     border-right: none;
     
@@ -57,13 +60,15 @@ body{
 #EPSRGL_Logos{
     height: 5.2%;
     width: 100%;
-    border: 1px solid #dedede;
-    margin-bottom: 2%;
+    margin-bottom: 35px;
+}
+#EPSRGL_Logos img{
+    width: 65px;
+    height: 65px;
 }
 #legend{
     width: 100%;
     float: left;
-    border: 1px solid #dedede;
 }
 #legend div{
     display: inline-block;
@@ -83,7 +88,8 @@ body{
     width: 100%;
 }
 #roomNavigation{
-    height: 40.5;
+    /* Maybe this could be a scroll bar for looking for a specific room? */
+    height: 10%;
     width: 100%;
     background-color: yellow;   
 }
@@ -91,30 +97,28 @@ body{
     background-color: red;
 }
 #roomSelection{
-    height: 120px;
+    height: 74.5%;
     width: 100%;
     margin-bottom: -5px;
 }
 .roomColumn{
     display: inline-block;
-    width: 310px;
-    padding: 0;
-    margin-right: 3px;
     height: 100%;
+    width: 16.666%;
+    padding: 0;
+    margin: 0;
+    padding-top: .4%;
 }
 .roomContainer{
-    height: 28%;
+    height: 33.333%;
+    width: 100%;
 }
 .room{
+    margin: 0px 10px;
     border: 1px solid #1E4D2B;
     border-radius: 3px;
     color: #1E4D2B;
-    font-weight: 600;
-    width: 295px;
-    margin-top: 5px;
-    margin-left: 5px;
-    padding: 5px;
-    height: 20px;
+    height: 70%;
 }
 .room:hover{
     background-color: #1E4D2B;
@@ -122,23 +126,24 @@ body{
     cursor: pointer;
 }
 .room div{
-    padding: 5px;
-    line-height: 10px;
+    line-height: 40px;
     display: inline-block;
 }
 .room .roomName{
+    padding-left: 4%;
     float: left;
 }
 .room .roomNumber{
+    padding-right: 4%;
     float: right;
 }
 #filters{
     background: #D9782D;
-    height: 47.5px;
+    height: 3.5%;
     width: 100%;
     display: flex;
     align-items: center;
-    vertical-align: center;
+    vertical-align: middle;
     bottom: 0px;
     margin:0;
     position: fixed;
