@@ -61,6 +61,7 @@
             </div>
             <div id="bottom">
                 <div id="roomSelection">
+                    <div id="roomNavigation"></div>
                     <?php  
                         /*
                             This is where we would output the name and room number
@@ -72,16 +73,20 @@
                                     Filter: Which of the six filters this room fits into.
 
                         */
-                        $AllRooms = file("Wayfinding_Files" . DIRECTORY_SEPARATOR . "Rooms.csv", FILE_IGNORE_NEW_LINES);
+                        $AllRooms = file("Wayfinding_Files" . DIRECTORY_SEPARATOR . "Rooms.csv", FILE_IGNORE_NEW_LINES);                                                    
                         for($i = 1;$i < count($AllRooms);$i++){
                             $RoomInfo = explode(",", $AllRooms[$i]);
+                            if($i % 3 == 1)
+                                printf("<div class='roomColumn'>");                                
                             printf("<div class='roomContainer' data-filter='" . $RoomInfo[2] . "'>");
                             printf("<div class='room'>");
                             printf("<div class='roomName'>" . $RoomInfo[0] . "</div>");
                             printf("<div class='roomNumber'>" . $RoomInfo[1] . "</div>");  
                             printf("</div>");                                                                                                              
                             printf("</div>");                            
-                        }
+                            if($i % 3 == 0)
+                                printf("</div>");                            
+                        }                     
                     ?>
                 </div>
                 <div id="filters">
