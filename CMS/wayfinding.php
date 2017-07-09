@@ -4,14 +4,14 @@
         <script src="Scripts/jquery.wayfinding.js" rel="javascript"></script>
         <link href="Styles/Wayfinding.css"       rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <script src="Scripts/wayfinding.js" rel="javascript"></script>
     </head>
     <body>
         <div id="wayfinding_container">
             <div id="top">
-                <div id="maps">
-                    <div class="svg_map" id="level_1" style="display: none;"></div>
-                    <div class="svg_map" id="level_2" style="display: none;"></div>
-                    <div class="svg_map" id="level_3" style="display: none;"></div>
+                <div id="mapLoading">Loading</div>
+                <div id="myMaps">
+                    <!-- Our JS will populate this with the maps we want to use -->
                 </div>
                 <div id="legendWrapper">
                     <center><img id="LSC_Logo" src="Logos/LSC_Logo.png"></center>
@@ -67,6 +67,8 @@
                 </div>  
             </div>
             <div id="bottom">
+                <!-- TODO: PHP here to get the players IP / Name / name on the map -->
+                <div id="YouAreHere" value="playername"></div>
                 <div id="roomSelection">
                     <div id="roomNavigation"></div>
                     <?php  
@@ -90,7 +92,7 @@
                                 $RoomInfo[0] = trim(substr($RoomInfo[0], 0, 30)) . "...";
                             printf("<div class='room'>");
                             printf("<div class='roomName'>" . $RoomInfo[0] . "</div>");
-                            printf("<div class='roomNumber'>" . $RoomInfo[2] . "</div>");  
+                            printf("<div class='roomNumber' value='" . $RoomInfo[2] . "'>" . $RoomInfo[2] . "</div>");  
                             printf("</div>");                                                                                                              
                             printf("</div>");                            
                             if($i % 3 == 0)
