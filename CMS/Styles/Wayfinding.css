@@ -19,11 +19,17 @@ img{
     height: 81%;
     display: flex;
 }
-#myMaps{
+#PngBackground{
+    width: 100%;
+    height: 100%;
+    background-image: url("../Wayfinding_Files/MapOnly.png");
+    background-size: 100%;
+}
+#myMaps{/*
     float: left;
     height: 100%;
     width: 75%;
-    background-color: #aefef3;
+    background-color: #aefef3;*/
 }
 #legendWrapper{
     margin-right: 2%;

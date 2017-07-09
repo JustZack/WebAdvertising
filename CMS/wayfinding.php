@@ -9,9 +9,10 @@
     <body>
         <div id="wayfinding_container">
             <div id="top">
-                <div id="mapLoading">Loading</div>
-                <div id="myMaps">
-                    <!-- Our JS will populate this with the maps we want to use -->
+                <div id="PngBackground">
+                    <div id="myMaps">
+                        <!-- Our JS will populate this with the maps we want to use -->
+                    </div>
                 </div>
                 <div id="legendWrapper">
                     <center><img id="LSC_Logo" src="Logos/LSC_Logo.png"></center>

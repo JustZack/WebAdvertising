@@ -14,7 +14,7 @@ $(document).ready(function(){
             width: 3,
             color: 'cyan',
             radius: 8,
-            speed = 8
+            speed: 8
         },
         /* This is where we would return the starting point for this player  */
         /* this value should NEVER change */
