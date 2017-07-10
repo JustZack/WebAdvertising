@@ -69,7 +69,7 @@
             </div>
             <div id="bottom">
                 <!-- TODO: PHP here to get the players IP / Name / name on the map -->
-                <div id="YouAreHere" value="playername"></div>
+                <div id="YouAreHere" value="FirstFloor"></div>
                 <div id="roomSelection">
                     <div id="roomNavigation"></div>
                     <?php  

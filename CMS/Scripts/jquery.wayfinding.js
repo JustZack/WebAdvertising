@@ -102,14 +102,14 @@
 		// string is URL path where filename to load will be in the form startpoint + '.json' or startpoint + '.acc.json'
 		'dataStoreCache': null,
 		// place marker for "you are here"
-		'showLocation': false,
+		'showLocation': true, /* Changed by Zack */
 		//styling for the "you are here pin"
 		'locationIndicator': {
 			fill: 'red',
-			height: 40
+			height: 100
 		},
 		'pinchToZoom': false, // requires jquery.panzoom
-		'zoomToRoute': true,
+		'zoomToRoute': false, /* Changed by Zack */
 		'zoomPadding': 25,
 		// milliseconds to wait during animation when a floor change occurs
 		'floorChangeAnimationDelay': 1250
@@ -552,23 +552,34 @@
 					'paths': [],
 					'floor': null
 				};
-
-			for (mapNum = 0; mapNum < maps.length; mapNum++) {
-				for (pathNum = 0; pathNum < dataStore.p[mapNum].length; pathNum++) {
-					for (doorANum = 0; doorANum < dataStore.p[mapNum][pathNum].d.length; doorANum++) {
+			/* WHERE THE PROBLEM OCCURS */
+			/* *67 Something here will tell me what the hell is going on.... */
+			/* HAS to be something wrong with my SVG file.... The code works great with the test file....*/			
+					console.clear();
+			for (mapNum = 0; mapNum < maps.length; mapNum++) { //Each map (floor1, floor2, floor3, ...)
+				for (pathNum = 0; pathNum < dataStore.p[mapNum].length; pathNum++) { //Each path on each map
+					//console.log(dataStore.p[mapNum][pathNum].e);
+					console.log("Length of for condition: " + dataStore.p[mapNum][pathNum].d.length);					
+					for (doorANum = 0; doorANum < dataStore.p[mapNum][pathNum].d.length; doorANum++) { //Each Door
+						console.log(mapNum + " : " + pathNum + " : " + doorANum + " : " + dataStore.p[mapNum][pathNum].d);
 						if (dataStore.p[mapNum][pathNum].d[doorANum] === door) {
 							doorPaths.paths.push(pathNum); // only pushing pathNum because starting on a single floor
 							doorPaths.floor = dataStore.p[mapNum][pathNum].floor;
+							//console.log("Pushed: " + pathNum);
 						}
 					}
+					console.log("Length of for condition: " + dataStore.p[mapNum][pathNum].e.length);
 					for (doorBNum = 0; doorBNum < dataStore.p[mapNum][pathNum].e.length; doorBNum++) {
+						console.log(mapNum + " : " + pathNum + " : " + doorBNum + " : " + dataStore.p[mapNum][pathNum].e);				
 						if (dataStore.p[mapNum][pathNum].e[doorBNum] === door) {
 							doorPaths.paths.push(pathNum); // only pushing pathNum because starting on a single floor
-							doorPaths.floor = dataStore.p[mapNum][pathNum].floor;
+							doorPaths.floor = dataStore.p[mapNum][pathNum].floor;		
+							//console.log("Pushed: " + pathNum);									
 						}
 					}
 				}
 			}
+			console.log(doorPaths.paths);
 			return doorPaths;
 		}
 
@@ -681,7 +692,6 @@
 				i;
 
 			destInfo = getDoorPaths(options.endpoint);
-
 			for (mapNum = 0; mapNum < maps.length; mapNum++) {
 				if (maps[mapNum].id === destInfo.floor) {
 					destinationmapNum = mapNum;
@@ -888,6 +898,7 @@
 		}
 
 		function cleanupSVG(el) { // should only be called once instead of twice if initalize and build for non datastore
+		
 			var svg = $(el).find('svg'),
 				height = parseInt($(svg).attr('height').replace('px', '').split('.')[0], 10),
 				width = parseInt($(svg).attr('width').replace('px', '').split('.')[0], 10);
@@ -1256,6 +1267,7 @@
 				$('#Rooms a[id="' + destination + '"] g', obj).attr('class', 'wayfindingRoom');
 				setEndPoint(options.endpoint, el);
 
+				/* WHERE THE PROBLEM OCCURS */
 				solution = getShortestRoute();
 
 				if (reversePathStart !== -1) {

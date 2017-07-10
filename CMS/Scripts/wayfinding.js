@@ -5,9 +5,7 @@ $(document).ready(function(){
         /* This stores all the paths for the maps i wish to use: */
         /* Do one full map or three seperate maps? */
         'maps': [
-            {'path': 'path/to/svg', 'id': 'floorNumber'},
-            {'path': 'path/to/svg', 'id': 'floorNumber'},
-            {'path': 'path/to/svg', 'id': 'floorNumber'}            
+            {'path': 'WayFinding_Files/Wayfinding.svg', 'id': 'floor1'},          
         ],
         /* This stores the data for how the path should be styled */
         'path': {
@@ -19,11 +17,12 @@ $(document).ready(function(){
         /* This is where we would return the starting point for this player  */
         /* this value should NEVER change */
         'startpoint': function(){
-            return $('#YouAreHere').val();
+            return 'lcd.FirstFloorHallWay';
+            //return $('#YouAreHere').val();
         },
         /* Set the default map to show */
         /* Once again, one map or multiple? */
-        'defaultMap': 'floorNumber'
+        'defaultMap': 'floor1',
     });
 
     /* Make all buttons on the bottom clickable */
