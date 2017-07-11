@@ -93,7 +93,7 @@
                                 $RoomInfo[0] = trim(substr($RoomInfo[0], 0, 30)) . "...";
                             printf("<div class='room'>");
                             printf("<div class='roomName'>" . $RoomInfo[0] . "</div>");
-                            printf("<div class='roomNumber' value='" . $RoomInfo[2] . "'>" . $RoomInfo[2] . "</div>");  
+                            printf("<div class='roomNumber' value='R" . $RoomInfo[2] . "'>" . $RoomInfo[2] . "</div>");  
                             printf("</div>");                                                                                                              
                             printf("</div>");                            
                             if($i % 3 == 0)

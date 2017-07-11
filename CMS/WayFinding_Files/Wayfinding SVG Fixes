@@ -1,0 +1,10 @@
+This document details how to fix the generated SVG files from Illustrator to work with our wayfinding plugin.
+1. All rooms MUST be anchor (<a>) tags.
+    >Ensure you change the 'g' in <g id="R#"> to an a. Dont forget the closing tag too.
+2. All polygons MUST be paths.
+    >Ensure you change the polygon tag to be a path tag.
+        >You must also change the 'points' attribute to 'd'.
+            >Then put an M infront of the numbers for the value of 'd'.
+3. Remove the background image and the embeded css
+    >Remove the layer (<g>) with the background image.
+    >Remove the <def> element, and its contents, this has the CSS in it.

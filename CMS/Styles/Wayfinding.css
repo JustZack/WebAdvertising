@@ -31,6 +31,10 @@ img{
     width: 75%;
     background-color: #aefef3;*/
 }
+#Rooms path{
+    fill: transparent;
+    stroke: transparent;
+}
 #legendWrapper{
     margin-right: 2%;
     height: 100%;

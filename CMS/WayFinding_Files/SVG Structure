@@ -1,0 +1,11 @@
+This document contains the layer structure for the 
+wayfinding SVG file(s) in Adobe Illustrator.
+Layers:
+#Rooms
+    #R<Number>
+        <layer> (leave unnamed)
+            <Path>                   When making this, select the <layer>
+#Doors
+    #R<Number>_<DoorNumberForRoom>_  When making this, select the #Doors layer
+#Paths
+    <line>                           When making this, select the #Paths layer
