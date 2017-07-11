@@ -17,7 +17,7 @@ $(document).ready(function(){
         /* This is where we would return the starting point for this player  */
         /* this value should NEVER change */
         'startpoint': function(){
-            return 'lcd.FirstFloorHallWay';
+            return 'lcd.RamTech';
             //return $('#YouAreHere').val();
         },
         /* Set the default map to show */
