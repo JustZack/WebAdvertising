@@ -4,7 +4,7 @@ CSU Bookstore,Shop,175
 Recycled Cycles,Shop,197
 Future Dining Area,Eat,151
 Ramskeller,Eat,152
-Microbrewery,Eat,152B
+Microbrewery,Eat,152A
 Fermentation Science Lab,Eat,152B
 Bagel Place 2,Eat,176
 Cam's Lobby Shop,Eat,178
@@ -53,7 +53,6 @@ LSC Business Services,Services,276
 Student Legal ,Services,284
 Adult Learner and Veteran Services,Services,288
 Duhesa Gallery,Play,320
-Aspen Grille,Eat,388E
 Executive Director's Office,Services,303
 Operations,Services,309
 Event Planning,Services,318
@@ -90,6 +89,7 @@ Meeting Room,Gather,380
 Meeting Room,Gather,382
 North Ballroom,Gather,384
 Meeting Room,Gather,386
+Aspen Grille,Eat,388
 Virginia Dale Room,Gather,388A
 LaPorte Room,Gather,388B
 University Club,Gather,388C

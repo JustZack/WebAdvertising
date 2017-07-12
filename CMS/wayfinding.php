@@ -4,12 +4,17 @@
         <script src="Scripts/jquery.wayfinding.js" rel="javascript"></script>
         <link href="Styles/Wayfinding.css"       rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
         <script src="Scripts/wayfinding.js" rel="javascript"></script>
     </head>
     <body>
         <div id="wayfinding_container">
             <div id="top">
-                <div id="PngBackground">
+                <div id="MapWrapper">
+                    <img src="Wayfinding_Files/MapOnly.png" alt="LSC Building Map">
                     <div id="myMaps">
                         <!-- Our JS will populate this with the maps we want to use -->
                     </div>
@@ -71,7 +76,11 @@
                 <!-- TODO: PHP here to get the players IP / Name / name on the map -->
                 <div id="YouAreHere" value="FirstFloor"></div>
                 <div id="roomSelection">
-                    <div id="roomNavigation"></div>
+                    <div id="ScrollBar">
+                        <div id="ScrollButton"></div>
+                    </div>
+                </div>
+                <div id="RoomButtons">
                     <?php  
                         /*
                             This is where we would output the name and room number

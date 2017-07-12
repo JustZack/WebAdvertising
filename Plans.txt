@@ -29,6 +29,7 @@ Useablilty:
                 1st Floor Hallway
 What is left to do:
     wayfinding <- really should start taking priority
+        Almost done BTW
     Uploading local content to the server
     Ability to choose a file already on the server when uploading content.
     Ability to Add nickname to a player
