@@ -34,28 +34,8 @@ $(document).ready(function(){
         $('#myMaps').wayfinding('routeTo', $(this).val());       
     });
 
-    /* Do some intial setting up of certain items on the page. */
-    initalSetup();
-    $(window).resize(function(){
-        resize();
-    });
-    function resize(){
-        $("#myMaps").css("width", $("#MapWrapper img").width());
-        var scrollButtonWidth = $("#ScrollBar").width() / $("#RoomButtons").width();
-        if(scrollButtonWidth < 20) scrollButtonWidth = 20;
-        $("#ScrollButton").css("width", scrollButtonWidth); 
-    }
-
-    function initalSetup(){
-        /* Inital call to the function to ensure all of the elements are propperly sized */
-        resize();
-        /* Make our scroll bar a scrollbar */
-        $("#ScrollButton").draggable({axis: "x"});
-    }
-    $("#ScrollButton").click(function(){
-        if($("#ScrollButton").position().left + $("#ScrollButton").width() > $("#ScrollBar").width())
-        {
-            $("#ScrollButton").css("left", $("#ScrollBar").width() - $("#ScrollButton").width());
-        }
+    /* Button for refreshing the screen */
+    $("#refresh_screen").click(function(){
+        location.reload();
     });
 });

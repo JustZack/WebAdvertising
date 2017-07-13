@@ -128,14 +128,14 @@ div#MapWrapper img{
     height: 100%;
     width: 20px;
     border-radius: 10px;
-    background-color: #59595B;
+    background-color: #666666;
 }
-
 #RoomButtons{
     height: 76.75%;
+    max-height: 76.75%; 
     display: inline-block;
 }
-.roomColumn{
+.roomColumn{ /* TODO Fix the height of the columns to fit the bottom area properly */
     display: inline-block;
     height: 100%;
     width: 300px;
@@ -202,5 +202,19 @@ div#MapWrapper img{
     background-color: white;
     color: #D9782D;
     cursor: pointer;
+}
+
+#refresh_screen{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 3px;
+    color: white;
+    background-color: #1E4D2B;
+    border-color:#1E4D2B;
+}
+#refresh_screen:hover{
+    color: #1E4D2B;
+    background-color: white;
 }
 

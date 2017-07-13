@@ -9,6 +9,7 @@
             integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
             crossorigin="anonymous"></script>
         <script src="Scripts/wayfinding.js" rel="javascript"></script>
+        <script src="Scripts/wayfindingScrollBar.js" rel="javascript"></script>        
     </head>
     <body>
         <div id="wayfinding_container">
@@ -80,6 +81,7 @@
                         <div id="ScrollButton"></div>
                     </div>
                 </div>
+                <div id="RoomButtonsContstrainer"></div>
                 <div id="RoomButtons">
                     <?php  
                         /*
@@ -110,14 +112,16 @@
                         }                     
                     ?>
                 </div>
-                <div id="filters">
-                    <div class="lower_controls" id="eat_selection">Eat</div>
-                    <div class="lower_controls" id="play_selection">Play</div>
-                    <div class="lower_controls" id="shop_selection">Shop</div>
-                    <div class="lower_controls" id="gather_selection">Gather</div>
-                    <div class="lower_controls" id="restroom_selection">Restrooms</div>
-                    <div class="lower_controls" id="learn_selection">Learn</div>  
-                </div>
+            </div>
+            <div id="filters">
+                <div class="lower_controls" id="eat_selection">Eat</div>
+                <div class="lower_controls" id="play_selection">Play</div>
+                <div class="lower_controls" id="shop_selection">Shop</div>
+                <div class="lower_controls" id="gather_selection">Gather</div>
+                <div class="lower_controls" id="restroom_selection">Restrooms</div>
+                <div class="lower_controls" id="learn_selection">Learn</div>  
+                <div class="lower_controls" id="all_selection">All</div>  
+                <div class="lower_controls" id="refresh_screen">Refresh Screen</div>                                                  
             </div>
         </div>
     </body>
