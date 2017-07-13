@@ -37,6 +37,17 @@ $(document).ready(function(){
             }
         }
     });
+    //wayfindingCheckedHandler()
+    function wayfindingCheckedHandler()
+    {
+        if($("input[type='checkbox']").is(':checked')){
+            $("div.WayfindingNameWrapper").css("display", "block");
+        } else if(!$("input[type='checkbox']").is(':checked')){
+            $("div.WayfindingNameWrapper").css("display", "none");        
+        }
+
+    }
+    $("input[type='checkbox']").change(wayfindingCheckedHandler);
 
     function error(Message)
     {

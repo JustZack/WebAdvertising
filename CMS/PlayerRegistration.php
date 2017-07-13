@@ -32,11 +32,23 @@
                 }
             ?>
             </div>
+            <div class="wayfindingNameWrapper">
+                <p>All Wayfinding LCD Names: </p>
+                <div style="width: 200px;">
+                <?php 
+                    $AllLCDs = file("Wayfinding_Files/WayfindingLCDs.txt", FILE_IGNORE_NEW_LINES);
+                    for($i = 0;$i < count($AllLCDs);$i++){
+                        printf("<div class='WayfindingName'>" . $AllLCDs[$i] . "</div>");
+                    }
+                ?>
+                </div>
+            </div>
             <br>
             <form action="registerPlayer.php" method="post">
                 <p>Host Name:</p><input type="text" value=<?php echo "\"" . $HostName_SERVER . "\"" ?> name="hostname"><br>
                 <p>Groups:</p><input type="text" name="groups"><br>
-                <p>Use Wayfinding:</p><input type="checkbox" name="useWayfinding" checked><br>
+                <p>Use Wayfinding:</p><input type="checkbox" name="useWayfinding" unchecked><br>
+                <div class="wayfindingNameWrapper"><p>Wayfinding Name:</p><input type="text" name="wayfindingName" placeholder="lcd." value="lcd."><br></div>                
                 <input type="submit" value="Submit New Host Name">
             </form>
         </div>

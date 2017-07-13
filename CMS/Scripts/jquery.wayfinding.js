@@ -109,7 +109,7 @@
 			height: 100
 		},
 		'pinchToZoom': false, // requires jquery.panzoom
-		'zoomToRoute': false, /* Changed by Zack */
+		'zoomToRoute': true, /* Changed by Zack */
 		'zoomPadding': 25,
 		// milliseconds to wait during animation when a floor change occurs
 		'floorChangeAnimationDelay': 1250

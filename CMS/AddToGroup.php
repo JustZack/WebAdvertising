@@ -1,6 +1,6 @@
 <?php 
     include_once "globals.php";
-    $PathToGroupFile = $Groups_Path . $_GET['group']. DIRECTORY_SEPARATOR . "AdContent-info.csv";
+    $PathToGroupFile = $Groups_Path . $_GET['group'] . DIRECTORY_SEPARATOR . "AdContent-info.csv";
     $FullImagePath = "";
     $isLink = false;
     $uploadOk = false;
@@ -14,7 +14,7 @@
 
     if($isLink || $uploadOk){
         include_once "Write_Image_Data.php";
-        header("location: status");
+        header("location: status#". $_GET['group']);
     }
     else{
         errorMessage("Ad could not be uploaded!");

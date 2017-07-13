@@ -55,12 +55,27 @@
             $Groups = array_values(array_filter(glob($Groups_Path . "*"), 'is_dir'));
             for($i = 0;$i < count($Groups);$i++){
                 $Group = substr($Groups[$i], strrpos($Groups[$i], DIRECTORY_SEPARATOR) + 1);
-                printf("\n\t\t\t<div class='groupData'>\n");
+                printf("\n\t\t\t<div class='groupData' id='" . $Group . "'>\n");
                 printf("\t\t\t\t<div class='groupName'>" . $Group . "</div>\n");
                 //Print out everything this group refrences
                 printf("\t\t\t\t<div class='groupWrapper'>\n");
-                loadByGroup($Group, true);
-                printf("\t\t\t\t<a href='AddContentTo.php?group=" . $Group . "'><div class='AddContent'>Add Content</div></a>");
+                loadByGroup($Group, true);//Load each ad from this group
+                
+                //Add content 'card'
+                $today = date('m/d/Y');
+                $oneWeekAwayFromToday = date('m/d/Y', strtotime("+7 days")); 
+                printf("\t\t\t\t\t<div class='AdContentWrapper AddContent'>\n");
+                printf("\t\t\t\t\t\t<form method='post' action='AddToGroup.php?group=" . $Group . "'>\n");
+                printf("\t\t\t\t\t\t\t<input name='Link' class='fullWidth' type='text' placeholder='https://' value='https://'>\n");//Link to video or image
+                printf("\t\t\t\t\t\t\t<br><input name='Start' class='fullWidth' type='text' placeholder='mm/dd/yyyy' value='" . $today . "'>\n");//Start date (today)
+                printf("\t\t\t\t\t\t\t<br><input name='End' class='fullWidth' type='text' placeholder='mm/dd/yyyy' value='" . $oneWeekAwayFromToday . "'>\n");//End date, one week from today
+                printf("\t\t\t\t\t\t\t<br><input name='Duration' class='fullWidth' type='text' placeholder='Duration (seconds)' value='" . 15 . "'>\n"); //Duration of the Ad
+                printf("\t\t\t\t\t\t\t<br><input name='Specific-Day' class='fullWidth' type='text' placeholder='(Optional) Specific Day (Sun, Mon, Tue, Wed, Thu, Fri, Sat)'>\n"); //The specific day you want the ad to play
+                printf("\t\t\t\t\t\t\t<br><input name='Specific-Time' class='fullWidth' type='text' placeholder='(Optional) Specific Time (24hr:mm)'>\n"); //the specific time of day you want the ad to play
+                printf("\t\t\t\t\t\t\t<br><input name='Condition' class='fullWidth' type='text' placeholder='(Optional) Var Operator Value'>\n"); //A condition for when the ad should be shown
+                printf("\t\t\t\t\t\t\t<br><input class='fullWidth' type='submit' value='Add Content To " . $Group . "'>\n"); //Submit button              
+                printf("\t\t\t\t\t\t</form>");
+                printf("\t\t\t\t\t</div>\n");                
                 printf("\t\t\t\t</div>\n");                
                 printf("\t\t\t</div>\n");
             }
@@ -68,13 +83,13 @@
             <div class='groupData' id='createNewWrapper' style='background-color: #3aa800;'>
                 <form action="CreateGroup.php">
                     <p>
-                        <input type="text" placeholder="New Group (One Word Please)" name="groupName">
+                        <input type="text" placeholder="New Group (One Word only)" name="groupName">
                     </p>
                     <input type="submit" style="display:none;">
                 </form>
             </div>
         </div>
-        <div id="ContentInformation">        
+        <div id="ContentInformation">   
         <?php
             loadByFolder($Content_Path);
         ?>

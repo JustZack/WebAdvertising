@@ -95,6 +95,37 @@ a{
     border-radius: 5px;
     width: 100%;
 }
+.Ad_Content{
+    max-height: 152px;
+}
+
+.AddContent{
+    background-color: #3aa800;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+}
+.AddContent .fullWidth{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.AddContent form{
+    padding: 5px;
+}
+.AddContent input[type="submit"]{
+    margin-bottom: 0px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+
+}.AddContent input[type="submit"]:hover{
+    background-color: #2F8900;
+    color: white;
+
+}
 
 .AdContentWrapper img, .AdContentWrapper iframe{
     max-width: 300px;
@@ -137,17 +168,6 @@ a{
     background-color: white;
     color: black;
 }
-
-.AddContent{
-    background-color: #3aa800;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-}
-.AddContent:hover{
-    background-color: #359900;
-}
-
 #createNewWrapper p{
     border: none;
     background: none;
@@ -166,10 +186,17 @@ input[name="groupName"]::placeholder{
     color: white;
     font-size: 14px;
 }
+
 #ContentInformation{
     width: 100%;
     background-color: rgb(87,108,115);
     border: 2px solid rgb(68,103,125);
+}
+
+#Drag-And-Drop{
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 .Dir{
@@ -199,6 +226,3 @@ input[name="groupName"]::placeholder{
     background-color: rgb(173,216,230);
 }
 
-.Ad_Content{
-    max-height: 152px;
-}

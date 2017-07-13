@@ -6,7 +6,7 @@
         $wayfinding = "false";
     }
 
-    $DataToBeWritten = "\r\n" . $_POST['hostname'] . "," . $wayfinding . "," . $_POST['groups'];
+    $DataToBeWritten = "\r\n" . $_POST['hostname'] . "," . $wayfinding . "," . $_POST['groups'] . "," . $_POST['wayfindingName'];
     
     echo $DataToBeWritten . " -> " . $Player_Info_Path;
     //Write the data to our player file!

@@ -72,3 +72,18 @@ input[type="submit"]:hover{
 #RegisteredHosts, #Groups{
     margin-left: 15px;
 }
+
+.WayfindingNameWrapper{
+    display: none;
+}
+
+div.WayfindingName{
+    margin-top: 5px;
+    margin-left: 20px;
+    padding: 5px;
+    background-color: #333333;
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}

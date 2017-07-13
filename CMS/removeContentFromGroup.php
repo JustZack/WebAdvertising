@@ -12,5 +12,5 @@
         }
     }
     file_put_contents($PathToGroupFile, implode("",$FileContents));
-    header("location: status");
+    header("location: status#" . $_GET['group']);
 ?>

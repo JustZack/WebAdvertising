@@ -17,8 +17,8 @@
     /*
         These are the headers used in the the creation of files
     */
-    $AdContentInfoHeader = "Name,Start Date,End Date,Duration,Specific Time,Condition for showing";
-    $PlayersInformationHeader = "Hostname, Use-Wayfinding, Ad-Content-Groups";
+    $AdContentInfoHeader = "Name,Start Date,End Date,Duration,Specific Day,Specific Time,Condition for showing";
+    $PlayersInformationHeader = "Hostname,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name";
     
     /*
         Variables which contain the paths for some important folders / files
@@ -177,7 +177,15 @@
             return false;
         }
     }
-
+    /* Determine if the specific day is today! */
+    function isDayValid($Day){
+        if(strtolower($Day) == strtolower(date('D'))){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /* Determine if the specific time is within the next 15 minutes */
     function isTimeValid($Time){
         $CurrentDate = date('H:i');
         $CurrentTime = strtotime($CurrentDate);

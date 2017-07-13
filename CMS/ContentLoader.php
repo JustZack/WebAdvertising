@@ -32,7 +32,8 @@
         $GroupInfoFileData = file($CurrentGroupInfoPath, FILE_IGNORE_NEW_LINES);
         for($i = 1;$i < count($GroupInfoFileData);$i++){
             //Load the content
-            loadContent($GroupInfoFileData[$i], $ShowData, $GroupNameString);
+            if(!empty($GroupInfoFileData[$i]))
+                loadContent($GroupInfoFileData[$i], $ShowData, $GroupNameString);
         }
     }
     /* 
@@ -59,23 +60,25 @@
             $EndCurrentContentString;
             if(isDateValid($ContentInfo[1], "start")){
                 if(isDateValid($ContentInfo[2], "end")){
-                    if($ContentInfo[4] == "" || isTimeValid($ContentInfo[4])){
-                        if($ContentInfo[5] == "" || isConditionTrue($ContentInfo[5])){
-                            if(isImage($ContentInfo[0])){            
-                                $CurrentContentString = "\t\t\t\t<img id='Ad_" . ++$Ad_Count .
-                                "'class='Ad_Content'src='" . $ContentInfo[0] .
-                                "'data-duration='" . $ContentInfo[3] . "'";
-                                $EndCurrentContentString = ">\n";                            
-                            } else{                      
-                                $CurrentContentString = "\n\t\t\t\t<iframe id='Ad_" . ++$Ad_Count .
-                                "'class='Ad_Content'src='" . $ContentInfo[0] .
-                                "'data-duration='" . $ContentInfo[3] . "'";
-                                $EndCurrentContentString = "></iframe>\n";
+                    if($ContentInfo[4] == "" || isDayValid($ContentInfo[4])){
+                        if($ContentInfo[5] == "" || isTimeValid($ContentInfo[5])){
+                            if($ContentInfo[6] == "" || isConditionTrue($ContentInfo[6])){
+                                if(isImage($ContentInfo[0])){            
+                                    $CurrentContentString = "\t\t\t\t<img id='Ad_" . ++$Ad_Count .
+                                    "'class='Ad_Content'src='" . $ContentInfo[0] .
+                                    "'data-duration='" . $ContentInfo[3] . "'";
+                                    $EndCurrentContentString = ">\n";                            
+                                } else{                      
+                                    $CurrentContentString = "\n\t\t\t\t<iframe id='Ad_" . ++$Ad_Count .
+                                    "'class='Ad_Content'src='" . $ContentInfo[0] .
+                                    "'data-duration='" . $ContentInfo[3] . "'";
+                                    $EndCurrentContentString = "></iframe>\n";
+                                }
+                                if($ContentInfo[4] !== ''){
+                                    $CurrentContentString .= " data-specific-time='" . $ContentInfo[5] . "'";
+                                }
+                                printf($CurrentContentString . $EndCurrentContentString);
                             }
-                            if($ContentInfo[4] !== ''){
-                                $CurrentContentString .= " data-specific-time='" . $ContentInfo[4] . "'";
-                            }
-                            printf($CurrentContentString . $EndCurrentContentString);
                         }
                     }
                 }
@@ -92,8 +95,9 @@
             tableEntry("Start Date", $ContentInfo[1]);
             tableEntry("End Date", $ContentInfo[2]);
             tableEntry("Duration", $ContentInfo[3]);
-            tableEntry("Specific Time", $ContentInfo[4]);
-            tableEntry("Condition", $ContentInfo[5]);
+            tableEntry("Specific Day", $ContentInfo[4]);            
+            tableEntry("Specific Time", $ContentInfo[5]);
+            tableEntry("Condition", $ContentInfo[6]);
             printf("\t\t\t\t</table>\n");      
             printf("\t\t\t\t<a href='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='removeContent'>Remove</div></a>");                  
             printf("\t\t\t</div>\n");       

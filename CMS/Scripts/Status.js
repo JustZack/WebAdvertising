@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    if(window.location.hash){
+        $(window.location.hash + " .groupWrapper").css("display", "block");
+    }
     $(".groupName").click(function(){
         if($(".groupWrapper", $(this).parent()).css("display") == "none"){
             $(".groupWrapper", $(this).parent()).css("display", "block");
