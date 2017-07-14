@@ -42,6 +42,13 @@
     color:white;
     background-color: #7796A5;
     border-radius: 5px;
+    height: 18px;
+}
+.hostWayfinding #left{
+    float: left;
+}
+.hostWayfinding #right{
+    float: right;
 }
 .viewhost{
     margin: 5px;
