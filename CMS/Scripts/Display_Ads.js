@@ -82,6 +82,8 @@ $(document).ready(function()
 
     /* Redirects to the wayfinding screen on tap. */
     $(document).click(function(){
-        window.location.href = "wayfinding";
+        var url = location.href;
+        var params = url.substring(url.indexOf("?"));
+        window.location.href = "wayfinding" + params;
     });
 });

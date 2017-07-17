@@ -7,7 +7,7 @@
             include_once "globals.php";
             $HostName = array_key_exists( 'REMOTE_HOST', $_SERVER) ? $_SERVER['REMOTE_HOST'] : gethostbyaddr($_SERVER["REMOTE_ADDR"]);
             if(isHostRegistered($HostName)){
-                header("location: DisplayAdContent.php?hostname=" . $HostName);
+                header("location: DisplayAdContent.php?" . getHostParameters($HostName));
             } else {
                   /*
                     This is where i would consider redirecting somewhere else.

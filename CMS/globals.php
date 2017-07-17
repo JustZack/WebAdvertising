@@ -79,9 +79,10 @@
         Function for checking if we know of the hostname requesting useage of the site
     */
     function isHostRegistered($HostName){
-        if(file_exists(getcwd() . DIRECTORY_SEPARATOR . "Players" .DIRECTORY_SEPARATOR . "Players-info.csv"))
+        global $Player_Info_Path;
+        if(file_exists($Player_Info_Path))
         {
-            $FileContents = file(getcwd() . DIRECTORY_SEPARATOR . "Players" . DIRECTORY_SEPARATOR . "Players-info.csv" , FILE_IGNORE_NEW_LINES);
+            $FileContents = file($Player_Info_Path , FILE_IGNORE_NEW_LINES);
             for($i = 0;$i < count($FileContents);$i++){
                 $line = explode(",", $FileContents[$i]);
                 if($line[0] == $HostName){
@@ -102,6 +103,26 @@
             */
         }
         return false;
+    }
+
+    /*
+        Function for getting the url arguments that should be used for this LCD.
+    */
+    function getHostParameters($HostName){
+        global $Player_Info_Path;        
+        if(file_exists($Player_Info_Path))
+        {
+            $FileContents = file($Player_Info_Path , FILE_IGNORE_NEW_LINES);
+            for($i = 0;$i < count($FileContents);$i++){
+                $line = explode(",", $FileContents[$i]);
+                if($line[0] == $HostName){
+                    return "hostname=" . $line[0] . "&hostLCDname=" . $line[3];
+                }
+                else { continue; }
+            }
+            /* If we made it out here then no hostnames matched */
+            errorMessage("Your hostname, " . $HostName . ", is not recognized! (hostname missing)");
+        } 
     }
     /* From here down is functions that I think are globally usefull */
     /* 

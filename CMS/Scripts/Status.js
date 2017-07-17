@@ -19,4 +19,9 @@ $(document).ready(function(){
             $(".files", $(this).parent()).css("display", "block");            
         }
     });
+
+    $("input[name='groupName']").change(function(){
+        if($("input[name='groupName']").val().indexOf(" ") > 0) {}
+        console.log("Check Validity of group name here");  
+    });
 });

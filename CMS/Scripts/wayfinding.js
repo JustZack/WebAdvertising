@@ -17,7 +17,13 @@ $(document).ready(function(){
         /* This is where we would return the starting point for this player  */
         /* this value should NEVER change */
         'startpoint': function(){
-            return 'lcd.FirstFloorHallway';
+            var url = document.location.href;
+            if(url.indexOf('hostLCDname=') < 0){
+                return 'lcd.RamTech'
+            } else {
+                var LCDName = url.substring(url.indexOf('hostLCDname=') + 12);
+                return LCDName;
+            }
             //return $('#YouAreHere').val();
         },
         /* Set the default map to show */
