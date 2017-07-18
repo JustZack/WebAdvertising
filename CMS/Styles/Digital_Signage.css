@@ -2,10 +2,25 @@ body{
     background-color: black;
     color: white;
 }
+#Uninteractable_Wrapper{
+    position: relative;
+}
+#Uninteractable_Cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 2;
+}
+
 /* Make sure the cursor will not show over the image */
 .content-container{
     cursor: none;
     z-index: 1;
+    width: 80%;
+    height: 90%;
+    display: inline-block;
 }
 .content-container .Ad_Content
 {
@@ -22,14 +37,16 @@ body{
     -ms-user-select: none;
 }
 
-#Uninteractable_Wrapper{
-    position: relative;
+
+#SideBar{
+    float: right;
+    width: 20%;
+    height: 100%;
 }
-#Uninteractable_Cover{
-    position: absolute;
-    top: 0;
+
+#Heading{
+    bottom: 0;
     left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: 2;
+    height: 10%;
+    width: 80%;   
 }

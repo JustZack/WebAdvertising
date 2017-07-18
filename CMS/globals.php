@@ -116,7 +116,9 @@
             for($i = 0;$i < count($FileContents);$i++){
                 $line = explode(",", $FileContents[$i]);
                 if($line[0] == $HostName){
-                    return "hostname=" . $line[0] . "&hostLCDname=" . $line[3];
+                    $toReturn = "hostname=" . $line[0];
+                    if(!empty($line[3])) $toReturn .= "&hostLCDname=" . $line[3];
+                    return $toReturn;
                 }
                 else { continue; }
             }

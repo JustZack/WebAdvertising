@@ -22,9 +22,9 @@
         if($line[0] == $HostName){
             //Store all the host info for this host, usefull later.
             $Host_Info = $line;
-            //We have the hostname on record! Lets grab the group information.$_COOKIE
+            //We have the hostname on record! Lets grab the group information.
             if($line[2] !== ''){
-                $Groups = $line['2'];
+                $Groups = $line[2];
             }
             //Leave the for loop, we found what we were looking for!
             break;
@@ -35,6 +35,8 @@
         errorMessage("This hostname has no groups associated with it!");
         exit();
     }
+
+    printf("<div id='HostData' data-usewayfinding='" . $Host_Info[1] . "'></div>");
 
     include_once "ContentLoader.php";
     

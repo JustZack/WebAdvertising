@@ -48,7 +48,7 @@
                 } else {
                     printf("\t\t\t\t<div class='hostWayfinding'>" . $CurrentPlayer[1] . "</div>\n");                    
                 }
-                printf("\t\t\t\t<a href = 'DisplayAdContent.php?hostname=" . $CurrentPlayer[0] . "'><div class='viewhost'>View Player</div></a>");
+                printf("\t\t\t\t<a href = 'DisplayAdContent.php?" . getHostParameters($CurrentPlayer[0]) . "'><div class='viewhost'>View Player</div></a>");
                 printf("\t\t\t</div>\n");
             }
         ?>

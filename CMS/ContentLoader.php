@@ -74,7 +74,7 @@
                                     "'data-duration='" . $ContentInfo[3] . "'";
                                     $EndCurrentContentString = "></iframe>\n";
                                 }
-                                if($ContentInfo[4] !== ''){
+                                if($ContentInfo[5] !== ''){
                                     $CurrentContentString .= " data-specific-time='" . $ContentInfo[5] . "'";
                                 }
                                 printf($CurrentContentString . $EndCurrentContentString);
