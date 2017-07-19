@@ -20,6 +20,11 @@ $(document).ready(function(){
         }
     });
 
+    $('.editHost').click(function(){
+        //Transform the host 'card' into a form.
+        
+    });
+
     $("input[name='groupName']").change(function(){
         if($("input[name='groupName']").val().indexOf(" ") > 0) {}
         console.log("Check Validity of group name here");  

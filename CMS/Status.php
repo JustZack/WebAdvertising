@@ -34,7 +34,7 @@
             {
                 $CurrentPlayer = explode(",", $PlayerData[$i]);
                 printf("\n\t\t\t<div class='hostData'>\n");
-                printf("\t\t\t\t<div class='hostNameWrapper'><div class='hostName'>" . $CurrentPlayer[0] . "</div></div>\n");
+                printf("\t\t\t\t<div class='hostNameWrapper'><div class='hostName'>" . $CurrentPlayer[0] . "</div><div class='editHost'>Edit</div></div>\n");
                 $CurrentPlayerGroups = explode(" ", $CurrentPlayer[2]);
                 printf("\t\t\t\t\t<div class='hostGroups'>\n");                    
                 for($j = 0;$j < count($CurrentPlayerGroups);$j++){

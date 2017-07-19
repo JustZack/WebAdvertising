@@ -14,5 +14,5 @@
       //Then take us to the display content page.
      //My thought here is that an error will display if no groups were chosen.
     //When status page is up I will redirect there.
-    header("location: DisplayAdContent.php?hostname=" . $_POST['hostname']);
+    header("location: status);
 ?>

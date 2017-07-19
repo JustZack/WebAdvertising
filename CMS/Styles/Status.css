@@ -15,8 +15,8 @@
     width: 200px;
 }
 .hostNameWrapper{
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-block;
+    width: 100%;
 }
 .hostName{
     margin: 5px;
@@ -24,6 +24,18 @@
     color: white;
     background-color: #BCC16F;
     border-radius: 5px;
+    float: left;
+}
+.editHost{
+    margin: 5px;
+    padding: 5px;
+    background-color: #3aa800;
+    border-radius: 5px;
+    float: right;
+}
+.editHost:hover{
+    background-color: #2F8900;
+    cursor: pointer;
 }
 .hostGroups{
     display: flex;
@@ -63,6 +75,11 @@ a{
 .viewhost:hover{
     background-color: #7DA0E7;
     cursor: pointer;    
+}
+
+.hostData form{
+    margin: 5px;
+    padding: 5px;
 }
 
 #GroupInformation{
