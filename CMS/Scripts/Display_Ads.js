@@ -36,6 +36,8 @@ $(document).ready(function()
     }
 
     function playSpecificAd(){
+        //Hide the sub-content
+        esetSubContent();
         //Ensure any playing content is paused
         iframeReset();
         //Hide the current Ad
@@ -57,14 +59,16 @@ $(document).ready(function()
     function advanceAds(){
         //Hide the previous ad. 
         $('#Ad_' + Ad_Position).css('display','none'); 
-        progressAdNumber(); //Progress the ad number             
+        progressAdNumber(); //Progress the ad number           
         $('#Ad_' + Ad_Position).css('display','block'); //Display the current ad.
         Total_Elapsed_Time += $('#Ad_' + Ad_Position).data('duration') * 1000;
         Timeout = setTimeout(advanceAds, $('#Ad_' + Ad_Position).data('duration') * 1000);
     }
     //Progress the ad number forward to the next valid number
     function progressAdNumber(){
+        resetSubContent();
         iframeReset(); 
+
         if(Ad_Position == Ad_Count){
             Ad_Position = 1;}
         else{
@@ -74,6 +78,7 @@ $(document).ready(function()
         if($('#Ad_' + Ad_Position).attr("data-specific-time")){ progressAdNumber(); }
 
         iframeAdvancement();
+        setSubContent();
     }
 
     //Is called everytime our update interval for the player is up.
@@ -152,12 +157,29 @@ $(document).ready(function()
         }
         advanceAds();
     }
+    //Gets the sub-content (if any) for the ad that is playing
+    function setSubContent(){
+        /* Check if this ad has subcontent */
+        if($("#Ad_" + Ad_Position).data("sub-content-link"))
+        {        
+            /* Grab the sub content */
+            var subContent = $("#Ad_" + Ad_Position).data("sub-content-link");
+            /* Throw is into the subcontent img */
+            $("#SubContent").attr("src", subContent);
+            $("#SubContentContainer").css("display", "block");            
+        }
+    }
+    //Resets the subcontent element
+    function resetSubContent(){
+        $("#SubContent").attr("src", "");
+        $("#SubContentContainer").css("display", "none");
+    }
     initialStartup();
 
 
     /* Redirects to the wayfinding screen on tap. */
     $(document).click(function(){
-        if($("#HostData").data("usewayfinding") == "true"){
+        if($("#HostData").data("usewayfinding")){
             var url = location.href;
             var params = url.substring(url.indexOf("?"));
             window.location.href = "wayfinding" + params;

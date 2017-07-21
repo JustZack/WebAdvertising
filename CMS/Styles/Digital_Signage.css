@@ -18,8 +18,8 @@ body{
 .content-container{
     cursor: none;
     z-index: 1;
-    width: 100%; /* Was 80% for sidebar + footer */
-    /* height: 90%; */
+    width: 100%; /* Was 80% for sidebar & footer */
+    height: 100%;
     display: inline-block;
 }
 .content-container .Ad_Content
@@ -44,9 +44,19 @@ body{
     height: 100%;
 }
 
-#Heading{
+#SubContentContainer{ 
+    border: none;
+    height: 100%;
+    width: 100%;   
     bottom: 0;
     left: 0;
-    height: 10%;
-    width: 80%;   
+    font-size: 75px;
+    position: absolute;
+    line-height: 100px;
+    object-fit: contain;
+}
+
+#SubContentContainer img{
+    text-align: center;
+    width: 100%;
 }

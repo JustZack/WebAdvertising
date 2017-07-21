@@ -23,7 +23,7 @@
     background-color: black;
     color: white;
     border-radius: 5px;
-    width: 200px;
+    width: 300px;
 }
 .hostNameWrapper{
     display: inline-block;
@@ -46,6 +46,17 @@
 }
 .editHost:hover{
     background-color: #2F8900;
+    cursor: pointer;
+}
+.deleteHost{
+    margin: 5px;
+    padding: 5px;
+    background-color: #FF3300;
+    border-radius: 5px;
+    float: right;
+}
+.deleteHost:hover{
+    background-color: #D12A00;
     cursor: pointer;
 }
 .hostGroups{
@@ -108,11 +119,42 @@ a{
 
 .groupName{
     padding: 5px 0px;
+    display: inline-block;
+    width: 100%;
 }
 .groupName:hover{
     background-color: #7DA0E7;
     border-radius: 5px;
     cursor: pointer;    
+}
+form.editGroupName{
+    display: none;
+}
+input[name='editGroupName']{
+    padding: 5px;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    width: 200px;
+    background-color: grey;
+    border-radius: 3px;
+    color: white;
+    border: none;
+}
+.editGroup{
+    display: inline-block;
+    color: white;
+    font-size: 14px;
+     /* Deciding if I like this...*/
+    /*text-decoration: underline;*/
+    background-color: black;
+    padding: 2px 5px;
+    margin: 2px 5px;
+    border-radius: 5px;
+}
+.editGroup:hover{
+    background-color: white;
+    color: black;
 }
 
 .groupWrapper{
@@ -179,6 +221,10 @@ a{
     margin: 2px;
     padding: 2px;
     font-size: 14px;
+    max-width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .removeContent{
     background-color: red;
@@ -190,20 +236,6 @@ a{
 .removeContent:hover{
     cursor: pointer;
     background-color: #D10000;
-}
-.editGroup{
-    color: white;
-    font-size: 14px;
-     /* Deciding if I like this...*/
-    /*text-decoration: underline;*/
-    background-color: black;
-    padding: 2px 5px;
-    margin: 2px 5px;
-    border-radius: 5px;
-}
-.editGroup:hover{
-    background-color: white;
-    color: black;
 }
 #createNewWrapper p{
     border: none;

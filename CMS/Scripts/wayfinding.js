@@ -44,4 +44,9 @@ $(document).ready(function(){
     $("#refresh_screen").click(function(){
         location.reload();
     });
+
+    /* Starts a timeout for when the screen should go back to being an ad player */
+    var url = window.location.href;
+    var AdString = "DisplayAdContent.php" + url.substring(url.indexOf("?"));
+    setTimeout(function(){ window.location.href = AdString; }, 5000 * 60); //Timeout in 5 minutes
 });

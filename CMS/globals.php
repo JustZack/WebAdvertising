@@ -17,7 +17,7 @@
     /*
         These are the headers used in the the creation of files
     */
-    $AdContentInfoHeader = "Name,Start Date,End Date,Duration,Specific Day,Specific Time,Condition for showing";
+    $AdContentInfoHeader = "Path,Start Date,End Date,Duration,Specific Day,Specific Time,Condition for showing,Sub-Content-Link";
     $PlayersInformationHeader = "Hostname,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name";
     
     /*
@@ -63,7 +63,7 @@
                     } else if($i == 6){ //Default group info file!
                         $DefaultsFile = fopen($PathsArray[$i], "w");
                         fwrite($DefaultsFile, $AdContentInfoHeader);
-                        fwrite($DefaultsFile, "\r\nhttps://www.youtube.com/embed/aWmkuH1k7uA,07/1/2017,07/1/2025,219,,");
+                        fwrite($DefaultsFile, "\r\nhttps://www.youtube.com/embed/aWmkuH1k7uA,07/1/2017,07/1/2025,219,,,,");
                         fclose($DefaultsFile);
                     }
                 } else {

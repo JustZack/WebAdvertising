@@ -6,7 +6,8 @@
     $SpecificDay = removeSpaces($_POST['Specific-Day']);    
     $SpecificTime = removeSpaces($_POST['Specific-Time']);
     $Condition = removeSpaces($_POST['Condition']);
+    $SubContent = removeSpaces($_POST['SubContent']);
     /* This is the line that will be written to our CSV file */
-    $DataToBeWritten = "\r\n" . $FullImagePath . "," . $StartTime . "," . $EndTime . "," . $Duration . "," . $SpecificDay . "," . $SpecificTime . "," . $Condition;
+    $DataToBeWritten = "\r\n" . $FullImagePath . "," . $StartTime . "," . $EndTime . "," . $Duration . "," . $SpecificDay . "," . $SpecificTime . "," . $Condition . "," . $SubContent;
     file_put_contents($PathToGroupFile, $DataToBeWritten, FILE_APPEND | LOCK_EX);
 ?>

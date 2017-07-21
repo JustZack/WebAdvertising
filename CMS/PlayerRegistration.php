@@ -51,7 +51,7 @@
                 $hostGroups = "";
                 $useWayfinding = "";
                 $wayfindingName = "lcd.";
-                $buttonMessage = "Submit New Host";
+                $buttonMessage = "Submit New Player";
 
                 if(isset($_GET['edit']))
                 {

@@ -43,7 +43,7 @@
     function tableEntry($Field, $Value){
         printf("\t\t\t\t\t<tr>\n");
         printf("\t\t\t\t\t\t<td>" . $Field . "</td>\n");
-        printf("\t\t\t\t\t\t<td>" . $Value . "</td>\n");                                              
+        printf("\t\t\t\t\t\t<td>"); echo $Value; printf("</td>\n");                                              
         printf("\t\t\t\t\t</tr>\n");            
     }
     /*
@@ -77,7 +77,10 @@
                                 if($ContentInfo[5] !== ''){
                                     $CurrentContentString .= " data-specific-time='" . $ContentInfo[5] . "'";
                                 }
-                                printf($CurrentContentString . $EndCurrentContentString);
+                                if($ContentInfo[7] !== ''){
+                                    $CurrentContentString .= " data-sub-content-link='" . $ContentInfo[7] . "'";
+                                }
+                                echo $CurrentContentString . $EndCurrentContentString;
                             }
                         }
                     }
@@ -92,14 +95,17 @@
                 printf("\n\t\t\t\t<iframe id='Ad_" . ++$Ad_Count . "'class='Ad_Content'src='" . $ContentInfo[0] . "'></iframe>\n");
             }
             printf("\t\t\t\t<table>\n");
+            //print_r($ContentInfo);
             tableEntry("Start Date", $ContentInfo[1]);
             tableEntry("End Date", $ContentInfo[2]);
             tableEntry("Duration", $ContentInfo[3]);
             tableEntry("Specific Day", $ContentInfo[4]);            
             tableEntry("Specific Time", $ContentInfo[5]);
             tableEntry("Condition", $ContentInfo[6]);
+            tableEntry("Sub-Content", $ContentInfo[7]);
+            
             printf("\t\t\t\t</table>\n");      
-            printf("\t\t\t\t<a href='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='removeContent'>Remove</div></a>");                  
+            printf("\t\t\t\t<a data-link='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='removeContent'>Delete</div></a>");                  
             printf("\t\t\t</div>\n");       
              
         }

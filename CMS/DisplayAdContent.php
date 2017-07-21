@@ -9,8 +9,10 @@
             <div id="Uninteractable_cover"></div>
 <?php   include_once "LoadContent.php" ?>
 <!--
-            <div id="SideBar"></div>
-            <div id="Heading"></div>-->
+            <div id="SideBar"></div> -->
+            <div id="SubContentContainer">
+                <img id="SubContent" alt='Sub-Content'>
+            </div>
         </div>
     </body>
 </html>
