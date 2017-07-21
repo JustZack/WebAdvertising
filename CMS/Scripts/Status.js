@@ -25,6 +25,27 @@ $(document).ready(function(){
         
     });
 
+    $(".editHost").click(function(){
+        $hostWrapper = $(this).parent().parent();
+        var hostName = $(".hostName", $hostWrapper).text();
+        var hostGroups = "";
+        $(".hostGroup", $hostWrapper).each(function(){
+            hostGroups += $(this).text() + ",";
+        });
+        var useWayfinding = $(".left", $hostWrapper).text();
+        if(useWayfinding == ""){
+            useWayfinding = $(".hostWayfinding", $hostWrapper).text();
+        }
+        var wayfindingName = "";
+        var paramString = "hostName=" + hostName + "&hostGroups=" + hostGroups + "&useWayfinding=" + useWayfinding;
+        if(useWayfinding == "true"){
+            wayfindingName = $(".right", $hostWrapper).text();
+            paramString += "&wayfindingName=" + wayfindingName
+        }
+        //console.log(paramString)
+        window.location.href =  "PlayerRegistration?edit=true&" + paramString;
+    });
+
     $("input[name='groupName']").change(function(){
         if($("input[name='groupName']").val().indexOf(" ") > 0) {}
         console.log("Check Validity of group name here");  

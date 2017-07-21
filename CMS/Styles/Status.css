@@ -5,6 +5,17 @@
     flex-wrap: wrap;
     width: 100%;
 }
+.title{
+    padding: 0px;
+    margin: 0px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid white;
+    background-color: rgb(103,156,170);
+    color: white;
+    font-size: 40px;
+}
 .hostData{
     display: inline-block;
     margin: 10px;
@@ -56,10 +67,12 @@
     border-radius: 5px;
     height: 18px;
 }
-.hostWayfinding #left{
+.hostWayfinding div.left{
     float: left;
 }
-.hostWayfinding #right{
+.hostWayfinding div.right{
+    font-size: 14px;
+    line-height: 16px;
     float: right;
 }
 .viewhost{

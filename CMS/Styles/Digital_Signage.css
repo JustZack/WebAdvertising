@@ -18,8 +18,8 @@ body{
 .content-container{
     cursor: none;
     z-index: 1;
-    width: 80%;
-    height: 90%;
+    width: 100%; /* Was 80% for sidebar + footer */
+    /* height: 90%; */
     display: inline-block;
 }
 .content-container .Ad_Content

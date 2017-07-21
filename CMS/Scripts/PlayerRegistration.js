@@ -7,24 +7,26 @@ $(document).ready(function(){
     {
         var currentHostName = $(CurrentElement).val().trim();
         var match = false;
-        $("div.host").each(function(){
-            if($(this).text() == currentHostName)
+        if(!$("#meta").data('edit')){
+            $("div.host").each(function(){
+                if($(this).text() == currentHostName)
+                {
+                    $(this).css('background-color', 'red');                                                     
+                    match = true;
+                }
+                else
+                {
+                    $(this).css('background-color', '#BCC16F');                       
+                }
+            });
+            if(match)
             {
-                $(this).css('background-color', 'red');                                                     
-                match = true;
+                error("That Hostname is already registered");
+                $("input[type='submit']").prop('disabled', true)
+            } else {
+                clearErrors()
+                $("input[type='submit']").prop('disabled', false)
             }
-            else
-            {
-                $(this).css('background-color', '#BCC16F');                       
-            }
-        });
-        if(match)
-        {
-            error("That Hostname is already registered");
-            $("input[type='submit']").prop('disabled', true)
-        } else {
-            clearErrors()
-            $("input[type='submit']").prop('disabled', false)
         }
     }
 
@@ -37,7 +39,8 @@ $(document).ready(function(){
             }
         }
     });
-    //wayfindingCheckedHandler()
+    /* Run on page load just incase a player is being edited */
+    wayfindingCheckedHandler()
     function wayfindingCheckedHandler()
     {
         if($("input[type='checkbox']").is(':checked')){

@@ -36,20 +36,52 @@
                 <p>All Wayfinding LCD Names: </p>
                 <div style="width: 200px;">
                 <?php 
-                    $AllLCDs = file("Wayfinding_Files/WayfindingLCDs.txt", FILE_IGNORE_NEW_LINES);
-                    for($i = 0;$i < count($AllLCDs);$i++){
-                        printf("<div class='WayfindingName'>" . $AllLCDs[$i] . "</div>");
+                    $AllLCDs = file("Wayfinding_Files/WayfindingLCDs.csv", FILE_IGNORE_NEW_LINES);
+                    for($i = 1;$i < count($AllLCDs);$i++){
+                        $lcd = explode(",", $AllLCDs[$i]);
+                        printf("<div class='WayfindingName' data-inUse=" . $lcd[1] . ">" . $lcd[0] . "</div>");
                     }
                 ?>
                 </div>
             </div>
             <br>
-            <form action="registerPlayer.php" method="post">
-                <p>Host Name:</p><input type="text" value=<?php echo "\"" . $HostName_SERVER . "\"" ?> name="hostname"><br>
-                <p>Groups:</p><input type="text" name="groups"><br>
-                <p>Use Wayfinding:</p><input type="checkbox" name="useWayfinding" unchecked><br>
-                <div class="wayfindingNameWrapper"><p>Wayfinding Name:</p><input type="text" name="wayfindingName" placeholder="lcd." value="lcd."><br></div>                
-                <input type="submit" value="Submit New Host Name">
+            <?php
+                $registrationParams = "";
+                $hostName = "";
+                $hostGroups = "";
+                $useWayfinding = "";
+                $wayfindingName = "lcd.";
+                $buttonMessage = "Submit New Host";
+
+                if(isset($_GET['edit']))
+                {
+                    echo "<div id='meta' style='display: none;' data-edit='true'></div>";
+                    $hostName = $_GET['hostName'];
+                    $registrationParams = "?deleteHost=" . $hostName;
+                    $buttonMessage = "Submit Edits To " . $hostName;
+                    $hostGroups =  trim(preg_replace("/,/", " ", $_GET['hostGroups']));
+                    $useWayfinding = $_GET['useWayfinding'];
+                    if($useWayfinding == "true"){
+                        $useWayfinding = "checked";
+                    } else {
+                        $useWayfinding = "unchecked";
+                    }
+                    if(isset($_GET['wayfindingName'])) {
+                        $wayfindingName = $_GET['wayfindingName'];
+                    }
+
+                } else {
+                    $hostName = $HostName_SERVER;
+                }
+
+                
+            ?>
+            <form action= <?php echo "registerPlayer.php" . $registrationParams ?> method="post">
+                <p>Host Name:</p><input type="text" value= <?php echo "\"" . $hostName . "\"" ?> name="hostname"><br>
+                <p>Groups:</p><input type="text"  value= <?php echo "\"" . $hostGroups . "\"" ?> name="groups"><br>
+                <p>Use Wayfinding:</p><input type="checkbox" name="useWayfinding" <?php echo $useWayfinding ?>><br>
+                <div class="wayfindingNameWrapper"><p>Wayfinding Name:</p><input type="text" value= <?php echo "\"" . $wayfindingName . "\"" ?> name="wayfindingName" placeholder="lcd." value="lcd."><br></div>                
+                <input type="submit" value=<?php echo "\"" . $buttonMessage . "\"" ?>>
             </form>
         </div>
     </body>

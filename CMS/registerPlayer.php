@@ -1,18 +1,37 @@
 <?php
     include_once "globals.php";
 
-    $wayfinding = "true";
-    if($_POST['useWayfinding'] !== "on"){
-        $wayfinding = "false";
+    $wayfinding = "false";
+    if(isset($_POST['useWayfinding'])){
+        $wayfinding = "true";
     }
+    $wayfindingName = $_POST['wayfindingName'];
+    if($wayfindingName == "lcd.") { $wayfindingName = ""; }
 
-    $DataToBeWritten = "\r\n" . $_POST['hostname'] . "," . $wayfinding . "," . $_POST['groups'] . "," . $_POST['wayfindingName'];
-    
-    echo $DataToBeWritten . " -> " . $Player_Info_Path;
-    //Write the data to our player file!
-    file_put_contents($Player_Info_Path, $DataToBeWritten,  FILE_APPEND | LOCK_EX);
+    $DataToBeWritten = $_POST['hostname'] . "," . $wayfinding . "," . $_POST['groups'] . "," . $wayfindingName;
+    printf($DataToBeWritten . " -> " . $Player_Info_Path);    
+
+    /* Check if we are editing (deleting) a host */
+    if(isset($_GET['deleteHost'])){
+        /* If so replace the line in the file which contains the old host with the new one */
+        $playerFile = file($Player_Info_Path, FILE_IGNORE_NEW_LINES);
+        for($i = 1;$i < count($playerFile);$i++){
+            $line = explode(",", $playerFile[$i]);
+            if($line[0] == $_GET['deleteHost']){
+                $playerFile[$i] = $DataToBeWritten;
+                break;
+            }
+        }
+        file_put_contents($Player_Info_Path, $PlayersInformationHeader);
+        for($i = 1;$i < count($playerFile);$i++){
+            file_put_contents($Player_Info_Path, "\r\n" . $playerFile[$i],  FILE_APPEND | LOCK_EX);
+        }
+    } else {
+        //Write the data to our player file!
+        file_put_contents($Player_Info_Path, "\r\n" . $DataToBeWritten,  FILE_APPEND | LOCK_EX);
+    }
       //Then take us to the display content page.
      //My thought here is that an error will display if no groups were chosen.
     //When status page is up I will redirect there.
-    header("location: status);
+    header("location: status");
 ?>

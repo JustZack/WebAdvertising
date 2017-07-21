@@ -1,7 +1,0 @@
-lcd.RamTech
-lcd.FoodCourtSouth
-lcd.CampusInfoSouth
-lcd.CampusInfoEast
-lcd.FirstFloorHallway
-lcd.TopFloorGatherArea
-lcd.SouthExit

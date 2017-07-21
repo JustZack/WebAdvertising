@@ -28,28 +28,31 @@
             $PlayerData = file($Player_Info_Path, FILE_IGNORE_NEW_LINES);
             if(count($PlayerData) == 1)
             {
-                echo "\n\t\t\t<p style='width: 100%;text-align: center;font-size: 18px;'>No Hosts Registered!</p>";
+                echo "\n\t\t\t<p style='width: 100%;text-align: center;font-size: 18px;'><br>No Players Registered!<br></p>";
             }
-            for($i = 1;$i < count($PlayerData);$i++)
-            {
-                $CurrentPlayer = explode(",", $PlayerData[$i]);
-                printf("\n\t\t\t<div class='hostData'>\n");
-                printf("\t\t\t\t<div class='hostNameWrapper'><div class='hostName'>" . $CurrentPlayer[0] . "</div><div class='editHost'>Edit</div></div>\n");
-                $CurrentPlayerGroups = explode(" ", $CurrentPlayer[2]);
-                printf("\t\t\t\t\t<div class='hostGroups'>\n");                    
-                for($j = 0;$j < count($CurrentPlayerGroups);$j++){
-                    if($CurrentPlayerGroups[$j]){
-                        printf("\t\t\t\t\t\t<div class='hostGroup'>" . $CurrentPlayerGroups[$j] . "</div>\n");
+            else{
+                printf("\n\t\t\t<div class='title'>Registered Players</div>");
+                for($i = 1;$i < count($PlayerData);$i++)
+                {
+                    $CurrentPlayer = explode(",", $PlayerData[$i]);
+                    printf("\n\t\t\t<div class='hostData'>\n");
+                    printf("\t\t\t\t<div class='hostNameWrapper'><div class='hostName'>" . $CurrentPlayer[0] . "</div><div class='editHost'>Edit</div></div>\n");
+                    $CurrentPlayerGroups = explode(" ", $CurrentPlayer[2]);
+                    printf("\t\t\t\t\t<div class='hostGroups'>\n");                    
+                    for($j = 0;$j < count($CurrentPlayerGroups);$j++){
+                        if($CurrentPlayerGroups[$j]){
+                            printf("\t\t\t\t\t\t<div class='hostGroup'>" . $CurrentPlayerGroups[$j] . "</div>\n");
+                        }
                     }
+                    printf("\t\t\t\t</div>\n");
+                    if(!empty($CurrentPlayer[3])){
+                        printf("\t\t\t\t<div class='hostWayfinding'><div class='left'>" . $CurrentPlayer[1] . "</div><div class='right'>" .  $CurrentPlayer[3] . "</div></div>\n");
+                    } else {
+                        printf("\t\t\t\t<div class='hostWayfinding'>" . $CurrentPlayer[1] . "</div>\n");                    
+                    }
+                    printf("\t\t\t\t<a href = 'DisplayAdContent.php?" . getHostParameters($CurrentPlayer[0]) . "'><div class='viewhost'>View Player</div></a>");
+                    printf("\t\t\t</div>\n");
                 }
-                printf("\t\t\t\t</div>\n");
-                if(!empty($CurrentPlayer[3])){
-                    printf("\t\t\t\t<div class='hostWayfinding'><div id='left'>" . $CurrentPlayer[1] . "</div><div id='right'>" .  $CurrentPlayer[3] . "</div></div>\n");
-                } else {
-                    printf("\t\t\t\t<div class='hostWayfinding'>" . $CurrentPlayer[1] . "</div>\n");                    
-                }
-                printf("\t\t\t\t<a href = 'DisplayAdContent.php?" . getHostParameters($CurrentPlayer[0]) . "'><div class='viewhost'>View Player</div></a>");
-                printf("\t\t\t</div>\n");
             }
         ?>
         </div>

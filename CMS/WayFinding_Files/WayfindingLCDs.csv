@@ -1,0 +1,8 @@
+lcd Name, In Use
+lcd.RamTech,false
+lcd.FoodCourtSouth,false
+lcd.CampusInfoSouth,false
+lcd.CampusInfoEast,false
+lcd.FirstFloorHallway,false
+lcd.TopFloorGatherArea,false
+lcd.SouthExit,false
