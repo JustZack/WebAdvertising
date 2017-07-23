@@ -30,7 +30,7 @@ Useablilty:
 
 
 What is left to do:
-    Uploading local content to the server
+    Uploading local content to the server with drag & drop
     Ability to select a file that is present on the server as the content.
         Users click the content on the server they want and the box is auto populated with the path.
     Make Groups deletable on status page
