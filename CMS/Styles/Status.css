@@ -136,9 +136,9 @@ input[name='editGroupName']{
     line-height: 14px;
     text-align: center;
     width: 200px;
-    background-color: grey;
+    background-color: #D1D1D1;
     border-radius: 3px;
-    color: white;
+    color: #171717;
     border: none;
 }
 .editGroup{
@@ -227,7 +227,7 @@ input[name='editGroupName']{
     overflow: hidden;
 }
 .removeContent{
-    background-color: red;
+    background-color: #FF3300;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
@@ -235,7 +235,7 @@ input[name='editGroupName']{
 }
 .removeContent:hover{
     cursor: pointer;
-    background-color: #D10000;
+    background-color: #D12A00;
 }
 #createNewWrapper p{
     border: none;
@@ -246,13 +246,13 @@ input[name="groupName"]{
     width: 250px;
     padding: 5px;
     border: none;
-    background-color: grey;
+    background-color: #D1D1D1;
     border-radius: 3px;
-    color: white;
+    color: #171717;
     font-size: 14px;
 }
 input[name="groupName"]::placeholder{
-    color: white;
+    color: #171717;
     font-size: 14px;
 }
 

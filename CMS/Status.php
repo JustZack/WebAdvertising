@@ -64,7 +64,7 @@
                 $Group = substr($Groups[$i], strrpos($Groups[$i], DIRECTORY_SEPARATOR) + 1);
                 printf("\n\t\t\t<div class='groupData' id='" . $Group . "'>\n");
                 printf("\t\t\t\t<div class='groupName'>" . $Group . "<div class='editGroup'>Edit</div></div>\n");
-                printf("\t\t\t\t<form class='editGroupName'><input name='editGroupName' type='text' value='" . $Group . "'><input type='submit' style='display:none;'></form>\n");                
+                printf("\t\t\t\t<form class='editGroupName' method='post'><input name='editGroupName' type='text' value='" . $Group . "'></form>\n");                
                 //Print out everything this group refrences
                 printf("\t\t\t\t<div class='groupWrapper'>\n");
                 loadByGroup($Group, true);//Load each ad from this group

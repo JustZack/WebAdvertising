@@ -4,6 +4,10 @@ $(document).ready(function(){
     }
     $(".groupName").click(function(){
         if($(".groupWrapper", $(this).parent()).css("display") == "none"){
+            $(".groupWrapper").each(function(){
+                if($(this).css("display") == "block")
+                    $(this).css("display", "none");
+            });
             $(".groupWrapper", $(this).parent()).css("display", "block");
 
         } else if($(".groupWrapper", $(this).parent()).css("display") == "block"){
@@ -15,18 +19,22 @@ $(document).ready(function(){
     $(".editGroup").click(function(e){
         //Make the name an input field.
         $("form.editGroupName", $(this).parent().parent()).css("display","inline-block");
+        $("form.editGroupName input[type='submit']", $(this).parent().parent()).prop("disabled", false);
         $(this).parent().css("display","none");       
         e.stopPropagation();
-        editGroupNameChange();
     });
 
-    function editGroupNameChange(){
-        var action = "editGroupName.php?old=" + $(".groupName", $(this).parent().parent()).clone().children().remove().end().text() + "&new=" + $(this).val();
+    $("input[name='editGroupName']").keyup(function(e){
+        var action = "editGroupName.php?old="
+         + $(".groupName", $(this).parent().parent()).clone().children().remove().end().text() 
+         + "&new=" + $(this).val();
         console.log(action);
         $(this).parent().attr("action", action);
-    }
-    $("input[name='editGroupName']").change(function(){
-        editGroupNameChange();
+        if(e.keyCode === 27){
+            $("input[type='submit']", $(this).parent()).prop("disabled", true);
+            $(this).parent().css("display", "none");
+            $(".groupName", $(this).parent().parent()).css("display", "block");
+        }
     });
 
     $('.DirName').click(function(){

@@ -37,9 +37,9 @@
         $Ad_Content_Path,
         $Player_Path,
         $Player_Info_Path,
-        $Groups_Path,
-        $Default_Group_Path,
-        $Default_Group_Info_Path
+        $Groups_Path//,
+        //$Default_Group_Path,
+        //$Default_Group_Info_Path
     );
     fileCheck();
     /*
