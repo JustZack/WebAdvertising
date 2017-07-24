@@ -90,17 +90,19 @@ $(document).ready(function()
     function iframeReset(){
         if($('#Ad_' + Ad_Position).is("iframe") == true)
         {
+            var src;
             //Youtube: Stop playing of video
             if($('#Ad_' + Ad_Position).attr('src').indexOf('youtube') >= 0)
             {
-                var src = $('#Ad_' + Ad_Position).attr('src');
+                src = $('#Ad_' + Ad_Position).attr('src');
                 if(src.indexOf('?') >= 0)
                 {
                     var firstQMark = src.indexOf('?');
                     var newSrc = src.substring(0, firstQMark);
-                    $('#Ad_' + Ad_Position).attr('src', newSrc);
+                    src = newSrc;
                 }
             }
+            $('#Ad_' + Ad_Position).attr('src', src);
         }
     }
     //Ensures all iframe content has started playing
