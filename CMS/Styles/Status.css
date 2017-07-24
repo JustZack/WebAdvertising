@@ -1,3 +1,51 @@
+*{
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+.edit{
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    background-color: #3aa800;
+    border-radius: 5px;
+}
+.edit:hover{
+    background-color: #2F8900;
+    cursor: pointer;
+}
+input{
+    user-drag: text; 
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-drag: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+}
+input:placeholder{
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+/* Generic delete button class */
+.delete{
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    background-color: #FF3300;
+    color: white;
+    border-radius: 5px;  
+    font-size: 16px;  
+}
+.delete:hover{
+    background-color:#D12A00;
+    cursor: pointer;
+}
+
 #HostInformation{
     background-color: rgb(173,216,230);
     border: 2px solid rgb(135,206,250);
@@ -114,7 +162,15 @@ a{
 
 .groupData{
     text-align: center;
-    font-size: 18px;  
+    font-size: 18px;
+    /* This removes any selection entirely */
+    /* Deciding if this should be a thing or not */
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;  
 }
 
 .groupName{
@@ -142,21 +198,19 @@ input[name='editGroupName']{
     border: none;
 }
 .editGroup{
-    display: inline-block;
-    color: white;
     font-size: 14px;
-     /* Deciding if I like this...*/
-    /*text-decoration: underline;*/
-    background-color: black;
     padding: 2px 5px;
     margin: 2px 5px;
-    border-radius: 5px;
-}
-.editGroup:hover{
-    background-color: white;
-    color: black;
 }
 
+.deleteGroup{
+    margin: 2px 5px;
+    padding: 2px 5px;
+    float: right;
+    position: absolute;
+    right: 10px;
+    font-size: 14px;
+}
 .groupWrapper{
     background-color: rgb(173,216,230);
     padding: 5px;
@@ -227,15 +281,7 @@ input[name='editGroupName']{
     overflow: hidden;
 }
 .removeContent{
-    background-color: #FF3300;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    color:white;
-}
-.removeContent:hover{
-    cursor: pointer;
-    background-color: #D12A00;
+    display: block;
 }
 #createNewWrapper p{
     border: none;
@@ -246,6 +292,7 @@ input[name="groupName"]{
     width: 250px;
     padding: 5px;
     border: none;
+    text-align: center;
     background-color: #D1D1D1;
     border-radius: 3px;
     color: #171717;
@@ -260,12 +307,6 @@ input[name="groupName"]::placeholder{
     width: 100%;
     background-color: rgb(87,108,115);
     border: 2px solid rgb(68,103,125);
-}
-
-#Drag-And-Drop{
-    position: absolute;
-    height: 100%;
-    width: 100%;
 }
 
 .Dir{
@@ -294,4 +335,3 @@ input[name="groupName"]::placeholder{
     border-radius: 5px;
     background-color: rgb(173,216,230);
 }
-

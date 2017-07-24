@@ -3,6 +3,7 @@
     <?php include_once "generichead.php" ?>
         <link href="Styles/Status.css" rel="stylesheet">
         <script src="Scripts/Status.js" rel="javascript"></script>
+        <script src="Scripts/dropzone.js" rel="javascript"></script>
     </head>
     <body>
     <?php
@@ -36,7 +37,7 @@
                 {
                     $CurrentPlayer = explode(",", $PlayerData[$i]);
                     printf("\n\t\t\t<div class='hostData'>\n");
-                    printf("\t\t\t\t<div class='hostNameWrapper'><div class='hostName'>" . $CurrentPlayer[0] . "</div><div class='editHost'>Edit</div><div class='deleteHost'>Delete</div></div>\n");
+                    printf("\t\t\t\t<div class='hostNameWrapper'><div class='hostName'>" . $CurrentPlayer[0] . "</div><div class='edit editHost'>Edit</div><div class='delete deleteHost'>Delete</div></div>\n");
                     $CurrentPlayerGroups = explode(" ", $CurrentPlayer[2]);
                     printf("\t\t\t\t\t<div class='hostGroups'>\n");                    
                     for($j = 0;$j < count($CurrentPlayerGroups);$j++){
@@ -63,8 +64,10 @@
             for($i = 0;$i < count($Groups);$i++){
                 $Group = substr($Groups[$i], strrpos($Groups[$i], DIRECTORY_SEPARATOR) + 1);
                 printf("\n\t\t\t<div class='groupData' id='" . $Group . "'>\n");
-                printf("\t\t\t\t<div class='groupName'>" . $Group . "<div class='editGroup'>Edit</div></div>\n");
-                printf("\t\t\t\t<form class='editGroupName' method='post'><input name='editGroupName' type='text' value='" . $Group . "'></form>\n");                
+                printf("\t\t\t\t<div class='groupName'>" . $Group . "<div class='edit editGroup'>Edit</div><div class='delete deleteGroup'>Delete Group</div></div>\n");
+                printf("\t\t\t\t<form class='editGroupName' method='post'><input name='editGroupName' type='text'");
+                echo " title='No spaces or special characters' pattern='^[^\\/?%*: |\"<>\.]+$'"; 
+                printf("value='" . $Group . "'></form>\n");              
                 //Print out everything this group refrences
                 printf("\t\t\t\t<div class='groupWrapper'>\n");
                 loadByGroup($Group, true);//Load each ad from this group
@@ -92,13 +95,18 @@
             <div class='groupData' id='createNewWrapper' style='background-color: #3aa800;'>
                 <form action="CreateGroup.php">
                     <p>
-                        <input type="text" placeholder="New Group (One Word only)" name="groupName">
+                        <input type="text" placeholder="New Group (No Spaces)" title="No spaces or special characters"pattern='^[^\\/?%*: |"<>\.]+$' name="groupName">
                     </p>
                     <input type="submit" style="display:none;">
                 </form>
             </div>
         </div>
-        <div id="ContentInformation">   
+        <form action="/file-upload" class="dropzone" id="dropzone-upload">
+            <div class="fallback">
+                <input name="file" type="file" multiple />
+            </div>
+        </form>
+        <div id="ContentInformation">
         <?php
             loadByFolder($Content_Path);
         ?>

@@ -105,7 +105,7 @@
             tableEntry("Sub-Content", $ContentInfo[7]);
             
             printf("\t\t\t\t</table>\n");      
-            printf("\t\t\t\t<a data-link='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='removeContent'>Delete</div></a>");                  
+            printf("\t\t\t\t<a data-link='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='delete removeContent'>Delete</div></a>");                  
             printf("\t\t\t</div>\n");       
              
         }

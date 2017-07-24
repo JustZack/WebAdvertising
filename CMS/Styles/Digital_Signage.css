@@ -18,7 +18,7 @@ body{
 .content-container{
     cursor: none;
     z-index: 1;
-    width: 100%; /* Was 80% for sidebar & footer */
+    width: 80%; /* Was 80% for sidebar & footer */
     height: 100%;
     display: inline-block;
 }
@@ -39,11 +39,26 @@ body{
 
 
 #SideBar{
+    overflow: hidden;
     float: right;
     width: 20%;
     height: 100%;
+    background-color: white;
+    border-left: 5px #171717;
 }
 
+#Weather{
+
+}
+#Weather img{
+    height: 128px;
+}
+#Weather h1{ 
+    font-size: 40px;
+    font-weight: 400;
+    color: #171717;
+    height: 128px;
+}
 #SubContentContainer{ 
     border: none;
     height: 100%;

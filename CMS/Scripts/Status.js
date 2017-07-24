@@ -15,13 +15,12 @@ $(document).ready(function(){
         }
     });
 
-    /* TODO: Another time, this is takeing too much time */
     $(".editGroup").click(function(e){
         //Make the name an input field.
         $("form.editGroupName", $(this).parent().parent()).css("display","inline-block");
         $("form.editGroupName input[type='submit']", $(this).parent().parent()).prop("disabled", false);
         $(this).parent().css("display","none");       
-        e.stopPropagation();
+        e.stopPropagation();//ensures we dont click through the edit button
     });
 
     $("input[name='editGroupName']").keyup(function(e){
@@ -37,6 +36,14 @@ $(document).ready(function(){
         }
     });
 
+    $(".deleteGroup").click(function(e){
+        var groupName = $(this).parent().clone().children().remove().end().text();
+        if(confirm("Delete " + groupName + "?")){
+            window.location.href = "deleteGroup.php?name=" + groupName;
+        }
+        e.stopPropagation();//Ensures we dont click through the delete button
+    });
+
     $('.DirName').click(function(){
         if($(".files", $(this).parent()).css("display") == "block"){
             $(".files", $(this).parent()).css("display", "none");
@@ -47,7 +54,7 @@ $(document).ready(function(){
     });
 
     $(".removeContent").click(function(){
-        if(confirm("Are you sure you want to delete this content?")){
+        if(confirm("Delete this content?")){
             window.location.href = $(this).parent().data('link');
         }
     });
@@ -82,11 +89,10 @@ $(document).ready(function(){
     $('.deleteHost').click(function(){
         $hostWrapper = $(this).parent().parent();        
         var hostName = $(".hostName", $hostWrapper).text();
-        if(confirm("Are you sure you want to delete " + hostName + "?")){
+        if(confirm("Are you sure you want to delete the host " + hostName + "?")){
             window.location.href = "deletePlayer?name=" + hostName;
         }
     });
-
 
     $("input[name='groupName']").change(function(){
         if($("input[name='groupName']").val().indexOf(" ") > 0) {}
