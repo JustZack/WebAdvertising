@@ -77,7 +77,8 @@
                 
             ?>
             <form action= <?php echo "registerPlayer.php" . $registrationParams ?> method="post">
-                <p>Host Name:</p><input type="text" value= <?php echo "\"" . $hostName . "\"" ?> name="hostname"><br>
+                <p>Host Name (IP address) :</p><input type="text" value= <?php echo "\"" . $hostName . "\"" ?> name="hostname" required><br>
+                <p>Nick Name:</p><input type="text" name="nickname" required><br>                
                 <p>Groups:</p><input type="text"  value= <?php echo "\"" . $hostGroups . "\"" ?> name="groups"><br>
                 <p>Use Wayfinding:</p><input type="checkbox" name="useWayfinding" <?php echo $useWayfinding ?>><br>
                 <div class="wayfindingNameWrapper"><p>Wayfinding Name:</p><input type="text" value= <?php echo "\"" . $wayfindingName . "\"" ?> name="wayfindingName" placeholder="lcd." value="lcd."><br></div>                

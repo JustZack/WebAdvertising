@@ -38,8 +38,9 @@
                 {
                     $CurrentPlayer = explode(",", $PlayerData[$i]);
                     printf("\n\t\t\t<div class='hostData'>\n");
-                    printf("\t\t\t\t<div class='hostNameWrapper'><div class='hostName'>" . $CurrentPlayer[0] . "</div><div class='edit editHost'>Edit</div><div class='delete deleteHost'>Delete</div></div>\n");
-                    $CurrentPlayerGroups = explode(" ", $CurrentPlayer[2]);
+                    printf("\t\t\t\t<div class='hostNameWrapper'><div class='nickName'>" . $CurrentPlayer[1] . "</div><div class='edit editHost'>Edit</div><div class='delete deleteHost'>Delete</div></div>\n");
+                    printf("\t\t\t\t<div class='hostNameWrapper'><div class='hostName'>" . $CurrentPlayer[0] . "</div></div>");
+                    $CurrentPlayerGroups = explode(" ", $CurrentPlayer[3]);
                     printf("\t\t\t\t\t<div class='hostGroups'>\n");                    
                     for($j = 0;$j < count($CurrentPlayerGroups);$j++){
                         if($CurrentPlayerGroups[$j]){
@@ -47,10 +48,10 @@
                         }
                     }
                     printf("\t\t\t\t</div>\n");
-                    if(!empty($CurrentPlayer[3])){
-                        printf("\t\t\t\t<div class='hostWayfinding'><div class='left'>" . $CurrentPlayer[1] . "</div><div class='right'>" .  $CurrentPlayer[3] . "</div></div>\n");
+                    if(!empty($CurrentPlayer[4])){
+                        printf("\t\t\t\t<div class='hostWayfinding'><div class='left'>" . $CurrentPlayer[2] . "</div><div class='right'>" .  $CurrentPlayer[4] . "</div></div>\n");
                     } else {
-                        printf("\t\t\t\t<div class='hostWayfinding'>" . $CurrentPlayer[1] . "</div>\n");                    
+                        printf("\t\t\t\t<div class='hostWayfinding'>" . $CurrentPlayer[2] . "</div>\n");                    
                     }
                     printf("\t\t\t\t<a href = 'DisplayAdContent.php?" . getHostParameters($CurrentPlayer[0]) . "'><div class='viewhost'>View Player</div></a>");
                     printf("\t\t\t</div>\n");

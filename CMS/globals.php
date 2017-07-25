@@ -18,7 +18,7 @@
         These are the headers used in the the creation of files
     */
     $AdContentInfoHeader = "Path,Start Date,End Date,Duration,Specific Day,Specific Time,Condition for showing";
-    $PlayersInformationHeader = "Hostname,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name";
+    $PlayersInformationHeader = "Hostname,Nick Name,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name";
     
     /*
         Variables which contain the paths for some important folders / files
@@ -119,7 +119,7 @@
                 $line = explode(",", $FileContents[$i]);
                 if($line[0] == $HostName){
                     $toReturn = "hostname=" . $line[0];
-                    if(!empty($line[3])) $toReturn .= "&hostLCDname=" . $line[3];
+                    if(!empty($line[3])) $toReturn .= "&hostLCDname=" . $line[4];
                     return $toReturn;
                 }
                 else { continue; }

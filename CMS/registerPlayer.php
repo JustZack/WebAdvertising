@@ -8,7 +8,7 @@
     $wayfindingName = $_POST['wayfindingName'];
     if($wayfindingName == "lcd.") { $wayfindingName = ""; }
 
-    $DataToBeWritten = $_POST['hostname'] . "," . $wayfinding . "," . $_POST['groups'] . "," . $wayfindingName;
+    $DataToBeWritten = $_POST['hostname'] . "," . $_POST['nickname'] . "," . $wayfinding . "," . $_POST['groups'] . "," . $wayfindingName;
     printf($DataToBeWritten . " -> " . $Player_Info_Path);    
 
     /* Check if we are editing (deleting) a host */
@@ -17,7 +17,7 @@
         $playerFile = file($Player_Info_Path, FILE_IGNORE_NEW_LINES);
         for($i = 1;$i < count($playerFile);$i++){
             $line = explode(",", $playerFile[$i]);
-            if($line[0] == $_GET['deleteHost']){
+            if($line[1] == $_GET['deleteHost']){
                 $playerFile[$i] = $DataToBeWritten;
                 break;
             }

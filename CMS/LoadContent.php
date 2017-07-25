@@ -24,7 +24,7 @@
             $Host_Info = $line;
             //We have the hostname on record! Lets grab the group information.
             if($line[2] !== ''){
-                $Groups = $line[2];
+                $Groups = $line[3];
             }
             //Leave the for loop, we found what we were looking for!
             break;
@@ -36,7 +36,7 @@
         exit();
     }
 
-    printf("<div id='HostData' data-usewayfinding='" . $Host_Info[1] . "'></div>");
+    printf("<div id='HostData' data-usewayfinding='" . $Host_Info[2] . "'></div>");
 
     include_once "ContentLoader.php";
     

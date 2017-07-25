@@ -78,7 +78,7 @@ input:placeholder{
     display: inline-block;
     width: 100%;
 }
-.hostName{
+.hostName, .nickName{
     margin: 5px;
     padding: 5px;
     color: white;

@@ -1,5 +1,3 @@
-Hostname,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name
-localhost,true,JK,lcd.RamTech
-129.82.221.56,false,Ads RamFest ,
-129.82.221.54,true,RamFest ,lcd.RamTech
-129.82.223.130,false,Ads  RamFest ,
+Hostname,Nick Name,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name
+129.82.221.56,Zacks Colab MAC,true,Ads  RamFest ,lcd.RamTech
+129.82.223.130,Colab Test,true,Ads  RamFest ,lcd.FirstFloorHallway

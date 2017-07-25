@@ -1,0 +1,5 @@
+Plug into display
+Shift + Q
+shutdown
+{Make batch script for host}
+Open up edge
