@@ -18,7 +18,7 @@ body{
 .content-container{
     cursor: none;
     z-index: 1;
-    width: 80%; /* Was 80% for sidebar & footer */
+    width: 100%; /* Was 80% for sidebar & footer */
     height: 100%;
     display: inline-block;
 }
@@ -48,7 +48,7 @@ body{
 }
 
 #Weather{
-
+ width: 0px;
 }
 #Weather img{
     height: 128px;

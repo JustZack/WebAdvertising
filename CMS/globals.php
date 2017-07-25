@@ -17,7 +17,7 @@
     /*
         These are the headers used in the the creation of files
     */
-    $AdContentInfoHeader = "Path,Start Date,End Date,Duration,Specific Day,Specific Time,Condition for showing,Sub-Content-Link";
+    $AdContentInfoHeader = "Path,Start Date,End Date,Duration,Specific Day,Specific Time,Condition for showing";
     $PlayersInformationHeader = "Hostname,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name";
     
     /*

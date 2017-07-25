@@ -9,6 +9,8 @@ $(document).ready(function()
 
     var Specific_Id;
 
+    //bool to detemine if the current iframe has loaded
+    var iframeLoaded = false;    
     var Timeout;
     //Sets up the variables for the enviroment
     function initialStartup(){
@@ -62,11 +64,23 @@ $(document).ready(function()
         progressAdNumber(); //Progress the ad number           
         $('#Ad_' + Ad_Position).css('display','block'); //Display the current ad.
         Total_Elapsed_Time += $('#Ad_' + Ad_Position).data('duration') * 1000;
+        waitForIframe();
         Timeout = setTimeout(advanceAds, $('#Ad_' + Ad_Position).data('duration') * 1000);
+        
     }
+
+    function waitForIframe(){
+        if(iframeLoaded){
+            return;
+        } else {
+            setTimeout(function() {
+                waitForIframe();
+            }, 250);
+        }
+    }
+
     //Progress the ad number forward to the next valid number
     function progressAdNumber(){
-        resetSubContent();
         iframeReset(); 
 
         if(Ad_Position == Ad_Count){
@@ -78,7 +92,6 @@ $(document).ready(function()
         if($('#Ad_' + Ad_Position).attr("data-specific-time")){ progressAdNumber(); }
 
         iframeAdvancement();
-        setSubContent();
     }
 
     //Is called everytime our update interval for the player is up.
@@ -90,6 +103,7 @@ $(document).ready(function()
     function iframeReset(){
         if($('#Ad_' + Ad_Position).is("iframe") == true)
         {
+            iframeLoaded = false;            
             var src;
             //Youtube: Stop playing of video
             if($('#Ad_' + Ad_Position).attr('src').indexOf('youtube') >= 0)
@@ -101,26 +115,41 @@ $(document).ready(function()
                     var newSrc = src.substring(0, firstQMark);
                     src = newSrc;
                 }
+                else{
+                    src = $('#Ad_' + Ad_Position).attr('src');
+                }
             }
-            $('#Ad_' + Ad_Position).attr('src', src);
+            $('#Ad_' + Ad_Position).attr('src', src);            
+        } 
+        else {
+            iframeLoaded = true; 
         }
     }
     //Ensures all iframe content has started playing
     function iframeAdvancement(){
         if($('#Ad_' + Ad_Position).is("iframe") == true)
         {
+            iframeLoaded = false;
+            var src;
             //Youtube: Start playback of video
             if($('#Ad_' + Ad_Position).attr('src').indexOf('youtube') >= 0)
             {
                 var toAdd = "";
-                var src = $('#Ad_' + Ad_Position).attr('src');          
+                src = $('#Ad_' + Ad_Position).attr('src');          
                 if(src.indexOf("?") >= 0){
                     toAdd += "&autoplay=1";
                 } else {
                     toAdd += "?autoplay=1";
                 }
-                $('#Ad_' + Ad_Position).attr('src', src + toAdd);
+                src += toAdd;
             }
+            else{
+                src = $('#Ad_' + Ad_Position).attr('src');
+            }          
+            $('#Ad_' + Ad_Position).attr('src', src);
+        }
+        else {
+            iframeLoaded = true;            
         }
     }
     //Plays a specific iframe ad
@@ -158,23 +187,6 @@ $(document).ready(function()
             }
         }
         advanceAds();
-    }
-    //Gets the sub-content (if any) for the ad that is playing
-    function setSubContent(){
-        /* Check if this ad has subcontent */
-        if($("#Ad_" + Ad_Position).data("sub-content-link"))
-        {        
-            /* Grab the sub content */
-            var subContent = $("#Ad_" + Ad_Position).data("sub-content-link");
-            /* Throw is into the subcontent img */
-            $("#SubContent").attr("src", subContent);
-            $("#SubContentContainer").css("display", "block");            
-        }
-    }
-    //Resets the subcontent element
-    function resetSubContent(){
-        $("#SubContent").attr("src", "");
-        $("#SubContentContainer").css("display", "none");
     }
     initialStartup();
 

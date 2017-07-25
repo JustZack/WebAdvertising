@@ -28,9 +28,6 @@
                 </div>
                 <!-- Tappable div for switching to wayfinding -->                
             </div>
-            <div id="SubContentContainer">
-                <img id="SubContent" alt='Sub-Content'>
-            </div>
         </div>
     </body>
 </html>

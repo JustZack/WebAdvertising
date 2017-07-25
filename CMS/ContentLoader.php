@@ -77,9 +77,6 @@
                                 if($ContentInfo[5] !== ''){
                                     $CurrentContentString .= " data-specific-time='" . $ContentInfo[5] . "'";
                                 }
-                                if($ContentInfo[7] !== ''){
-                                    $CurrentContentString .= " data-sub-content-link='" . $ContentInfo[7] . "'";
-                                }
                                 echo $CurrentContentString . $EndCurrentContentString;
                             }
                         }
@@ -102,7 +99,6 @@
             tableEntry("Specific Day", $ContentInfo[4]);            
             tableEntry("Specific Time", $ContentInfo[5]);
             tableEntry("Condition", $ContentInfo[6]);
-            tableEntry("Sub-Content", $ContentInfo[7]);
             
             printf("\t\t\t\t</table>\n");      
             printf("\t\t\t\t<a data-link='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='delete deleteAd'>Delete</div></a>");                  
