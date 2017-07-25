@@ -53,8 +53,8 @@ $(document).ready(function(){
         }
     });
 
-    $(".removeContent").click(function(){
-        if(confirm("Delete this content?")){
+    $(".deleteAd").click(function(){
+        if(confirm("Delete this ad?")){
             window.location.href = $(this).parent().data('link');
         }
     });
@@ -89,11 +89,19 @@ $(document).ready(function(){
     $('.deleteHost').click(function(){
         $hostWrapper = $(this).parent().parent();        
         var hostName = $(".hostName", $hostWrapper).text();
-        if(confirm("Are you sure you want to delete the host " + hostName + "?")){
+        if(confirm("Delete the host " + hostName + "?")){
             window.location.href = "deletePlayer?name=" + hostName;
         }
     });
 
+    $('.deleteContent').click(function(){
+        $parent = $(this).parent();
+        var fileName = $('.file_path', $parent).text();
+        if(confirm("Delete this content?")){
+            window.location.href = "deleteContent.php?name=" + fileName;
+        }
+    });
+    
     $("input[name='groupName']").change(function(){
         if($("input[name='groupName']").val().indexOf(" ") > 0) {}
         console.log("Check Validity of group name here");  

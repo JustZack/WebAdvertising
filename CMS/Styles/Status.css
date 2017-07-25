@@ -40,6 +40,7 @@ input:placeholder{
     color: white;
     border-radius: 5px;  
     font-size: 16px;  
+    text-align: center;
 }
 .delete:hover{
     background-color:#D12A00;
@@ -280,7 +281,7 @@ input[name='editGroupName']{
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.removeContent{
+.deleteAd{
     display: block;
 }
 #createNewWrapper p{
@@ -302,6 +303,23 @@ input[name="groupName"]::placeholder{
     color: #171717;
     font-size: 14px;
 }
+#dropzone-upload{
+    box-sizing: border-box;
+    border: 4px dashed #0087F7;
+}/*
+#dropzone-upload:hover{
+    cursor: pointer;
+}
+#dropzone-upload div{
+    height: 100%;
+    text-align: center;
+    line-height: 150px;
+}*/
+#dropzone-upload div span{
+    color: #666666;
+    font-weight: 600;
+    font-size: 25px;
+}
 
 #ContentInformation{
     width: 100%;
@@ -320,18 +338,42 @@ input[name="groupName"]::placeholder{
 .DirName{
     padding: 5px;
     background-color: #326ada;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
     color: white;
 }
 .DirName:hover{
     background-color: #7DA0E7;
-    border-radius: 5px;
     cursor: pointer;
 }
 
 .files{
-    margin: 5px 0px;
     padding: 5px;
-    border-radius: 5px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-radius: 0px 0px 5px 5px;   
     background-color: rgb(173,216,230);
+    display: none
+}
+
+.file_wrapper{
+    width: 350px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #326ada;
+    border-radius: 5px;
+    display: inline-block;
+}
+.file_wrapper img, .file_wrapper iframe{
+    width: 100%;
+    object-fit: contain;
+}
+
+.file_wrapper div.file_path{
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.file_wrapper .deleteContent{
+    display: block;
 }

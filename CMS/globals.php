@@ -25,6 +25,7 @@
     */
     $Content_Path = getcwd() . DIRECTORY_SEPARATOR . "Content" . DIRECTORY_SEPARATOR;
     $Ad_Content_Path = $Content_Path . "Ads" . DIRECTORY_SEPARATOR;
+    $Ad_Pages_Content_Path = $Content_Path . "Ads_Pages" . DIRECTORY_SEPARATOR;
 
     $Player_Path = getcwd() . DIRECTORY_SEPARATOR . "Players" . DIRECTORY_SEPARATOR;
     $Player_Info_Path = $Player_Path . "Players-info.csv";    
@@ -35,6 +36,7 @@
     $PathsArray = array(
         $Content_Path,
         $Ad_Content_Path,
+        $Ad_Pages_Content_Path,
         $Player_Path,
         $Player_Info_Path,
         $Groups_Path//,
@@ -56,7 +58,7 @@
                 $index_of_last_slash = strrpos($PathsArray[$i], DIRECTORY_SEPARATOR);
                 if($index_of_last_dot > $index_of_last_slash){
                     //This is a file!
-                    if($i == 3){ //Players info file!
+                    if($i == 4){ //Players info file!
                         $PlayersFile = fopen($PathsArray[$i], "w");
                         fwrite($PlayersFile, $PlayersInformationHeader);
                         fclose($PlayersFile);

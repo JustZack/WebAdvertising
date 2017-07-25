@@ -4,6 +4,7 @@
         <link href="Styles/Status.css" rel="stylesheet">
         <script src="Scripts/Status.js" rel="javascript"></script>
         <script src="Scripts/dropzone.js" rel="javascript"></script>
+        <link rel="stylesheet" href="Styles/dropzone.css">
     </head>
     <body>
     <?php
@@ -101,9 +102,9 @@
                 </form>
             </div>
         </div>
-        <form action="/file-upload" class="dropzone" id="dropzone-upload">
-            <div class="fallback">
-                <input name="file" type="file" multiple />
+        <form action="upload.php" class="dropzone needsclick dz-clickable" id="dropzone-upload">
+            <div class="dz-default dz-message">
+                <span>Drop files here or click to upload</span>
             </div>
         </form>
         <div id="ContentInformation">
