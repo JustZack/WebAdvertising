@@ -68,7 +68,7 @@
                                     "'class='Ad_Content'src='" . $ContentInfo[0] .
                                     "'data-duration='" . $ContentInfo[3] . "'";
                                     $EndCurrentContentString = ">\n";                            
-                                } else{                      
+                                } else {                      
                                     $CurrentContentString = "\n\t\t\t\t<iframe id='Ad_" . ++$Ad_Count .
                                     "'class='Ad_Content'src='" . $ContentInfo[0] .
                                     "'data-duration='" . $ContentInfo[3] . "'";
@@ -139,9 +139,17 @@
         $CurrentContentString = "";
         if(isImage($PathString)){          
             $CurrentContentString = "<img class='Ad_Content'src=\"" . $PathString . "\">\n";                         
-        } else{                
+        } else if(isVideo($PathString)){
+            $CurrentContentString = "<video controls muted autoplay>\n";
+            $CurrentContentString .= "<source src='" . $PathString . "'>\n";
+            $CurrentContentString .= "</video>\n";
+            
+        }
+        else{                
             $CurrentContentString = "<iframe class='Ad_Content'src=\"" . $PathString . "\"></iframe>\n";
         }
+        //Ensure there is not any double slashes in the path.
+        $PathString = str_replace(DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR, $PathString);
         printf("<div class='file_wrapper'>");
         printf("<div class='file_path'>" . $PathString . "</div>");
         printf($CurrentContentString);

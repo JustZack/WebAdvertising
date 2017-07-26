@@ -8,11 +8,11 @@
     display: inline-block;
     margin: 5px;
     padding: 5px;
-    background-color: #3aa800;
+    background-color: #3aa800!important;
     border-radius: 5px;
 }
 .edit:hover{
-    background-color: #2F8900;
+    background-color: #2F8900!important;
     cursor: pointer;
 }
 input{
@@ -152,9 +152,21 @@ a{
     cursor: pointer;    
 }
 
-.hostData form{
-    margin: 5px;
-    padding: 5px;
+#AddPlayer{
+    width: 300px;
+    height: 225px;
+    text-align: center;
+    vertical-align: middle;
+}
+#AddPlayer a p{
+    height: 100%;
+    width: 100%;
+    font-size: 200px;
+    line-height: 100%;
+    color: rgb(230,230,230);
+}
+#AddPlayer a p:hover{
+    color: white;
 }
 
 #GroupInformation{
@@ -354,7 +366,6 @@ input[name="groupName"]::placeholder{
     margin-bottom: 5px;
     border-radius: 0px 0px 5px 5px;   
     background-color: rgb(173,216,230);
-    display: none
 }
 
 .file_wrapper{
@@ -365,7 +376,7 @@ input[name="groupName"]::placeholder{
     border-radius: 5px;
     display: inline-block;
 }
-.file_wrapper img, .file_wrapper iframe{
+.file_wrapper img, .file_wrapper iframe, .file_wrapper video{
     width: 100%;
     object-fit: contain;
 }

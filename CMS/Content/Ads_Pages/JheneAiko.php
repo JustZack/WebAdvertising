@@ -69,5 +69,5 @@
     <!-- A text heading for the image, if we want it -->
     <h1></h1>
     <!-- The image overlay we want on the image -->
-    <img src="" alt="">
+    <img src="../Ads/2017/Jul/RF_2017_Ad_banner.png" alt="">
 </div>

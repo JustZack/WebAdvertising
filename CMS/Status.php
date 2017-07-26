@@ -56,6 +56,11 @@
                     printf("\t\t\t\t<a href = 'DisplayAdContent.php?" . getHostParameters($CurrentPlayer[0]) . "'><div class='viewhost'>View Player</div></a>");
                     printf("\t\t\t</div>\n");
                 }
+                //Print out a dummy wrapper to store a link to the player registration page
+                printf("\n\t\t\t<div id='AddPlayer' class='hostData edit'>\n");
+                printF("\t\t\t\t<a href='PlayerRegistration.php'><p>+</p></a>");
+                printf("\n\t\t\t</div>\n");
+                
             }
         ?>
         </div>

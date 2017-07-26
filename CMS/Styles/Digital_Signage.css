@@ -1,6 +1,8 @@
 body{
     background-color: black;
     color: white;
+    overflow: hidden;
+    cursor: none;
 }
 #Uninteractable_Wrapper{
     position: relative;
@@ -18,12 +20,14 @@ body{
 .content-container{
     cursor: none;
     z-index: 1;
-    width: 100%; /* Was 80% for sidebar & footer */
+    width: 100%;
     height: 100%;
     display: inline-block;
 }
 .content-container .Ad_Content
 {
+    top: 50%;
+    right: 50%;
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -35,43 +39,4 @@ body{
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-}
-
-
-#SideBar{
-    overflow: hidden;
-    float: right;
-    width: 20%;
-    height: 100%;
-    background-color: white;
-    border-left: 5px #171717;
-}
-
-#Weather{
- width: 0px;
-}
-#Weather img{
-    height: 128px;
-}
-#Weather h1{ 
-    font-size: 40px;
-    font-weight: 400;
-    color: #171717;
-    height: 128px;
-}
-#SubContentContainer{ 
-    border: none;
-    height: 100%;
-    width: 100%;   
-    bottom: 0;
-    left: 0;
-    font-size: 75px;
-    position: absolute;
-    line-height: 100px;
-    object-fit: contain;
-}
-
-#SubContentContainer img{
-    text-align: center;
-    width: 100%;
 }

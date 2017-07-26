@@ -251,7 +251,26 @@
                 return true;
         return false;
     }
+    /*
+        Check if the content is a video
+    */
+    function isVideo($VideoPath){
+        $VideoPath = strtolower($VideoPath);
+        $VideoFileLineEndings = 
+        array
+        (
+            0 => 'mp4',
+            1 => 'oog',
+            2 => 'mp3',
+        );
+        for($i = 0;$i < count($VideoFileLineEndings);$i++)
+            if(strrpos($VideoPath, '.' . $VideoFileLineEndings[$i]) !== false)
+                return true;
+        return false;
+    }
+    function isPDF(){
 
+    }
     /*
         Readability method for adding data to group.
     */

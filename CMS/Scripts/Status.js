@@ -44,14 +44,26 @@ $(document).ready(function(){
         e.stopPropagation();//Ensures we dont click through the delete button
     });
 
-    $('.DirName').click(function(){
-        if($(".files", $(this).parent()).css("display") == "block"){
-            $(".files", $(this).parent()).css("display", "none");
-        }
-        else if($(".files", $(this).parent()).css("display") == "none"){
-            $(".files", $(this).parent()).css("display", "block");            
-        }
+    /* Handles the interface for the file tree *//*
+    $(".Dir").first().children().find(".Dir").each(function(){
+        $(this).css("display", "none");
     });
+    $('.DirName').click(function(){
+        //The directory we clicked
+        $parent = $(this).parent();
+        //If clicked dir's contents are being shown, then hide them
+        if($("> .Dir", $parent).children().css("display") == "block"){
+            $("> .Dir", $parent).children().css("display", "none");//Hide all child dirs
+            $(".files", $parent).css("display", "none");//Hide all child files 
+        } 
+        //If clicked dirs contents are not being shown, then show them
+        else if($(".Dir", $parent).children().css("display") == "none"){
+            $(".Dir", $parent).children().css("display", "block");//Show this dir's content
+            if($($parent).children().find("> .files").length > 0){
+                $($parent).children().find("> .files").css("display", "block");
+            }
+        }
+    });*/
 
     $(".deleteAd").click(function(){
         if(confirm("Delete this ad?")){
