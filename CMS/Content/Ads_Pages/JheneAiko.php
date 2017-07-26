@@ -4,7 +4,7 @@
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../../../WebAdvertising/CMS/Styles/Css_Reset.css">
     <script>
-        $(document).ready(function(){
+        /*$(document).ready(function(){
             var videoLength = 267;
             var iframeSRC;
             setTimeout(function() {
@@ -19,7 +19,7 @@
                     resetIframe();
                 }, videoLength * 1000);           
             }
-        });
+        });*/
     </script>
     <style>
         body{
@@ -55,8 +55,17 @@
             bottom: 0;
         }
     </style>
+    <?php 
+        $play;
+        $toAdd = "?autoplay=";
+        if(isset($_GET['play'])){
+            $toAdd .= $_GET['play'];
+        } else {
+            $toAdd .= '0';
+        }
+    ?>
     <!-- the youtube video itself -->
-    <iframe src="https://www.youtube.com/embed/LOmFqEHUMvo" frameborder="0"></iframe>
+    <iframe src=<?php echo "https://www.youtube.com/embed/LOmFqEHUMvo" . $toAdd . "" ?> frameborder="0"></iframe>
     <!-- A text heading for the image, if we want it -->
     <h1></h1>
     <!-- The image overlay we want on the image -->

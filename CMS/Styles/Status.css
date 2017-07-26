@@ -111,6 +111,8 @@ input:placeholder{
 .hostGroups{
     display: flex;
     flex-wrap: wrap;
+    min-height: 35px;
+    min-width: 0px;
 }
 .hostGroup, .groupData{
     margin: 5px;

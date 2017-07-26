@@ -16,7 +16,7 @@
                 $PlayersFile = file($Player_Info_Path);
                 for($i = 1;$i < count($PlayersFile);$i++){
                     $PlayerInfo = explode(",", $PlayersFile[$i]);
-                    printf("<div class='host'>" . $PlayerInfo[0] . "</div>");                
+                    printf("<div class='host'>" . $PlayerInfo[0] . " (" . $PlayerInfo[1] . ")</div>");                
                 }
             ?>
             </div>
@@ -34,12 +34,14 @@
             </div>
             <div class="wayfindingNameWrapper">
                 <p>All Wayfinding LCD Names: </p>
-                <div style="width: 200px;">
+                <div style="width: 350px;">
                 <?php 
                     $AllLCDs = file("Wayfinding_Files/WayfindingLCDs.csv", FILE_IGNORE_NEW_LINES);
                     for($i = 1;$i < count($AllLCDs);$i++){
                         $lcd = explode(",", $AllLCDs[$i]);
-                        printf("<div class='WayfindingName' data-inUse=" . $lcd[1] . ">" . $lcd[0] . "</div>");
+                        $inUse;
+                        if($lcd[1] == "true"){ $inUse = " (In Use)"; } else { $inUse = ""; }
+                        printf("<div class='WayfindingName' data-inUse=" . $lcd[1] . ">" . $lcd[0] . $inUse . "</div>");
                     }
                 ?>
                 </div>
@@ -48,6 +50,7 @@
             <?php
                 $registrationParams = "";
                 $hostName = "";
+                $nickName = "";
                 $hostGroups = "";
                 $useWayfinding = "";
                 $wayfindingName = "lcd.";
@@ -57,8 +60,9 @@
                 {
                     echo "<div id='meta' style='display: none;' data-edit='true'></div>";
                     $hostName = $_GET['hostName'];
+                    $nickName = $_GET['nickName'];
                     $registrationParams = "?deleteHost=" . $hostName;
-                    $buttonMessage = "Submit Edits To " . $hostName;
+                    $buttonMessage = "Submit Edits To " . $nickName;
                     $hostGroups =  trim(preg_replace("/,/", " ", $_GET['hostGroups']));
                     $useWayfinding = $_GET['useWayfinding'];
                     if($useWayfinding == "true"){
@@ -78,10 +82,10 @@
             ?>
             <form action= <?php echo "registerPlayer.php" . $registrationParams ?> method="post">
                 <p>Host Name (IP address) :</p><input type="text" value= <?php echo "\"" . $hostName . "\"" ?> name="hostname" required><br>
-                <p>Nick Name:</p><input type="text" name="nickname" required><br>                
-                <p>Groups:</p><input type="text"  value= <?php echo "\"" . $hostGroups . "\"" ?> name="groups"><br>
+                <p>Nick Name:</p><input type="text" value= <?php echo "\"" . $nickName . "\"" ?> name="nickname" required><br>                
+                <p>Groups:</p><input type="text"  value= <?php echo "\"" . $hostGroups . "\"" ?> name="groups" pattern="[A-Za-z]*{*}"><br>
                 <p>Use Wayfinding:</p><input type="checkbox" name="useWayfinding" <?php echo $useWayfinding ?>><br>
-                <div class="wayfindingNameWrapper"><p>Wayfinding Name:</p><input type="text" value= <?php echo "\"" . $wayfindingName . "\"" ?> name="wayfindingName" placeholder="lcd." value="lcd."><br></div>                
+                <div class="wayfindingNameWrapper"><p>Wayfinding Name:</p><input type="text" value= <?php echo "\"" . $wayfindingName . "\"" ?> name="wayfindingName" placeholder="lcd." value="lcd." pattern="lcd\.[A-Za-z]+"><br></div>                
                 <input type="submit" value=<?php echo "\"" . $buttonMessage . "\"" ?>>
             </form>
         </div>

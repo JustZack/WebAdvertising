@@ -115,8 +115,14 @@ $(document).ready(function()
                     var newSrc = src.substring(0, firstQMark);
                     src = newSrc;
                 }
-                else{
-                    src = $('#Ad_' + Ad_Position).attr('src');
+            }
+            if($("#Ad_" + Ad_Position).attr('src').indexOf('.php') >= 0){
+                src = $('#Ad_' + Ad_Position).attr('src');
+                if(src.indexOf('?') >= 0)
+                {
+                    var firstQMark = src.indexOf('?');
+                    var newSrc = src.substring(0, firstQMark);
+                    src = newSrc;
                 }
             }
             $('#Ad_' + Ad_Position).attr('src', src);            
@@ -143,9 +149,16 @@ $(document).ready(function()
                 }
                 src += toAdd;
             }
-            else{
-                src = $('#Ad_' + Ad_Position).attr('src');
-            }          
+            if($("#Ad_" + Ad_Position).attr('src').indexOf('.php') >= 0){
+                var toAdd = "";
+                src = $('#Ad_' + Ad_Position).attr('src');          
+                if(src.indexOf("?") >= 0){
+                    toAdd += "&play=1";
+                } else {
+                    toAdd += "?play=1";
+                }
+                src += toAdd;
+            }
             $('#Ad_' + Ad_Position).attr('src', src);
         }
         else {

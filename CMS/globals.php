@@ -119,7 +119,7 @@
                 $line = explode(",", $FileContents[$i]);
                 if($line[0] == $HostName){
                     $toReturn = "hostname=" . $line[0];
-                    if(!empty($line[3])) $toReturn .= "&hostLCDname=" . $line[4];
+                    if(!empty($line[4])) $toReturn .= "&hostLCDname=" . $line[4];
                     return $toReturn;
                 }
                 else { continue; }

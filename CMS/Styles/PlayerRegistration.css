@@ -42,7 +42,7 @@ input[type="submit"]:hover{
 #RegisteredHosts{
     display: flex;
     flex-wrap: wrap;
-    width: 300px;
+    width: 500px;
 }
 #RegisteredHosts .host{
     margin: 5px;
@@ -84,6 +84,9 @@ div.WayfindingName{
     background-color: #333333;
     color: white;
     border-radius: 5px;
-    display: inline-block;
     text-align: center;
+}
+.WayfindingName:hover{
+    cursor: pointer;
+    background-color: #666666;
 }

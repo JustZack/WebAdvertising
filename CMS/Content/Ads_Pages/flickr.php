@@ -58,7 +58,12 @@
     $key = "896d1118c1152cc3920ed92cbaabc5bd";
     $secret = "b77404c58fb85a28";
 
-    $photoCount = $_GET['photoCount'];
+    $photoCount;
+    if(!isset($_GET['photoCount'])){
+        $photoCount = 10;        
+    } else {
+        $photoCount = $_GET['photoCount'];
+    }
 
     /* All the API calls I need to get the images from CSU's flickr */
     $flickr = new phpFlickr($key, $secret);

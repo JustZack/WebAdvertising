@@ -33,9 +33,6 @@ What is left to do:
     Ability to select a file that is present on the server as the content.
         Users click the content on the server they want and the box is auto populated with the path.
     
-    Ability to Add nickname to a player
-        Also be able to change the nickname
-
     Do I need to rework how ads are cycled through?
 
     Expose a clock and the weather on the ads screen

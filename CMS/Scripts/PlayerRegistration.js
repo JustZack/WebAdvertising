@@ -9,7 +9,12 @@ $(document).ready(function(){
         var match = false;
         if(!$("#meta").data('edit')){
             $("div.host").each(function(){
-                if($(this).text() == currentHostName)
+                var text = $(this).text();
+                var indexOfParanthesis = text.indexOf("(");
+                if(indexOfParanthesis > -1){
+                    text = text.substring(0, indexOfParanthesis).trim();            
+                }
+                if(text == currentHostName)
                 {
                     $(this).css('background-color', 'red');                                                     
                     match = true;
@@ -37,6 +42,16 @@ $(document).ready(function(){
             } else {            
                 $("input[name='groups']").val(($("input[name='groups']").val() + " " + $(this).text() + " "));                
             }
+        }
+    });
+
+    $(".WayfindingName").click(function(){
+        var text = $(this).text();
+        var indexOfInUse = text.indexOf("(");
+        if(indexOfInUse == -1){
+            $("input[name='wayfindingName']").val(text);
+        } else {
+            $("input[name='wayfindingName']").val(text.substring(0, indexOfInUse).trim());            
         }
     });
     /* Run on page load just incase a player is being edited */

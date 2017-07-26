@@ -76,13 +76,13 @@ $(document).ready(function(){
         if(useWayfinding == ""){
             useWayfinding = $(".hostWayfinding", $hostWrapper).text();
         }
+        var nickName = $(".nickName", $hostWrapper).text();
         var wayfindingName = "";
-        var paramString = "hostName=" + hostName + "&hostGroups=" + hostGroups + "&useWayfinding=" + useWayfinding;
+        var paramString = "hostName=" + hostName + "&nickName=" + nickName + "&hostGroups=" + hostGroups + "&useWayfinding=" + useWayfinding;
         if(useWayfinding == "true"){
             wayfindingName = $(".right", $hostWrapper).text();
             paramString += "&wayfindingName=" + wayfindingName
         }
-        //console.log(paramString)
         window.location.href =  "PlayerRegistration?edit=true&" + paramString;
     });
 
