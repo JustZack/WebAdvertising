@@ -82,7 +82,7 @@ $(document).ready(function()
     //Progress the ad number forward to the next valid number
     function progressAdNumber(){
         iframeReset(); 
-
+        videoReset();
         if(Ad_Position == Ad_Count){
             Ad_Position = 1;}
         else{
@@ -91,6 +91,7 @@ $(document).ready(function()
         //Skip any ad which is set to play at a specific time.
         if($('#Ad_' + Ad_Position).attr("data-specific-time")){ progressAdNumber(); }
 
+        videoAdvancement();
         iframeAdvancement();
     }
 
@@ -133,7 +134,7 @@ $(document).ready(function()
     }
     //Ensures all iframe content has started playing
     function iframeAdvancement(){
-        if($('#Ad_' + Ad_Position).is("iframe") == true)
+        if($('#Ad_' + Ad_Position).is("iframe"))
         {
             iframeLoaded = false;
             var src;
@@ -163,6 +164,19 @@ $(document).ready(function()
         }
         else {
             iframeLoaded = true;            
+        }
+    }
+    //Ensures the current video stops
+    function videoReset(){
+        if($("#Ad_" + Ad_Position).is("video")){
+            $("#Ad_" + Ad_Position).get(0).pause();
+            $("#Ad_" + Ad_Position).removeAttr("autoplay");
+        }
+    }
+    function videoAdvancement(){
+        if($("#Ad_" + Ad_Position).is("video")){
+            $("#Ad_" + Ad_Position).get(0).load();            
+            $("#Ad_" + Ad_Position).attr("autoplay", "");
         }
     }
     //Plays a specific iframe ad

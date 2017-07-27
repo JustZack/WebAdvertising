@@ -1,8 +1,15 @@
 *{
+    font-family: 'Raleway', sans-serif;
+}
+.edit, .delete, .viewhost, .groupName, .DirName{
     -moz-transition: all .2s ease-in;
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
+}
+body{
+    /* Some odd margin on the right side... Lets hide it. */
+    overflow-x: hidden;
 }
 .edit{
     display: inline-block;
@@ -212,20 +219,27 @@ input[name='editGroupName']{
     color: #171717;
     border: none;
 }
+
 .editGroup{
     font-size: 14px;
     padding: 2px 5px;
     margin: 2px 5px;
 }
-
+.saveOrder{
+    float: left;
+    left: 10px;
+}
 .deleteGroup{
+    float: right;
+    right: 10px;
+}
+.deleteGroup, .saveOrder{
     margin: 2px 5px;
     padding: 2px 5px;
-    float: right;
     position: absolute;
-    right: 10px;
     font-size: 14px;
 }
+
 .groupWrapper{
     background-color: rgb(173,216,230);
     padding: 5px;
@@ -275,7 +289,7 @@ input[name='editGroupName']{
 
 }
 
-.AdContentWrapper img, .AdContentWrapper iframe{
+.AdContentWrapper img, .AdContentWrapper iframe, .AdContentWrapper video{
     max-width: 300px;
 }
 .AdContentWrapper table{
@@ -320,15 +334,7 @@ input[name="groupName"]::placeholder{
 #dropzone-upload{
     box-sizing: border-box;
     border: 4px dashed #0087F7;
-}/*
-#dropzone-upload:hover{
-    cursor: pointer;
 }
-#dropzone-upload div{
-    height: 100%;
-    text-align: center;
-    line-height: 150px;
-}*/
 #dropzone-upload div span{
     color: #666666;
     font-weight: 600;
@@ -385,6 +391,7 @@ input[name="groupName"]::placeholder{
     color: white;
     text-align: center;
     padding: 5px;
+    font-size: 12px;
 }
 
 .file_wrapper .deleteContent{

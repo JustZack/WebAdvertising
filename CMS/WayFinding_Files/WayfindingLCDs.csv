@@ -1,6 +1,6 @@
 lcd Name, In Use
-lcd.RamTech,true
-lcd.FoodCourtSouth,true
+lcd.RamTech,false
+lcd.FoodCourtSouth,false
 lcd.CampusInfoSouth,true
 lcd.CampusInfoEast,false
 lcd.FirstFloorHallway,true

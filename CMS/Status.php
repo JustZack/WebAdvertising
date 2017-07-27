@@ -1,6 +1,8 @@
 <html>
     <head>
     <?php include_once "generichead.php" ?>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link href="Styles/Status.css" rel="stylesheet">
         <script src="Scripts/Status.js" rel="javascript"></script>
         <script src="Scripts/dropzone.js" rel="javascript"></script>
@@ -71,12 +73,12 @@
             for($i = 0;$i < count($Groups);$i++){
                 $Group = substr($Groups[$i], strrpos($Groups[$i], DIRECTORY_SEPARATOR) + 1);
                 printf("\n\t\t\t<div class='groupData' id='" . $Group . "'>\n");
-                printf("\t\t\t\t<div class='groupName'>" . $Group . "<div class='edit editGroup'>Edit</div><div class='delete deleteGroup'>Delete Group</div></div>\n");
+                printf("\t\t\t\t<div class='groupName'><div class='edit saveOrder'>Save Order</div>" . $Group . "<div class='edit editGroup'>Edit</div><div class='delete deleteGroup'>Delete Group</div></div>\n");
                 printf("\t\t\t\t<form class='editGroupName' method='post'><input name='editGroupName' type='text'");
                 echo " title='No spaces or special characters' pattern='^[^\\/?%*: |\"<>\.]+$'"; 
                 printf("value='" . $Group . "'></form>\n");              
                 //Print out everything this group refrences
-                printf("\t\t\t\t<div class='groupWrapper'>\n");
+                printf("\t\t\t\t<ul class='groupWrapper'>\n");
                 loadByGroup($Group, true);//Load each ad from this group
                 
                 //Add content 'card'
@@ -95,7 +97,7 @@
                 printf("\t\t\t\t\t\t</form>");
                 printf("\t\t\t\t\t</div>\n");                
                 printf("\t\t\t\t</div>\n");                
-                printf("\t\t\t</div>\n");
+                printf("\t\t\t</ul>\n");
             }
         ?>
             <div class='groupData' id='createNewWrapper' style='background-color: #3aa800;'>

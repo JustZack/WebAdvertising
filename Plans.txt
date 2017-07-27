@@ -30,10 +30,12 @@ Useablilty:
 
 
 What is left to do:
+    Allow editing of Ads in a group
+
     Ability to select a file that is present on the server as the content.
         Users click the content on the server they want and the box is auto populated with the path.
     
     Do I need to rework how ads are cycled through?
+        Yes lol
 
-    Expose a clock and the weather on the ads screen
     

@@ -18,6 +18,7 @@
 
         for($i = 1;$i < count($LCDFile);$i++){
             $lcd = explode(",", $LCDFile[$i]);
+            $lcd[1] = "false\n";
             for($j = 0;$j < count($playerList);$j++){
                 if($lcd[0] == trim($playerList[$j])){
                     $lcd[1] = "true\n";
@@ -33,7 +34,7 @@
         $wayfinding = "true";
     }
     $wayfindingName = $_POST['wayfindingName'];
-    if($wayfindingName == "lcd.") { $wayfindingName = ""; }
+    if($wayfinding == "false") { $wayfindingName = ""; }
 
     $DataToBeWritten = $_POST['hostname'] . "," . $_POST['nickname'] . "," . $wayfinding . "," . $_POST['groups'] . "," . $wayfindingName;
     printf($DataToBeWritten . " -> " . $Player_Info_Path);    

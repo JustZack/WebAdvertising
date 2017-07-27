@@ -268,9 +268,6 @@
                 return true;
         return false;
     }
-    function isPDF(){
-
-    }
     /*
         Readability method for adding data to group.
     */

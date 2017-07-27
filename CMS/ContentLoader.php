@@ -68,7 +68,10 @@
                                     "'class='Ad_Content'src='" . $ContentInfo[0] .
                                     "'data-duration='" . $ContentInfo[3] . "'";
                                     $EndCurrentContentString = ">\n";                            
-                                } else {                      
+                                } else if(isVideo($ContentInfo[0])){
+                                    $CurrentContentString = "<video id='Ad_" . ++$Ad_Count . "' class='Ad_Content' data-duration='" . $ContentInfo[3] . "'";
+                                    $EndCurrentContentString = "><source src='" . $ContentInfo[0] . "'></video>\n";
+                                }else {                      
                                     $CurrentContentString = "\n\t\t\t\t<iframe id='Ad_" . ++$Ad_Count .
                                     "'class='Ad_Content'src='" . $ContentInfo[0] .
                                     "'data-duration='" . $ContentInfo[3] . "'";
@@ -85,10 +88,12 @@
             }
         }
         else {
-            printf("\t\t\t<div class='AdContentWrapper'>\n");       
+            printf("\t\t\t<li class='AdContentWrapper' draggble='true'>\n");       
             if(isImage($ContentInfo[0])){
                 printf("\t\t\t\t<img id='Ad_" . ++$Ad_Count . "'class='Ad_Content'src='" . $ContentInfo[0] . "'>\n");                        
-            } else{                      
+            } else if(isVideo($ContentInfo[0])){
+                printf("\t\t\t\t<video controls><source id='Ad_" . ++$Ad_Count . "'class='Ad_Content'src='" . $ContentInfo[0] . "'></video>\n");                                                  
+            } else {                      
                 printf("\n\t\t\t\t<iframe id='Ad_" . ++$Ad_Count . "'class='Ad_Content'src='" . $ContentInfo[0] . "'></iframe>\n");
             }
             printf("\t\t\t\t<table>\n");
@@ -102,7 +107,7 @@
             
             printf("\t\t\t\t</table>\n");      
             printf("\t\t\t\t<a data-link='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='delete deleteAd'>Delete</div></a>");                  
-            printf("\t\t\t</div>\n");       
+            printf("\t\t\t</li>\n");       
              
         }
     }
@@ -140,10 +145,9 @@
         if(isImage($PathString)){          
             $CurrentContentString = "<img class='Ad_Content'src=\"" . $PathString . "\">\n";                         
         } else if(isVideo($PathString)){
-            $CurrentContentString = "<video controls muted autoplay>\n";
+            $CurrentContentString = "<video controls muted>\n";
             $CurrentContentString .= "<source src='" . $PathString . "'>\n";
-            $CurrentContentString .= "</video>\n";
-            
+            $CurrentContentString .= "</video>\n";  
         }
         else{                
             $CurrentContentString = "<iframe class='Ad_Content'src=\"" . $PathString . "\"></iframe>\n";
