@@ -275,4 +275,24 @@
         $PathToGroupFile = $Groups_Path . $Group . DIRECTORY_SEPARATOR . "AdContent-info.csv";
         file_put_contents($PathToGroupFile, $ContentDataString, FILE_APPEND | LOCK_EX);
     }
+
+    /*
+        Remove any blank lines from the player file specified.
+    */
+    function removeEmptyEntries($group){
+        global $Groups_Path;
+        $groupFile = file($Groups_Path . $group . DIRECTORY_SEPARATOR . "AdContent-info.csv", FILE_IGNORE_NEW_LINES);
+        $newFile = array();
+        for($i = 0;$i < count($groupFile);$i++){
+            $tmp = trim($groupFile[$i]);
+            if(!empty($tmp)){
+                if($i == count($groupFile) - 1){
+                    array_push($newFile, $groupFile[$i]);                    
+                } else {
+                    array_push($newFile, $groupFile[$i] . "\r\n");
+                }                    
+            }
+        }
+        file_put_contents($Groups_Path . $group . DIRECTORY_SEPARATOR . "AdContent-info.csv", $newFile);
+    }
 ?>

@@ -3,6 +3,9 @@
 
     //The group in which we want to reorder content.
     $group = $_GET['group'];
+    //ensure our group doesnt have any empty lines
+    removeEmptyEntries($group);
+
     //The new order for the group.
     //Ex 4,1,5,6,3,2
     $order = $_GET['newOrder'];
@@ -17,6 +20,7 @@
         $newGroupFile[$i + 1] = $oldGroupFile[$positions[$i]] . "\r\n";
     }
 
-    echo file_put_contents($Groups_Path . $group . DIRECTORY_SEPARATOR . "AdContent-info.csv", $newGroupFile, LOCK_EX );
+    file_put_contents($Groups_Path . $group . DIRECTORY_SEPARATOR . "AdContent-info.csv", $newGroupFile, LOCK_EX );
 
+    header("location: status");
 ?>

@@ -79,6 +79,7 @@
                 printf("value='" . $Group . "'></form>\n");              
                 //Print out everything this group refrences
                 printf("\t\t\t\t<ul class='groupWrapper'>\n");
+                removeEmptyEntries($Group); //Ensure the groups file is clean
                 loadByGroup($Group, true);//Load each ad from this group
                 
                 //Add content 'card'

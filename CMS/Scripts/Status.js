@@ -46,7 +46,7 @@ $(document).ready(function(){
         $groupUL = $(this).parent().parent().find(".groupWrapper");
 
         //The URL we will make a GET request with!
-        var URL = "http://" + location.hostname + "/WebAdvertising/CMS/reorderGroup.php?group=" + groupName + "&newOrder=";
+        var URL = "reorderGroup.php?group=" + groupName + "&newOrder=";
         //The order of ads in this group
         var order = [];
 
@@ -71,23 +71,7 @@ $(document).ready(function(){
 
         URL += order.join();
 
-        var xmlHTTP = new XMLHttpRequest();
-        xmlHTTP.open("GET", URL, true);
-        xmlHTTP.send(null);
-
-        console.log(URL);
-
-        $this = $(this);
-        $(this).fadeOut(250, function(){
-            $(this).text("Saved!");
-            $(this).fadeIn(250);
-        });
-        setTimeout(function() {
-            $this.fadeOut(250, function(){
-                $this.text("Save Order");
-                $this.fadeIn(250);
-            });
-        }, 1500);
+        location.href = URL;
 
         e.stopPropagation();//Ensures we dont click through the delete button
         

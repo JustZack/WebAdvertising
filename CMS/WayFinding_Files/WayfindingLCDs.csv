@@ -2,7 +2,7 @@ lcd Name, In Use
 lcd.RamTech,false
 lcd.FoodCourtSouth,false
 lcd.CampusInfoSouth,true
-lcd.CampusInfoEast,false
+lcd.CampusInfoEast,true
 lcd.FirstFloorHallway,true
 lcd.FloorGatherArea,false
 lcd.SouthExit,false
