@@ -1,6 +1,6 @@
 Hostname,Nick Name,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name
-129.82.221.56,Zacks Colab MAC,false,Ads,
-zeck,Zacks PC,false,Ads RamFest,
+129.82.221.56,Zacks Colab MAC,false,Test,
+zeck,Zacks PC,false,Test  Ads ,
 lsclcd-mkttest.acns.colostate.edu,LSC Colab Test,true,Ads,lcd.FirstFloorHallway
 LSCLCD-Theater.acns.colostate.edu,LSC IT Test Display,false,Ads ,
 LSCLCD-RamtchSo.acns.colostate.edu,LSC RamTech South,false,Ads,

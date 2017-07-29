@@ -22,5 +22,5 @@
 
     file_put_contents($Groups_Path . $group . DIRECTORY_SEPARATOR . "AdContent-info.csv", $newGroupFile, LOCK_EX );
 
-    header("location: status");
+    header("location: status#" . $group);
 ?>

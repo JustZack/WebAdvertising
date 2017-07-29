@@ -1,0 +1,4 @@
+Path,Start Date,End Date,Duration,Specific Day,Specific Time,Condition for showing
+http://lsc.colostate.edu/rise-up-cams/,07/28/2017,08/04/2019,15,,,TEMP>60
+http://www.lsc.colostate.edu/rise-up-sweets/,07/28/2017,08/04/2019,15,,,TEMP<=60
+http://lsc.colostate.edu/rise-up-intermissions/,07/28/2017,08/04/2019,15,,,TEMP<70

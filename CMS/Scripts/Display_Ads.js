@@ -3,6 +3,7 @@ $(document).ready(function()
     var Ad_Count;            //How many ads are there?
     var Ad_Position;        //Which image are we on?   
     var Total_Elapsed_Time = 0;//How long have we been doing this?
+    var fadeTime = 1000;
 
     var Player_Update_Interval_Minutes;  //How often should the player update?
     var Player_Update_Timeout;         //Stores the interval for when the player plans to reset.
@@ -14,13 +15,18 @@ $(document).ready(function()
     var Timeout;
     //Sets up the variables for the enviroment
     function initialStartup(){
+        $("iframe").each(function(){
+            $(this).css("width", $(window).width());
+            $(this).css("height", $(window).height());    
+            this.contentWindow.location.reload(true);        
+        });
+        
         //These should be received via meta-data on the page or from a file
         Player_Update_Interval_Minutes = 15;
 
         Ad_Count = $('.Ad_Content').length;
         if(Ad_Count > 0){
             Ad_Position = Ad_Count;
-            advanceAds();
         } 
         
         $(".Ad_Content").each(function(){
@@ -33,13 +39,13 @@ $(document).ready(function()
                 setTimeout(playSpecificAd, diff);
             }
         });
+        //Start the loop for displaying ads
+        advanceAds();
         //This interval will refresh the content 
         Player_Update_Timeout = setTimeout(refreshContent, Player_Update_Interval_Minutes * 60 * 1000);                
     }
 
     function playSpecificAd(){
-        //Hide the sub-content
-        esetSubContent();
         //Ensure any playing content is paused
         iframeReset();
         //Hide the current Ad
@@ -60,9 +66,9 @@ $(document).ready(function()
     //Advances the ad content
     function advanceAds(){
         //Hide the previous ad. 
-        $('#Ad_' + Ad_Position).css('display','none'); 
+        $('#Ad_' + Ad_Position).fadeTo(fadeTime, 0); 
         progressAdNumber(); //Progress the ad number           
-        $('#Ad_' + Ad_Position).css('display','block'); //Display the current ad.
+        $('#Ad_' + Ad_Position).fadeTo(fadeTime, 1);  //Display the current ad.
         Total_Elapsed_Time += $('#Ad_' + Ad_Position).data('duration') * 1000;
         waitForIframe();
         Timeout = setTimeout(advanceAds, $('#Ad_' + Ad_Position).data('duration') * 1000);
@@ -104,6 +110,7 @@ $(document).ready(function()
     function iframeReset(){
         if($('#Ad_' + Ad_Position).is("iframe") == true)
         {
+            $('#Ad_' + Ad_Position).css("display", "none!important");            
             iframeLoaded = false;            
             var src;
             //Youtube: Stop playing of video
@@ -117,7 +124,7 @@ $(document).ready(function()
                     src = newSrc;
                 }
             }
-            if($("#Ad_" + Ad_Position).attr('src').indexOf('.php') >= 0){
+            else if($("#Ad_" + Ad_Position).attr('src').indexOf('.php') >= 0){
                 src = $('#Ad_' + Ad_Position).attr('src');
                 if(src.indexOf('?') >= 0)
                 {
@@ -125,8 +132,12 @@ $(document).ready(function()
                     var newSrc = src.substring(0, firstQMark);
                     src = newSrc;
                 }
+            } else {
+                src = $('#Ad_' + Ad_Position).attr('src');
             }
-            $('#Ad_' + Ad_Position).attr('src', src);            
+            $('#Ad_' + Ad_Position).attr('src', src);  
+            $('#Ad_' + Ad_Position).css("display", "");            
+                      
         } 
         else {
             iframeLoaded = true; 
@@ -136,6 +147,7 @@ $(document).ready(function()
     function iframeAdvancement(){
         if($('#Ad_' + Ad_Position).is("iframe"))
         {
+            $('#Ad_' + Ad_Position).css("display", "none!important");
             iframeLoaded = false;
             var src;
             //Youtube: Start playback of video
@@ -159,8 +171,15 @@ $(document).ready(function()
                     toAdd += "?play=1";
                 }
                 src += toAdd;
+            } else {
+                src = $('#Ad_' + Ad_Position).attr('src');                                  
             }
+            $('#Ad_' + Ad_Position).on('load',function(){
+                $iframe.css("display", "block!important");
+            });
             $('#Ad_' + Ad_Position).attr('src', src);
+            $('#Ad_' + Ad_Position).css("display", "none");    
+            $iframe = $('#Ad_' + Ad_Position);      
         }
         else {
             iframeLoaded = true;            

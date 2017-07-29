@@ -1,0 +1,25 @@
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-1 {
+        stroke: aqua;
+      }
+
+      .cls-2 {
+        stroke: lime;
+      }
+
+      .cls-3 {
+        stroke: #000;
+      }
+    </style>
+  </defs>
+  <title>Wayfinding</title>
+  <g id="Background_Image" data-name="Background Image">
+    <image width="5807" height="3585" xlink:href="Wayfinding_Files/MapOnly.png"/>
+  </g>
