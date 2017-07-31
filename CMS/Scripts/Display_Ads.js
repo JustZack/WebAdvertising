@@ -15,12 +15,6 @@ $(document).ready(function()
     var Timeout;
     //Sets up the variables for the enviroment
     function initialStartup(){
-        $("iframe").each(function(){
-            $(this).css("width", $(window).width());
-            $(this).css("height", $(window).height());    
-            this.contentWindow.location.reload(true);        
-        });
-        
         //These should be received via meta-data on the page or from a file
         Player_Update_Interval_Minutes = 15;
 
@@ -179,7 +173,18 @@ $(document).ready(function()
             });
             $('#Ad_' + Ad_Position).attr('src', src);
             $('#Ad_' + Ad_Position).css("display", "none");    
-            $iframe = $('#Ad_' + Ad_Position);      
+            $iframe = $('#Ad_' + Ad_Position);  
+            
+            $("iframe").each(function(){
+                $(this).css("width", $(window).width());
+                $(this).css("height", $(window).height());
+                try{
+                    this.contentWindow.location.href = this.contentWindow.location.href;  
+                } catch (e){
+                    console.log(e);
+                    console.log("Could not reload iframe");
+                }   
+            });
         }
         else {
             iframeLoaded = true;            
