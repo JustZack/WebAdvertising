@@ -83,6 +83,7 @@ $(document).ready(function()
     function progressAdNumber(){
         iframeReset(); 
         videoReset();
+
         if(Ad_Position == Ad_Count){
             Ad_Position = 1;}
         else{
@@ -168,23 +169,15 @@ $(document).ready(function()
             } else {
                 src = $('#Ad_' + Ad_Position).attr('src');                                  
             }
-            $('#Ad_' + Ad_Position).on('load',function(){
-                $iframe.css("display", "block!important");
-            });
-            $('#Ad_' + Ad_Position).attr('src', src);
-            $('#Ad_' + Ad_Position).css("display", "none");    
             $iframe = $('#Ad_' + Ad_Position);  
+
+            /* Hide the iframe until it is loaded */
+            $iframe.css("width", $(window).width());
+            $iframe.css("height", $(window).height());
             
-            $("iframe").each(function(){
-                $(this).css("width", $(window).width());
-                $(this).css("height", $(window).height());
-                try{
-                    this.contentWindow.location.href = this.contentWindow.location.href;  
-                } catch (e){
-                    console.log(e);
-                    console.log("Could not reload iframe");
-                }   
-            });
+            /* Reload the iframe in a cross browser way */
+            $iframe.attr('src', '');
+            $iframe.attr('src', src);
         }
         else {
             iframeLoaded = true;            
