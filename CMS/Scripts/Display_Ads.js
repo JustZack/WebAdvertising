@@ -13,6 +13,7 @@ $(document).ready(function()
     //bool to detemine if the current iframe has loaded
     var iframeLoaded = false;    
     var Timeout;
+    
     //Sets up the variables for the enviroment
     function initialStartup(){
         //These should be received via meta-data on the page or from a file
@@ -31,6 +32,7 @@ $(document).ready(function()
                 var diff = SpecificTime - CurrentTime;
                 Specific_Id = $(this).attr("id");
                 setTimeout(playSpecificAd, diff);
+                console.log(diff);
             }
         });
         //Start the loop for displaying ads
@@ -39,6 +41,7 @@ $(document).ready(function()
         Player_Update_Timeout = setTimeout(refreshContent, Player_Update_Interval_Minutes * 60 * 1000);                
     }
 
+    /* Work in progress */
     function playSpecificAd(){
         //Ensure any playing content is paused
         iframeReset();
@@ -64,19 +67,8 @@ $(document).ready(function()
         progressAdNumber(); //Progress the ad number           
         $('#Ad_' + Ad_Position).fadeTo(fadeTime, 1);  //Display the current ad.
         Total_Elapsed_Time += $('#Ad_' + Ad_Position).data('duration') * 1000;
-        waitForIframe();
         Timeout = setTimeout(advanceAds, $('#Ad_' + Ad_Position).data('duration') * 1000);
         
-    }
-
-    function waitForIframe(){
-        if(iframeLoaded){
-            return;
-        } else {
-            setTimeout(function() {
-                waitForIframe();
-            }, 250);
-        }
     }
 
     //Progress the ad number forward to the next valid number
@@ -84,19 +76,31 @@ $(document).ready(function()
         iframeReset(); 
         videoReset();
 
-        if(Ad_Position == Ad_Count){
-            Ad_Position = 1;}
-        else{
-            Ad_Position++;}
+        if(Ad_Position == Ad_Count){ Ad_Position = 1; }
+        else{ Ad_Position++; }
 
-        //Skip any ad which is set to play at a specific time.
+        //Skip any ad which is set to play at a specific time. (for now)
         if($('#Ad_' + Ad_Position).attr("data-specific-time")){ progressAdNumber(); }
 
         videoAdvancement();
         iframeAdvancement();
+        //Does the NEXT ad have a load time associated with it? 
+        if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
+            //If so, then we need to set a time out for the ad to load 3 seconds prior to it being shown.
+            var duration = $("#Ad_" + Ad_Position).data("duration");
+            var loadTimeOutTime = duration - ($("#Ad_" + Ad_Position).data("load-time"));
+            loadTimeOutTime *= 1000;
+            //Set a timeout for the ad to be loaded
+            if($("#Ad_" + (Ad_Position + 1)).is("iframe")){
+                console.log("Setting NEXT ad to load in " + loadTimeOutTime + "ms");
+                setTimeout(iframeAdvancement, loadTimeOutTime);
+            } else if($("#Ad_" + (Ad_Position + 1)).is("video")) {
+                setTimeout(videoAdvancement, loadTimeOutTime);                
+            }
+        }
     }
 
-    //Is called everytime our update interval for the player is up.
+    //This Is called everytime our update interval for the player is up.
     function refreshContent(){
         location.reload();
     }
@@ -140,16 +144,24 @@ $(document).ready(function()
     }
     //Ensures all iframe content has started playing
     function iframeAdvancement(){
-        if($('#Ad_' + Ad_Position).is("iframe"))
+        var ad_pos;
+       if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
+            if(Ad_Position == Ad_Count){ ad_pos = 1; }
+            else{ ad_pos = Ad_Position + 1; }
+            console.log("NEXT ad is loading!");
+        } else {
+            ad_pos = Ad_Position;            
+        }
+        if($('#Ad_' + ad_pos).is("iframe"))
         {
-            $('#Ad_' + Ad_Position).css("display", "none!important");
+            $('#Ad_' + ad_pos).css("display", "none!important");
             iframeLoaded = false;
             var src;
             //Youtube: Start playback of video
-            if($('#Ad_' + Ad_Position).attr('src').indexOf('youtube') >= 0)
+            if($('#Ad_' + ad_pos).attr('src').indexOf('youtube') >= 0)
             {
                 var toAdd = "";
-                src = $('#Ad_' + Ad_Position).attr('src');          
+                src = $('#Ad_' + ad_pos).attr('src');          
                 if(src.indexOf("?") >= 0){
                     toAdd += "&autoplay=1";
                 } else {
@@ -157,19 +169,22 @@ $(document).ready(function()
                 }
                 src += toAdd;
             }
-            if($("#Ad_" + Ad_Position).attr('src').indexOf('.php') >= 0){
+            //PHP script, start the script over
+            //Note, this is setup for custom scripts which take a play parameter
+            //The play parameter allows me to ensure a scripts contents are not loaded unless they need to be.
+            if($("#Ad_" + ad_pos).attr('src').indexOf('.php') >= 0){
                 var toAdd = "";
-                src = $('#Ad_' + Ad_Position).attr('src');          
+                src = $('#Ad_' + ad_pos).attr('src');          
                 if(src.indexOf("?") >= 0){
                     toAdd += "&play=1";
                 } else {
                     toAdd += "?play=1";
                 }
                 src += toAdd;
-            } else {
-                src = $('#Ad_' + Ad_Position).attr('src');                                  
+            } else { //Otherwise, just grab the src
+                src = $('#Ad_' + ad_pos).attr('src');                                  
             }
-            $iframe = $('#Ad_' + Ad_Position);  
+            $iframe = $('#Ad_' + ad_pos);  
 
             /* Hide the iframe until it is loaded */
             $iframe.css("width", $(window).width());
@@ -191,9 +206,15 @@ $(document).ready(function()
         }
     }
     function videoAdvancement(){
-        if($("#Ad_" + Ad_Position).is("video")){
-            $("#Ad_" + Ad_Position).get(0).load();            
-            $("#Ad_" + Ad_Position).attr("autoplay", "");
+        var ad_pos;
+        if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
+            ad_pos = Ad_Position + 1;
+        } else {
+            ad_pos = Ad_Position;            
+        }
+        if($("#Ad_" + ad_pos).is("video") && !$("#Ad_" + ad_pos).attr("data-load-time")){
+            $("#Ad_" + ad_pos).get(0).load();            
+            $("#Ad_" + ad_pos).attr("autoplay", "");
         }
     }
     //Plays a specific iframe ad
@@ -237,6 +258,9 @@ $(document).ready(function()
 
     /* Redirects to the wayfinding screen on tap. */
     $(document).click(function(){
+        /*  Checks if this screen does wayfinding. 
+            Almost not needed as all touchscreens do wayfinding anyways
+        */
         if($("#HostData").data("usewayfinding")){
             var url = location.href;
             var params = url.substring(url.indexOf("?"));

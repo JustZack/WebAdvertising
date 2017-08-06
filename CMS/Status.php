@@ -90,10 +90,11 @@
                 printf("\t\t\t\t\t\t\t<input name='Link' class='fullWidth' type='text' placeholder='https://' value='https://'>\n");//Link to video or image
                 printf("\t\t\t\t\t\t\t<br><input name='Start' class='fullWidth' type='text' placeholder='mm/dd/yyyy' value='" . $today . "'>\n");//Start date (today)
                 printf("\t\t\t\t\t\t\t<br><input name='End' class='fullWidth' type='text' placeholder='mm/dd/yyyy' value='" . $oneWeekAwayFromToday . "'>\n");//End date, one week from today
-                printf("\t\t\t\t\t\t\t<br><input name='Duration' class='fullWidth' type='text' placeholder='Duration (seconds)' value='" . 15 . "'>\n"); //Duration of the Ad
+                printf("\t\t\t\t\t\t\t<br><input name='Duration' class='fullWidth' type='text' placeholder='Duration (seconds)' value='15'>\n"); //Duration of the Ad
                 printf("\t\t\t\t\t\t\t<br><input name='Specific-Day' class='fullWidth' type='text' placeholder='(Optional) Specific Day (Sun, Mon, Tue, Wed, Thu, Fri, Sat)'>\n"); //The specific day you want the ad to play
                 printf("\t\t\t\t\t\t\t<br><input name='Specific-Time' class='fullWidth' type='text' placeholder='(Optional) Specific Time (24hr:mm)'>\n"); //the specific time of day you want the ad to play
-                printf("\t\t\t\t\t\t\t<br><input name='Condition' class='fullWidth' type='text' placeholder='(Optional) Var Operator Value'>\n"); //A condition for when the ad should be shown           
+                printf("\t\t\t\t\t\t\t<br><input name='Condition' class='fullWidth' type='text' placeholder='(Optional) Var Operator Value'>\n"); //A condition for when the ad should be shown
+                printf("\t\t\t\t\t\t\t<br><input name='loadtime' class='fullWidth' type='text' placeholder='(Optional) Ad Load Time (seconds) '>\n"); //A condition for when the ad should be shown                                      
                 printf("\t\t\t\t\t\t\t<br><input class='fullWidth' type='submit' value='Add Content To " . $Group . "'>\n"); //Submit button              
                 printf("\t\t\t\t\t\t</form>");
                 printf("\t\t\t\t\t</div>\n");                

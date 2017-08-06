@@ -80,6 +80,9 @@
                                 if($ContentInfo[5] !== ''){
                                     $CurrentContentString .= " data-specific-time='" . $ContentInfo[5] . "'";
                                 }
+                                if(isset($ContentInfo[7]) && $ContentInfo[7] !== ''){
+                                    $CurrentContentString .= " data-load-time='" . $ContentInfo[7] . "'";                                    
+                                }
                                 echo $CurrentContentString . $EndCurrentContentString;
                             }
                         }
@@ -104,6 +107,9 @@
             tableEntry("Specific Day", $ContentInfo[4]);            
             tableEntry("Specific Time", $ContentInfo[5]);
             tableEntry("Condition", $ContentInfo[6]);
+            if(isset($ContentInfo[7])) { tableEntry("LoadTime", $ContentInfo[7]); }
+            else { tableEntry("LoadTime", ""); }
+                       
             
             printf("\t\t\t\t</table>\n");      
             printf("\t\t\t\t<a data-link='removeContentFromGroup.php?group=" . $Group . "&name=" . $ContentInfo[0] . "'><div class='delete deleteAd'>Delete</div></a>");                  

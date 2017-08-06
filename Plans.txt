@@ -30,12 +30,20 @@ Useablilty:
 
 
 What is left to do:
-    Allow editing of Ads in a group
+    * = Not super important (to me)
 
-    Ability to select a file that is present on the server as the content.
-        Users click the content on the server they want and the box is auto populated with the path.
+    *Allow editing of Ads in a group
+
+    *Users click the content on the server they want and the box is auto populated with the path.
     
+    Add possibility for a load-delay
+        >If specified, ad src/href will be refreshed that amount of time before the ad plays
+        >Which ensures ads coming from the LSC's site will be loaded at the right time
+
     Do I need to rework how ads are cycled through?
-        Yes lol
+        >Be able to acomdate for "specific-time" ads.
+            >Currently: 
+                Ad is added to DOM if it is set to occur within the next 15 minutes
+                Timeout is set for playing the ad (this may not work)
 
     
