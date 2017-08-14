@@ -206,15 +206,10 @@ $(document).ready(function()
         }
     }
     function videoAdvancement(){
-        var ad_pos;
-        if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
-            ad_pos = Ad_Position + 1;
-        } else {
-            ad_pos = Ad_Position;            
-        }
-        if($("#Ad_" + ad_pos).is("video") && !$("#Ad_" + ad_pos).attr("data-load-time")){
-            $("#Ad_" + ad_pos).get(0).load();            
-            $("#Ad_" + ad_pos).attr("autoplay", "");
+
+        if($("#Ad_" + Ad_Position).is("video") && $("#Ad_" + Ad_Position).attr("data-load-time") == undefined){
+            $("#Ad_" + Ad_Position).get(0).load();            
+            $("#Ad_" + Ad_Position).attr("autoplay", "");
         }
     }
     //Plays a specific iframe ad
