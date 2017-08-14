@@ -88,7 +88,7 @@ $(document).ready(function()
         if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
             //If so, then we need to set a time out for the ad to load 3 seconds prior to it being shown.
             var duration = $("#Ad_" + Ad_Position).data("duration");
-            var loadTimeOutTime = duration - ($("#Ad_" + Ad_Position).data("load-time"));
+            var loadTimeOutTime = duration - ($("#Ad_" + (Ad_Position + 1)).data("load-time"));
             loadTimeOutTime *= 1000;
             //Set a timeout for the ad to be loaded
             if($("#Ad_" + (Ad_Position + 1)).is("iframe")){
