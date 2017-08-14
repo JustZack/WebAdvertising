@@ -144,10 +144,11 @@ $(document).ready(function()
     }
     //Ensures all iframe content has started playing
     function iframeAdvancement(){
-        var ad_pos;
+        var ad_pos, earlyLoad = false;
        if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
             if(Ad_Position == Ad_Count){ ad_pos = 1; }
             else{ ad_pos = Ad_Position + 1; }
+            earlyLoad = true;
             console.log("NEXT ad is loading!");
         } else {
             ad_pos = Ad_Position;            
@@ -191,8 +192,10 @@ $(document).ready(function()
             $iframe.css("height", $(window).height());
             
             /* Reload the iframe in a cross browser way */
-            $iframe.attr('src', '');
-            $iframe.attr('src', src);
+            if(earlyLoad || $iframe.attr("data-load-time") == undefined){
+                $iframe.attr('src', '');
+                $iframe.attr('src', src);
+            }
         }
         else {
             iframeLoaded = true;            
