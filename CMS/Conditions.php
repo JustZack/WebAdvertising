@@ -28,7 +28,7 @@
     }
     
     /* Temperature global variable determining how often we should update the temperature stored in our file */
-    $TEMP_UpdateInterval = 15000;
+    $TEMP_UpdateInterval = 60 * 15;
     /* Temperature conditional methods */
     function tempCondition($Condition){
         $CurrentTemp = getTEMP();
@@ -45,6 +45,7 @@
             $line = explode(",",$FileContents[$i]);
             if ($line[0] == "TEMP"){
                 $now = time();
+                //echo $now . " - " . $line[2] . " = " . ($now - $line[2]);
                 if($now - $line[2] > $TEMP_UpdateInterval){
                     //Get the new Temperatrue and write it to the condition variables file
                     $newTemp = updateTemperature();
