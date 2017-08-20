@@ -19,7 +19,8 @@
     */
     $AdContentInfoHeader = "Path,Start Date,End Date,Duration,Specific Day,Specific Time,Condition for showing";
     $PlayersInformationHeader = "Hostname,Nick Name,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name";
-    
+    $ConditionsInformationHeader = "Condition, Value, Last Update";
+
     /*
         Variables which contain the paths for some important folders / files
     */
@@ -31,7 +32,9 @@
     $Player_Info_Path = $Player_Path . "Players-info.csv";    
     $Groups_Path =  $Player_Path . "Groups" . DIRECTORY_SEPARATOR;   
     $Default_Group_Path = $Groups_Path . "Default" .  DIRECTORY_SEPARATOR;    
-    $Default_Group_Info_Path = $Default_Group_Path . "AdContent-info.csv";    
+    $Default_Group_Info_Path = $Default_Group_Path . "AdContent-info.csv";   
+    
+    $Condition_variables_path = getcwd() . DIRECTORY_SEPARATOR . "Variables.csv";
     /* Paths array so checking for file existance is simple. */
     $PathsArray = array(
         $Content_Path,
@@ -39,9 +42,10 @@
         $Ad_Pages_Content_Path,
         $Player_Path,
         $Player_Info_Path,
-        $Groups_Path//,
+        $Groups_Path,
         //$Default_Group_Path,
         //$Default_Group_Info_Path
+        $Condition_variables_path
     );
     fileCheck();
     /*
@@ -49,7 +53,7 @@
     */
     function fileCheck(){
         //Include the nessasary globally scoped variables.
-        global $PathsArray, $AdContentInfoHeader, $PlayersInformationHeader;
+        global $PathsArray, $AdContentInfoHeader, $PlayersInformationHeader, $ConditionsInformationHeader;
         for($i = 0;$i < count($PathsArray);$i++)
         {
             if(!file_exists($PathsArray[$i]))
@@ -62,12 +66,17 @@
                         $PlayersFile = fopen($PathsArray[$i], "w");
                         fwrite($PlayersFile, $PlayersInformationHeader);
                         fclose($PlayersFile);
-                    } else if($i == 6){ //Default group info file!
+                    /*} else if($i == 6){ //Default group info file!
                         $DefaultsFile = fopen($PathsArray[$i], "w");
                         fwrite($DefaultsFile, $AdContentInfoHeader);
                         fwrite($DefaultsFile, "\r\nhttps://www.youtube.com/embed/aWmkuH1k7uA,07/1/2017,07/1/2025,219,,,,");
-                        fclose($DefaultsFile);
+                        fclose($DefaultsFile);*/
+                    } else if ($i == 6){
+                        $conditionsFile = fopen($PathsArray[$i], "w");
+                        fwrite($conditionsFile, $ConditionsInformationHeader);
+                        fclose($conditionsFile);
                     }
+                    chmod($PathsArray[$i], 0644);                    
                 } else {
                     //This is a directory
                     mkdir($PathsArray[$i]);
