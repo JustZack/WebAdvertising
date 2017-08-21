@@ -52,7 +52,7 @@
     }
 </style>
 <?php
-    include_once "../../phpflickr/phpFlickr.php";
+    include_once "../../Dependencies/phpflickr/phpFlickr.php";
 
     /* The key and secret for my API calls */
     $key = "896d1118c1152cc3920ed92cbaabc5bd";
