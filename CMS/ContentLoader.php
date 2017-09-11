@@ -87,6 +87,8 @@
                             }
                         }
                     }
+                } else {
+                    //This is where we remove the ad if it already ended...
                 }
             }
         }

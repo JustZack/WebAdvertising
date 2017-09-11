@@ -6,7 +6,6 @@
     $FileContents = file($PathToGroupFile);
     for($i = 0;$i < count($FileContents);$i++){
         $CurrentInfo = explode(",", $FileContents[$i]);
-        print_r($CurrentInfo);
         if($CurrentInfo[0] == $NameToRemove){
             unset($FileContents[$i]);
         }

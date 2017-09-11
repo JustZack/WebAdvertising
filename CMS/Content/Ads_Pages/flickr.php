@@ -2,7 +2,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../../../../WebAdvertising/CMS/Styles/Css_Reset.css">
+    <link rel="stylesheet" href="../../../../WebAdvertising/CMS/Styles/Css_Reset.css">
     <script>
         $(document).ready(function(){
 
@@ -65,10 +65,20 @@
         $photoCount = $_GET['photoCount'];
     }
 
+    /* Calculate the date two weeks prior to today */
+    $TwoWeeksAgo = date("Y-j-s", strtotime('-2 weeks'));
+
+    /* 
+        Maybe we dont care about the tags?
+        Perhaps all that matters is the posted date?
+        This shows very... 'un exciting' images, tags are the way to go.
+            How can we auto
+    */
+
     /* All the API calls I need to get the images from CSU's flickr */
     $flickr = new phpFlickr($key, $secret);
     $userID = $flickr->people_findByUsername("coloradostateuniversity")['id'];
-    $photos = $flickr->people_getPhotos($userID, array('tags'=>'LSC, Lory Student Center','tag_mode'=>'any','per_page'=>500, 'min_taken_date'=>'2015-9-1 00:00:00'));
+    $photos = $flickr->people_getPhotos($userID, array('tags'=>'fbvoregonstate, 2017ramfest, football, ramfest, footballvsabilenechristianuniversity, ','tag_mode'=>'any','per_page'=>500, 'min_taken_date'=> $TwoWeeksAgo . ' 00:00:00'));
     
     /* Shuffle the array of 500 images */
     shuffle($photos['photos']['photo']);

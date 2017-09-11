@@ -82,7 +82,7 @@ $(document).ready(function()
         //Skip any ad which is set to play at a specific time. (for now)
         if($('#Ad_' + Ad_Position).attr("data-specific-time")){ progressAdNumber(); }
 
-        videoAdvancement();
+        videoAdvancement(); 
         iframeAdvancement();
         //Does the NEXT ad have a load time associated with it? 
         if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
@@ -152,7 +152,7 @@ $(document).ready(function()
             console.log("NEXT ad is loading!");
         } else {
             ad_pos = Ad_Position;            
-        }
+        }     
         if($('#Ad_' + ad_pos).is("iframe"))
         {
             $('#Ad_' + ad_pos).css("display", "none!important");
@@ -162,10 +162,10 @@ $(document).ready(function()
             if($('#Ad_' + ad_pos).attr('src').indexOf('youtube') >= 0)
             {
                 var toAdd = "";
-                src = $('#Ad_' + ad_pos).attr('src');          
+                src = $('#Ad_' + ad_pos).attr('src'); 
                 if(src.indexOf("?") >= 0){
                     toAdd += "&autoplay=1";
-                } else {
+                } else { 
                     toAdd += "?autoplay=1";
                 }
                 src += toAdd;
@@ -173,7 +173,7 @@ $(document).ready(function()
             //PHP script, start the script over
             //Note, this is setup for custom scripts which take a play parameter
             //The play parameter allows me to ensure a scripts contents are not loaded unless they need to be.
-            if($("#Ad_" + ad_pos).attr('src').indexOf('.php') >= 0){
+            else if($("#Ad_" + ad_pos).attr('src').indexOf('.php') >= 0){
                 var toAdd = "";
                 src = $('#Ad_' + ad_pos).attr('src');          
                 if(src.indexOf("?") >= 0){
@@ -192,6 +192,7 @@ $(document).ready(function()
             $iframe.css("height", $(window).height());
             
             /* Reload the iframe in a cross browser way */
+            console.log(src)
             if(earlyLoad || $iframe.attr("data-load-time") == undefined){
                 $iframe.attr('src', '');
                 $iframe.attr('src', src);
