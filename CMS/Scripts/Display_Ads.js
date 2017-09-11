@@ -83,7 +83,7 @@ $(document).ready(function()
         if($('#Ad_' + Ad_Position).attr("data-specific-time")){ progressAdNumber(); }
 
         videoAdvancement(); 
-        iframeAdvancement();
+        iframeAdvancement(false);
         //Does the NEXT ad have a load time associated with it? 
         if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
             //If so, then we need to set a time out for the ad to load 3 seconds prior to it being shown.
@@ -143,16 +143,14 @@ $(document).ready(function()
         }
     }
     //Ensures all iframe content has started playing
-    function iframeAdvancement(){
-        var ad_pos, earlyLoad = false;
-       if($("#Ad_" + (Ad_Position + 1)).attr("data-load-time")){
+    function iframeAdvancement(earlyload = true){
+        var ad_pos;
+        if(earlyload){
             if(Ad_Position == Ad_Count){ ad_pos = 1; }
             else{ ad_pos = Ad_Position + 1; }
-            earlyLoad = true;
-            console.log("NEXT ad is loading!");
         } else {
             ad_pos = Ad_Position;            
-        }     
+        } 
         if($('#Ad_' + ad_pos).is("iframe"))
         {
             $('#Ad_' + ad_pos).css("display", "none!important");
@@ -193,7 +191,7 @@ $(document).ready(function()
             
             /* Reload the iframe in a cross browser way */
             console.log(src)
-            if(earlyLoad || $iframe.attr("data-load-time") == undefined){
+            if(earlyload || $iframe.attr("data-load-time") == undefined){
                 $iframe.attr('src', '');
                 $iframe.attr('src', src);
             }

@@ -1,5 +1,5 @@
 Hostname,Nick Name,Use-Wayfinding,Ad-Content-Groups,Wayfinding Name
-129.82.221.56,Zacks Colab MAC,false,Test,
+129.82.221.56,Zacks Colab MAC,false,Test CampusInfo ,
 zeck,Zacks PC,false,Test  Ads ,
 lsclcd-mkttest.acns.colostate.edu,LSC Colab Test,true,Ads ,lcd.FirstFloorHallway
 LSCLCD-Theater.acns.colostate.edu,LSC IT Test Display,false,Ads ,
@@ -12,8 +12,8 @@ LSCLCD-GameCtr.acns.colostate.edu,LSC Game Center,false,Ads ,
 LSCLCD-CampAt80.acns.colostate.edu,LSC Campus Activities 80,false,Ads,
 LSCLCD-EPSWArea.acns.colostate.edu,LSC Event Planning,false,Ads ,
 LSCLCD-WestHall.acns.colostate.edu,LSC First Floor Hallway,false,Ads ,
-LSCLCD-Info-3.acns.colostate.edu,Campus Info South 1/2,false,CampusInfo RamFest ,
-LSCLCD-Info-2.acns.colostate.edu,Campus Info South 3/4,false,RamFest  CampusInfo ,
+LSCLCD-Info-3.acns.colostate.edu,Campus Info South 1/2,false,CampusInfo,
+LSCLCD-Info-2.acns.colostate.edu,Campus Info South 3/4,false,CampusInfo,
 LSCLCD-Info3.acns.colostate.edu,Campus Info South 5/6,true,Ads  CampusInfo ,lcd.CampusInfoSouth
 LSCLCD-Info-4.acns.colostate.edu,Campus Info East 1/2,true,Ads  CampusInfo ,lcd.CampusInfoEast
 LSCLCD-Info-5.acns.colostate.edu,Campus Info East 3/4,false,Ads  CampusInfo ,
