@@ -93,7 +93,7 @@ $(document).ready(function()
             //Set a timeout for the ad to be loaded
             if($("#Ad_" + (Ad_Position + 1)).is("iframe")){
                 console.log("Setting NEXT ad to load in " + loadTimeOutTime + "ms");
-                setTimeout(iframeAdvancement, loadTimeOutTime);
+                setTimeout(function(){iframeAdvancement(true)}, loadTimeOutTime);
             } else if($("#Ad_" + (Ad_Position + 1)).is("video")) {
                 setTimeout(videoAdvancement, loadTimeOutTime);                
             }
@@ -143,7 +143,7 @@ $(document).ready(function()
         }
     }
     //Ensures all iframe content has started playing
-    function iframeAdvancement(earlyload = true){
+    function iframeAdvancement(earlyload){
         var ad_pos;
         if(earlyload){
             if(Ad_Position == Ad_Count){ ad_pos = 1; }

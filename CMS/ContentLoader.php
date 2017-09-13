@@ -30,6 +30,14 @@
             return;
         }
         $GroupInfoFileData = file($CurrentGroupInfoPath, FILE_IGNORE_NEW_LINES);
+
+        /* Randomizes ad content ordering */
+        if(!$ShowData){
+            $GroupInfoFileData[0] = "";
+            shuffle($GroupInfoFileData);
+        }
+        /* End of randomizing content ordering */
+
         for($i = 1;$i < count($GroupInfoFileData);$i++){
             //Load the content
             if(!empty($GroupInfoFileData[$i]))
